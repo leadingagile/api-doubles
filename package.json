@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:doubles": "node src/doubles/server.js"
+    "start:doubles": "node src/doubles/server.js",
+    "behave": "cucumber-js features --require behave/setup.js --require behave/steps.js"
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.4.0",
+    "chai": "^4.3.6"
   }
 }
