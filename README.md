@@ -1,75 +1,135 @@
-# API Doubles
+# Product Extraction
 
-Getting started making an API Endpoint Doubling tool
+The product extraction team is incrementally adding functionality to support the ability to test in isolation.
 
 
-# Getting Started with Create React App
+## Directory Structure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- `./aem/react-app/doubles`: Doubled dependencies and related utilities.
+	- `./fma`: FMA functionality replaced by call with custom `bundle.js` implementation.
+	- `./fs`: Handle `/cat-with-ci-access-token`endpoint.
+	- `./ial`: Serve doubled endpoints to handle IAL requests.
+	- `./user-profile`: Provides doubling for user profile service.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Other files (@todo)
+- `devices.key`: -
+- `localhost.ford.com.crt`: -
+- `localhost.ford.com.csr`: -
+- `rootCA.key`: -
+- `rootCA.pem`: -
+- `rootCA.key`: -
+- `server.js`: -
+- `v3.ext`: -
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Techniques
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Javascript resource replacement
+Replace a JavaSript resource provided over http with a custom version.
 
-### `npm test`
+example: FMA, `./aem/react-app/doubles/fma/bundle.js`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Custom endpoint handler
+Handle an HTTP request with a registered endpoint on a doubled server.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+example: FS, `./aem/react-app/doubles/fs/index.js`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### JSON fixture
+Store a fixture representing a request response in JSON and provide it as the response body when requested (via doubled HTTP server).
 
-### `npm run eject`
+example: User Profile Service, `./aem/react-app/doubles/user-profile/doubles/userProfileGet.json`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`npm run start:doubles` - Run the doubles server at https://localhost.ford.com:8001/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`npm start` - Serve the react application and direct to `https://localhost.ford.com:3000/hints.html`. Recommended to log into AEM first.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## EU Checkout Flow Instructions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+These doubles enable the ability to move through a designated happy path of the EU Checkout flow. In order to do these, we have certain prerequisites and established expectations. Some of these are to satisfy state dependencies introduced by shared flow and sibling products.
 
-### Code Splitting
+Prerequisities:
+- AEM has been started and logged in to at http://localhost.ford.com:4502/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- React app is served and accessible via https://localhost.ford.com:3000/hints.html
 
-### Analyzing the Bundle Size
+- Doubles server has been started at https://localhost.ford.com:8001
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Copy dataModel:
+	- Navigate to https://wwwqa2-couk.brandeulb.ford.com/shop/price-and-locate/pre-order/build-your-own#/model
+	- click SELECT button in middle option: AWD
+	- click SELECT button, only option
+	- select Rapid Red color option
+	- click INTERIOR button
+	- click EXTRAS button
+	- click CONTINUE button
+	- select Payment Method: click "Are you a business customer looking for a finance plan?"
+	- confirm "Other ways to pay" is selected
+	- select Delivery Method: click Select button in Collection option
+	- enter characters "l", "o", "n" (as in "London") into the zip code input
+	- wait for suggestions
+	- select top option: Gates of Woodford
+	- click Checkout
 
-### Making a Progressive Web App
+	- Authenticate through SSO]
+	- go to developer tools
+		-> Application
+		-> sessionStorage
+		-> https://wwwqa2-couk.brandeulb.ford.com
+		-> persist:dataModelDsEnabled
+	- Copy value of `persist:dataModelDsEnabled`
+- Paste dataModel:
+	- Open local application to https://localhost.ford.com:3000/hints.html
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+	- go to developer tools
+		-> Application
+		-> localStorage
+		-> https://localhost.ford.com:3000
+		-> dataModel
+	- Paste value from QA with key `dataModel`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Input value for `cartReferral`
+	In local application (https://localhost.ford.com:3000)
 
-### Deployment
+	- go to developer tools
+		-> Application
+		-> localStorage
+		-> https://localhost.ford.com:3000
+		-> cartReferral
+	- Paste data for `cartReferral`:
+		`{"guestGUID": "ec4778a4-1fa5-41f8-a75c-33a9965032eb"}`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Checkout steps:
+- Click "UK Checkout" link on [hints]
+- Click Continue button
+- Click Sign at Dealer button
+- CONGRATULATIONS!
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## General Notes
+
+### Timer Expiry
+
+When investigating the ability to reconstitute the application, we discovered the `dataModel` has a `timer` object which cooresponds to the timer in the top right of the application.
+
+The `timerExpiry` field stores a javascript formatted unix timestamp. This has an additional length of 3 characters representing milliseconds. To edit this in the experience, update it with a current timestamp plus whatever value you would like it to read (1 minute = 60000).
+
+
+## Gotchas
+
+### Security certificate warning
+
+Due to using the https protocol, when using certain browsers load a page for the first time, the browser prompts for explicit permission to access this page.
+
+When first accessing new hosts such as the double server (http://localhost.ford.com:8001) or the react-act (https://localhost.ford.com:3000) it is advised to visit them directly in the browser to proceed.
+
+To do so, after receiving the "Your connection is not private" warning, click the "Advanced" button and follow the link at the bottom to "Proceed to localhost.ford.com (unsafe)".
+
+If you see a blank screen when loading the react-app in the browser (not including the `hints.html` page) , review each end point manually to assure security certificates are not the issue.
