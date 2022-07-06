@@ -1,0 +1,94 @@
+{
+    "code": "sit-10982174",
+    "type": "Order",
+    "groupBy": "WAEGB-CGW-2022-Mach-EGBR202225,11LP8,ACMRJ_VS-LE,BS-SA,DGAFG_DR--H_EN-EJ_TR-WA,PN4HQ-59380.0",
+    "newOrderFlow": true,
+    "user": {
+        "uid": "ec4778a4-1fa5-41f8-a75c-33a9965032eb"
+    },
+    "entries": [
+        {
+            "product": {
+                "code": "spec-100000652068",
+                "catalogId": "WAEGB-CGW-2022-Mach-EGBR202225",
+                "imageUrl": "https://www.gpas-cache.ford.com/composite?catalogID=WAEGB-CGW-2022-Mach-EGBR202225&featureConditions=000P8%2C11L00%2C11LP8%2CA1PBD%2CA3RAB%2CA64AB%2CA7FAL%2CAAGA2%2CAB5AA%2CABFAA%2CAC--G%2CACMRJ%2CACYAC%2CADQAA%2CAEAAJ%2CAF1AJ%2CAHTAB%2CAIJAB%2CB2CAF%2CB2GAE%2CB2MAC%2CB2RAQ%2CB3MAB%2CB3NAB%2CB5VAB%2CB5WCD%2CBA7CD%2CBA8CD%2CBB7AB%2CBBGAH%2CBBHAB%2CBCAAE%2CBDEAB%2CBDIAK%2CBMDAB%2CBMFAD%2CBMLAE%2CBPFAP%2CBS-SA%2CBSBAF%2CBSHEU%2CBSLAB%2CBU6AB%2CBVRAC%2CBVSAD%2CBWBAF%2CBWCAK%2CBWEAB%2CBWFAE%2CBWJAB%2CBWRAC%2CBWSAC%2CBY1AL%2CBY5AN%2CBYPAK%2CBYQAP%2CC1MAA%2CC1QAB%2CC1UAB%2CCAEA2%2CCB5AB%2CCB7AC%2CCBAAD%2CCBGAL%2CCBSAE%2CCCAAC%2CCFEAC%2CCFFAN%2CCJDAA%2CCL7AB%2CCLFGD%2CCLMAJ%2CCLVAF%2CCN7AH%2CCP1AC%2CCPCAV%2CCPGAB%2CCPMAB%2CCPSAB%2CCPTAB%2CCPUAB%2CCPXAB%2CCPYAM%2CCRAAB%2CD17AA%2CD19AG%2CD1GAB%2CD2VA4%2CD3IFY%2CD5EAD%2CDEEAA%2CDGAFG%2CDR--H%2CDWAAF%2CDWMAA%2CDYKAB%2CEGAZZ%2CEN-EJ%2CFAJAC%2CFBAA4%2CFBBAF%2CFBFAC%2CFCCAB%2CFEABA%2CFS--B%2CG1FAE%2CG2AAE%2CG3FAD%2CGBVAR%2CGCEAE%2CGRAAF%2CGTAEF%2CGTBAB%2CGTCAV%2CGTDAW%2CHCAAV%2CHDHAB%2CHEBAD%2CHIBAK%2CHJFAB%2CHKCAB%2CHKLAG%2CHKSAD%2CHLFAB%2CHLLAD%2CHLNAC%2CHLQAB%2CHNAAG%2CHNDAF%2CHNLAB%2CHNSAC%2CHNYAB%2CHT2AD%2CHTHAD%2CHTSAD%2CICDA3%2CICEF9%2CICFAG%2CICHAB%2CIDBAT%2CIEPAN%2CIEVAQ%2CIEXAB%2CJ3AAB%2CJ3CAA%2CJ3KAB%2CJ3QAD%2CJ4WAA%2CJ5XAC%2CJBBAF%2CJBCAC%2CJCBAN%2CJCMAB%2CJDAAQ%2CJDDAB%2CJDJAB%2CJEAAB%2CJEDAG%2CJZCAE%2CPN4HQ%2CTR-WA%2CVS-LE%2CYA2AA%2CYAJAA%2CYAMAA%2CYANAA%2CYBPAA%2CYCNAA%2CYCQAA%2CYD2AA%2CYD3AA%2CYECAA%2CYEHAA%2CYF4AA%2CYK5AA%2CYKGAA%2CYKKAA%2CYP4AA%2CYZBCA%2CYZKAA%2CYZVZF%2CZJ1AA%2CZJ3AA%2CZJ4AA%2CZJ5AA%2CZJ6AA%2CZJ7AA%2CZJ8AA%2CZJ9AA%2CZJAAA%2CZJBAA%2CZJCAA%2CZJDAA%2CZJEAA&angleNo=21&viewType=exterior&width=0&height=0",
+                "marketingIdentity": {
+                    "brand": "ford",
+                    "nameplate": "Mustang Mach-E",
+                    "marketingIdentityNamePlate": "Mustang Mach-E",
+                    "segment": "Passenger",
+                    "modelYear": "2022.25",
+                    "salesMarket": "GBR"
+                },
+                "timingPoint": "S4PNDS",
+                "fullSpec": "WAEGB-CGW-2022-Mach-EGBR202225,000P8,11L00,11LP8,A1PBD,A3RAB,A64AB,A7FAL,AAGA2,AB5AA,ABFAA,AC--G,ACMRJ,ACYAC,ADQAA,AEAAJ,AF1AJ,AHTAB,AIJAB,B2CAF,B2GAE,B2MAC,B2RAQ,B3MAB,B3NAB,B5VAB,B5WCD,BA7CD,BA8CD,BB7AB,BBGAH,BBHAB,BCAAE,BDEAB,BDIAK,BMDAB,BMFAD,BMLAE,BPFAP,BS-SA,BSBAF,BSHEU,BSLAB,BU6AB,BVRAC,BVSAD,BWBAF,BWCAK,BWEAB,BWFAE,BWJAB,BWRAC,BWSAC,BY1AL,BY5AN,BYPAK,BYQAP,C1MAA,C1QAB,C1UAB,CAEA2,CB5AB,CB7AC,CBAAD,CBGAL,CBSAE,CCAAC,CFEAC,CFFAN,CJDAA,CL7AB,CLFGD,CLMAJ,CLVAF,CN7AH,CP1AC,CPCAV,CPGAB,CPMAB,CPSAB,CPTAB,CPUAB,CPXAB,CPYAM,CRAAB,D17AA,D19AG,D1GAB,D2VA4,D3IFY,D5EAD,DEEAA,DGAFG,DR--H,DWAAF,DWMAA,DYKAB,EGAZZ,EN-EJ,FAJAC,FBAA4,FBBAF,FBFAC,FCCAB,FEABA,FS--B,G1FAE,G2AAE,G3FAD,GBVAR,GCEAE,GRAAF,GTAEF,GTBAB,GTCAV,GTDAW,HCAAV,HDHAB,HEBAD,HIBAK,HJFAB,HKCAB,HKLAG,HKSAD,HLFAB,HLLAD,HLNAC,HLQAB,HNAAG,HNDAF,HNLAB,HNSAC,HNYAB,HT2AD,HTHAD,HTSAD,ICDA3,ICEF9,ICFAG,ICHAB,IDBAT,IEPAN,IEVAQ,IEXAB,J3AAB,J3CAA,J3KAB,J3QAD,J4WAA,J5XAC,JBBAF,JBCAC,JCBAN,JCMAB,JDAAQ,JDDAB,JDJAB,JEAAB,JEDAG,JZCAE,PN4HQ,TR-WA,VS-LE,YA2AA,YAJAA,YAMAA,YANAA,YBPAA,YCNAA,YCQAA,YD2AA,YD3AA,YECAA,YEHAA,YF4AA,YK5AA,YKGAA,YKKAA,YP4AA,YZBCA,YZKAA,YZVZF,ZJ1AA,ZJ3AA,ZJ4AA,ZJ5AA,ZJ6AA,ZJ7AA,ZJ8AA,ZJ9AA,ZJAAA,ZJBAA,ZJCAA,ZJDAA,ZJEAA",
+                "marketingProperties": [
+                    {
+                        "type": "fuelType",
+                        "code": "elec",
+                        "description": "Electric"
+                    },
+                    {
+                        "type": "Modem",
+                        "code": "features.OCC.CAC|combined|ecomm.mdm",
+                        "description": "FordPass Connect (Embedded Modem)"
+                    }
+                ]
+            },
+            "dealer": {
+                "code": "GBR|85850|BA|F",
+                "name": "Hendy FordStore - Eastleigh",
+                "address": {
+                    "line1": "Leigh Road",
+                    "town": "Eastleigh",
+                    "region": {
+                        "name": "Hampshire"
+                    },
+                    "postalCode": "SO50 9PT",
+                    "phone": "023 8027 1271",
+                    "country": {
+                        "isocode": "GBR",
+                        "name": "United Kingdom"
+                    }
+                },
+                "aldFlag": true,
+                "isDealerResvEnrolled": true,
+                "isDealerOrderEnrolled": false,
+                "evEuCertificationFlag": true,
+                "dealerWallboxEnrolled": false,
+                "dealerVATNo": "GB246137272"
+            },
+            "financeData": {
+                "properties": {
+                    "defaultMileage": 10000,
+                    "activeElement": "",
+                    "mileageUnit": "Miles",
+                    "finalPrice": 48458.33,
+                    "promotionalDealerPrice": 59380,
+                    "language": "EN",
+                    "locale": "en_gb",
+                    "pricingId": "2bff8270-ff56-4996-ba0a-14b41301fc7a-43",
+                    "hashPayment": "29ae0118f5f046d2564be946a784cbc002011904c54a41d59aaac1cdeb2b9ca3",
+                    "customerType": "business",
+                    "monthlyPayment": 741.42,
+                    "provider": "ALD",
+                    "term": 48,
+                    "annualMileage": 10000,
+                    "numberOfPayments": 6,
+                    "defaultFlag": false,
+                    "defaultInitialRental": 6,
+                    "campaignId": "2bff8270-ff56-4996-ba0a-14b41301fc7a",
+                    "defaultPlanCode": "fsli",
+                    "financePlan": "fsli",
+                    "success": true,
+                    "financeType": "Ford Lease Online Application? (Sole Trader)",
+                    "defaultTerm": 48,
+                    "vatIncluded": false,
+                    "currencyIndicator": "GBP"
+                }
+            },
+            "hasInventory": true
+        }
+    ],
+    "isSavedCart": false
+}

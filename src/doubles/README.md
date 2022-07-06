@@ -121,6 +121,13 @@ When investigating the ability to reconstitute the application, we discovered th
 
 The `timerExpiry` field stores a javascript formatted unix timestamp. This has an additional length of 3 characters representing milliseconds. To edit this in the experience, update it with a current timestamp plus whatever value you would like it to read (1 minute = 60000).
 
+### Hints Page
+Once the application is started, you can use the [hints page](https://localhost.ford.com:3000/hints.html). The hints page has a selector to arrange the application in various starting states.
+
+> [!] Be sure to change files in `public` and not `dist`
+
+Path to hints.html - `aem/react-app/public/hints.html`
+Path to hints.js - `aem/react-app/public/hints.js`
 
 ## Gotchas
 

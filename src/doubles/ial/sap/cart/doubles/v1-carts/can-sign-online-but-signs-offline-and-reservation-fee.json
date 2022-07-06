@@ -1,0 +1,239 @@
+{
+    "code": "sit-11042451",
+    "type": "Order",
+    "groupBy": "WAEGB-CGW-2022-Mach-EGBR202225,11LP8,ACMRJ_VS-LE,BS-SA,DGAFG_DR--H_EN-EJ_TR-WA,PN4HR-62630.0",
+    "newOrderFlow": true,
+    "user": {
+        "uid": "ec4778a4-1fa5-41f8-a75c-33a9965032eb"
+    },
+    "entries": [
+        {
+            "product": {
+                "code": "spec-100000721098",
+                "catalogId": "WAEGB-CGW-2022-Mach-EGBR202225",
+                "marketingIdentity": {
+                    "brand": "ford",
+                    "nameplate": "Mustang Mach-E",
+                    "marketingIdentityNamePlate": "Mustang Mach-E",
+                    "segment": "Passenger",
+                    "modelYear": "2022.25",
+                    "salesMarket": "GBR"
+                },
+                "timingPoint": "S4PNDS",
+                "fullSpec": "WAEGB-CGW-2022-Mach-EGBR202225,000P8,11L00,11LP8,A1PBD,A3RAB,A64AB,A7FAL,AAGA2,AB5AA,ABFAA,AC--G,ACMRJ,ACYAC,ADQAA,AEAAJ,AF1AJ,AHTAB,AIJAB,B2CAF,B2GAE,B2MAC,B2RAQ,B3MAB,B3NAB,B5VAB,B5WCD,BA7CD,BA8CD,BB7AB,BBGAH,BBHAB,BCAAE,BDEAB,BDIAK,BMDAB,BMFAD,BMLAE,BPFAP,BS-SA,BSBAF,BSHEU,BSLAB,BU6AB,BVRAC,BVSAD,BWBAF,BWCAK,BWEAB,BWFAE,BWJAB,BWRAC,BWSAC,BY1AL,BY5AN,BYPAK,BYQAP,C1MAA,C1QAB,C1UAB,CAEA2,CB5AB,CB7AC,CBAAD,CBGAL,CBSAE,CCAAC,CFEAC,CFFAN,CJDAA,CL7AB,CLFGD,CLMAJ,CLVAF,CN7AH,CP1AC,CPCAV,CPGAB,CPMAB,CPSAB,CPTAB,CPUAB,CPXAB,CPYAM,CRAAB,D17AA,D19AG,D1GAB,D2VA4,D3IFY,D5EAD,DEEAA,DGAFG,DR--H,DWAAF,DWMAA,DYKAB,EGAZZ,EN-EJ,FAJAC,FBAA4,FBBAF,FBFAC,FCCAB,FEABA,FS--B,G1FAE,G2AAE,G3FAD,GBVAR,GCEAE,GRAAF,GTAEF,GTBAB,GTCAV,GTDAW,HCAAV,HDHAB,HEBAD,HIBAK,HJFAB,HKCAB,HKLAG,HKSAD,HLFAB,HLLAD,HLNAC,HLQAB,HNAAG,HNDAF,HNLAB,HNSAC,HNYAB,HT2AD,HTHAD,HTSAD,ICDA3,ICEF9,ICFAG,ICHAB,IDBAT,IEPAN,IEVAQ,IEXAB,J3AAB,J3CAA,J3KAB,J3QAD,J4WAA,J5XAC,JBBAF,JBCAC,JCBAN,JCMAB,JDAAQ,JDDAB,JDJAB,JEAAB,JEDAG,JZCAE,PN4HR,TR-WA,VS-LE,YA2AA,YAJAA,YAMAA,YANAA,YBPAA,YCNAA,YCQAA,YD2AA,YD3AA,YECAA,YEHAA,YF4AA,YK5AA,YKGAA,YKKAA,YP4AA,YZBCA,YZKAA,YZVZF,ZJ1AA,ZJ3AA,ZJ4AA,ZJ5AA,ZJ6AA,ZJ7AA,ZJ8AA,ZJ9AA,ZJAAA,ZJBAA,ZJCAA,ZJDAA,ZJEAA",
+                "marketingProperties": [
+                    {
+                        "type": "fuelType",
+                        "code": "elec",
+                        "description": "Electric"
+                    },
+                    {
+                        "type": "Modem",
+                        "code": "features.OCC.CAC|combined|ecomm.mdm",
+                        "description": "FordPass Connect (Embedded Modem)"
+                    }
+                ]
+            },
+            "dealer": {
+                "code": "GBR|42184|MA|F",
+                "name": "Gates of Woodford",
+                "address": {
+                    "line1": "357 CHIGWELL ROAD",
+                    "town": "WOODFORD",
+                    "region": {
+                        "name": "ESSEX"
+                    },
+                    "postalCode": "IG8 8PE",
+                    "phone": "020 3912 6054",
+                    "country": {
+                        "isocode": "GBR",
+                        "name": "United Kingdom"
+                    }
+                },
+                "aldFlag": true,
+                "isDealerResvEnrolled": true,
+                "isDealerOrderEnrolled": false,
+                "evEuCertificationFlag": true,
+                "dealerWallboxEnrolled": false,
+                "dealerVATNo": "GB246137272"
+            },
+            "financeData": {
+                "financeType": "Ford Options Online Finance",
+                "properties": {
+                    "dealerDeposit": 5,
+                    "priceAdjustment": 0.04,
+                    "fees": 20,
+                    "totalAmountFinancedStandard": 60260,
+                    "language": "",
+                    "revolvingIntRate": 1.98,
+                    "customerType": "retail",
+                    "creditAppData": {
+                        "creditProduct": 7,
+                        "creditProductName": "OPTIONS",
+                        "creditProgram": "9242",
+                        "creditProgramName": "Q2 2022 MACH E 98KW",
+                        "subventionFlag": "Y",
+                        "subventionType": "M",
+                        "lienCode": "1",
+                        "securityDepositFlag": "",
+                        "securitisationEligibility": "N",
+                        "capId": 78844,
+                        "fastAccessKey": 436535,
+                        "businessCategory": "01",
+                        "excessChargeVatExclusive": 0.1
+                    },
+                    "feesForFinance": {
+                        "totalFinanceableFees": "80.0",
+                        "totalNonFinanceableFees": "0.0",
+                        "financeableFees": [
+                            {
+                                "type": "registrationFee",
+                                "value": 55
+                            },
+                            {
+                                "type": "grossNameplateFee",
+                                "value": 25
+                            }
+                        ],
+                        "nonFinanceableFees": [
+                            {
+                                "type": "additionalFee",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "info": {
+                        "messageText": "The Maximum Amount we will finance is £60,260. The deposit you have entered is too small. Your deposit has been changed to the minimum amount allowable.",
+                        "messageCode": "MSG1050"
+                    },
+                    "annualMileage": 9000,
+                    "apr": 3.9,
+                    "defaultFlag": false,
+                    "govtDiscount": 0,
+                    "staticCharge": 3878.99,
+                    "financePlan": "0",
+                    "tradeInOverage": 0,
+                    "totalCharge": 6661.88,
+                    "creditCost": 6681.88,
+                    "optionalFinalPayment": 25123,
+                    "plans": [
+                        {
+                            "code": "0",
+                            "deposit": {
+                                "dropdownValues": [],
+                                "defaultValue": ""
+                            },
+                            "mileageValues": [
+                                {
+                                    "mileage": 6000,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "mileage": 9000,
+                                    "defaultFlag": true
+                                },
+                                {
+                                    "mileage": 12000,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "mileage": 15000,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "mileage": 18000,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "mileage": 24000,
+                                    "defaultFlag": false
+                                }
+                            ],
+                            "milesOrKmPerAnnum": {
+                                "dropdownValues": [
+                                    6000,
+                                    9000,
+                                    12000,
+                                    15000,
+                                    18000,
+                                    24000
+                                ],
+                                "defaultValue": 9000
+                            },
+                            "name": "Ford Options",
+                            "numberOfPayments": {
+                                "dropdownValues": [],
+                                "defaultValue": ""
+                            },
+                            "term": {
+                                "dropdownValues": [
+                                    24,
+                                    26,
+                                    36,
+                                    38,
+                                    48
+                                ],
+                                "defaultValue": 48
+                            },
+                            "termValues": [
+                                {
+                                    "term": 24,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "term": 26,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "term": 36,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "term": 38,
+                                    "defaultFlag": false
+                                },
+                                {
+                                    "term": 48,
+                                    "defaultFlag": true
+                                }
+                            ]
+                        }
+                    ],
+                    "success": true,
+                    "financeType": "Ford Options Online Finance",
+                    "deposit": 2270,
+                    "borrowingRate": 2.76,
+                    "tradeIn": 0,
+                    "finalPrice": 51166.67,
+                    "promotionalDealerPrice": 62530,
+                    "locale": "",
+                    "hashPayment": "d0a04d1c99a94e289c6533504cd3a8b7b759fb9b2fd7431202f2c51addcb0e88",
+                    "sellingPrice": 62530,
+                    "establishmentFee": 10,
+                    "interest": 8651.58,
+                    "provider": "GFC",
+                    "totalAmountPayable": 69211.88,
+                    "term": 48,
+                    "amountPayableLessGmfv": 35137,
+                    "interestRate": 0,
+                    "numberOfPayments": 48,
+                    "customerSaving": "0.0",
+                    "defaultPlanCode": "0",
+                    "revolvingCharge": 2782.85,
+                    "depositAllowance": 0,
+                    "excessMileageCharge": 12,
+                    "staticIntRate": "3.86",
+                    "monthlyPaymentWithoutInclusiveFee": 870.81,
+                    "vatIncluded": false,
+                    "currencyIndicator": "GBP",
+                    "purchaseFee": 10,
+                    "listPrice": 61400
+                },
+                "financeProductType": "0",
+                "financeProvider": "GFC"
+            },
+            "hasInventory": true
+        }
+    ],
+    "isSavedCart": false
+}

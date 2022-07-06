@@ -1,25 +1,31 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-commonjs */
 const express = require('express');
 const router = express.Router();
 
-const headers = (req) => {
-  return {
-    Allow: 'GET, OPTIONS, HEAD',
-    'Access-Control-Allow-Origin': req.headers.origin || '*',
-    'Access-Control-Allow-Headers':
-      'Accept, Application-Id, Auth-Token, Content-Type, Origin',
-    'Access-Control-Allow-Methods':
-      'OPTIONS, GET, HEAD, POST, PUT, DELETE, PATCH',
-    'Access-Control-Max-Age': '300',
-  };
-};
-
 router.all('/:orderNumber', (req, res) => {
-  const cartData = require('./cart/doubles/v1-carts-get.json');
-  cartData.code = req.params.orderNumber;
+  const code = req.params.orderNumber;
 
-  res.set(headers(req));
-  res.json(cartData);
+  const reservationFee = './cart/doubles/v1-carts/reservation-fee.json';
+  const noReservationFee = './cart/doubles/v1-carts/no-reservation-fee.json';
+
+  const arrangements = {
+    'loc-cannot-sign-online-and-no-reservation-fee': noReservationFee,
+    'loc-can-sign-online-but-signs-offline-and-no-reservation-fee': noReservationFee,
+    'loc-can-sign-online-but-signs-offline-and-reservation-fee': reservationFee,
+    'loc-can-sign-online-and-does-and-no-reservation-fee': noReservationFee,
+    'loc-can-sign-online-and-does-and-reservation-fee': reservationFee,
+  };
+
+  console.log({ code });
+  console.log({ arrangements });
+
+  const cartDataValue = require(arrangements[code]);
+
+  res.json({
+    ...cartDataValue,
+    code,
+  });
 });
 
 module.exports = router;
