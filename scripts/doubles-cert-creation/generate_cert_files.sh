@@ -64,7 +64,7 @@ process_command_line()
 }
 
 process_command_line "$@" || exit 1
-
+set -x
 "${LOCATION}"/create_root_cert_and_key.sh || exit 2
 "${LOCATION}"/create_certificate_for_domain.sh "${DOMAIN}" "${COMMON_NAME}" || exit 3
 "${LOCATION}"/add_root_certificate_to_keychain.sh || exit 4

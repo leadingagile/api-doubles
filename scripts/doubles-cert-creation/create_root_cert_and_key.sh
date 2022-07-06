@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-BASEPATH="${LOCATION}/../../doubles"
+BASEPATH="${LOCATION}/../../src/doubles"
 
 ROOTCA_KEY_FILE="${BASEPATH}/rootCA.key"
 ROOTCA_PEM_FILE="${BASEPATH}/rootCA.pem"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PEM_FILE="./doubles/rootCA.pem"
+PEM_FILE="./src/doubles/rootCA.pem"
 LOCALHOST="https://localhost.ford.com"
 DOUBLES_PORT="8001"
 DOUBLES_URL="$LOCALHOST:$DOUBLES_PORT"

@@ -3,6 +3,44 @@
 The product extraction team is incrementally adding functionality to support the ability to test in isolation.
 
 
+# Doubles
+
+## 1. Generate Cert
+
+Run the script, answer the prompts.
+
+Some of the steps will require you to authenticate with you local admin credentials. They will update your keychain with the certs created.
+
+
+```shell
+./scripts/generate_cert_files.sh
+```
+
+Current defaults are for `ford.com` and `localhost.ford.com` -- this will change real soon
+
+
+## 2. Update `hosts` file
+
+The domain used (`localhost.ford.com`) must be in your `/etc/hosts` file. Add this line to the file
+
+```
+127.0.0.1	localhost.ford.com
+
+```
+
+## 3. Run the Double Server
+
+```shell
+npm run start:doubles
+```
+
+You can check the doubles are running by opening a browser to the domain being served (e.g. https://localhost.ford.com:8001/ )
+
+You should see a list of the endpoints being hosted.
+
+
+# Project
+
 ## Directory Structure
 
 - `./aem/react-app/doubles`: Doubled dependencies and related utilities.
