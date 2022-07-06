@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 PEM_FILE="./src/doubles/rootCA.pem"
 LOCALHOST="https://localhost.ford.com"
-DOUBLES_PORT="8001"
-DOUBLES_URL="$LOCALHOST:$DOUBLES_PORT"
+# DOUBLES_PORT="8001"
+# DOUBLES_URL="$LOCALHOST:$DOUBLES_PORT"
 REACT_APP_PORT="3000"
 REACT_APP_URL="$LOCALHOST:$REACT_APP_PORT"
 
@@ -20,7 +20,7 @@ node doubles/server.js &
 # curl with the certificate gets around the issue of the browser not knowing if the server is safe.
 # retry is to wait for the server to get started.
 if ! curl --silent --retry 5 --retry-connrefused --retry-delay 1 --cacert "${PEM_FILE}" "${REACT_APP_URL}" &> /dev/null ; then
-    printf "\n\n### Failed to contact ${REACT_APP_URL} ###\n\n"
+    printf "\n\n### Failed to contact %s ###\n\n" "${REACT_APP_URL}"
     fg %1
     exit 1
 fi
