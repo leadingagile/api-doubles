@@ -13,7 +13,7 @@ Some of the steps will require you to authenticate with you local admin credenti
 
 
 ```shell
-./scripts/generate_cert_files.sh
+./scripts/doubles-cert-creation/generate_cert_files.sh
 ```
 
 Current defaults are for `ford.com` and `localhost.ford.com` -- this will change real soon
