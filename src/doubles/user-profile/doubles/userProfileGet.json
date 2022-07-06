@@ -1,0 +1,184 @@
+{
+    "httpStatus": 200,
+    "status": 200,
+    "requestStatus": "CURRENT",
+    "error": null,
+    "lastRequested": "2022-02-14T19:18:14.504Z",
+    "version": "1.0.1",
+    "profile": {
+        "httpStatus": 200,
+        "status": 200,
+        "requestStatus": "CURRENT",
+        "error": null,
+        "lastRequested": "2022-02-14T19:18:14.504Z",
+        "version": "1.0.1",
+        "userId": "mpigdenuktest@gmail.com",
+        "userGuid": "EC4778A4-1FA5-41F8-A75C-33A9965032EB",
+        "firstName": "Test",
+        "middleName": null,
+        "lastName": "User",
+        "secondLastName": null,
+        "consumerType": "Personal",
+        "companyName": "abc",
+        "title": "MR",
+        "suffix": null,
+        "language": "en-GB",
+        "gender": null,
+        "maritalStatus": null,
+        "birthYearMonth": null,
+        "appreciationId": null,
+        "userDisplayName": null,
+        "partnerRelationships": {
+            "$values": [
+                {
+                    "partnerName": "IdpUserId",
+                    "identifierInPartnerSystem": "6600010RE6"
+                }
+            ]
+        },
+        "uomSpeed": "KPH",
+        "uomDistance": 2,
+        "uomPressure": "KPA",
+        "uomTemperature": null,
+        "address1": "Address",
+        "address2": "Address",
+        "address3": null,
+        "address4": null,
+        "city": "Basildon",
+        "state": null,
+        "zip": "SS16 5LS",
+        "country": "GBR",
+        "timeZone": "US_EASTERN",
+        "termsAccepted": 1,
+        "deviceID": null,
+        "lastUpdatedDate": "2022-02-14T19:12:40.722Z",
+        "email": "MPIGDENUKTEST@GMAIL.COM",
+        "phoneNumber": "320674570099",
+        "phoneNumberExtension": null,
+        "alternatePhoneNumber": "07424831117",
+        "alternatePhoneNumberExtension": null,
+        "alternatePhoneNumber2": null,
+        "alternatePhoneNumber2Extension": null,
+        "termsVersion": "1.0",
+        "sendMarketingEmails": 1,
+        "versionNumber": null,
+        "notificationPrefVehicleRemote": 0,
+        "notificationPrefVehicleHealth": 0,
+        "notificationPrefBillReminder": 0,
+        "notificationPrefOwnership": 0,
+        "notificationPrefMarketingMsg": 0,
+        "communicationMethod": 1,
+        "userIdentity": null,
+        "preferredLanguage": "en-GB",
+        "profileStoreName": "OPUS",
+        "verifiedPhoneNumber": null,
+        "motorCraft": null,
+        "fordCredit": null,
+        "profileAttributes": [
+            {
+                "sourceCode": "210011",
+                "sourceDescription": "EU GUX ECOMMERCE",
+                "registrationDate": "2019-11-01T21:03:19.793Z",
+                "noOfLogin": 3207,
+                "lastLoginDate": "2022-02-14T15:32:22.617Z",
+                "lastUpdateDate": "2022-02-14T15:32:22.617Z",
+                "registeredSource": "W",
+                "createdDate": "2019-11-01T21:03:19.793Z"
+            }
+        ],
+        "socialMediaProvider": null,
+        "communityIcon": null,
+        "privacyPreferences": [
+            {
+                "preferenceStartDate": "2021-12-13T09:37:40.543Z",
+                "preferenceEndDate": null,
+                "preferenceName": "Mobile Permission",
+                "preferenceCode": "Y",
+                "preferenceType": "MobilePermission"
+            },
+            {
+                "preferenceStartDate": "2021-12-13T09:37:40.543Z",
+                "preferenceEndDate": null,
+                "preferenceName": "Mail Permission",
+                "preferenceCode": "Y",
+                "preferenceType": "MailPermission"
+            },
+            {
+                "preferenceStartDate": "2021-12-13T09:37:40.543Z",
+                "preferenceEndDate": null,
+                "preferenceName": "Profiling",
+                "preferenceCode": "Y",
+                "preferenceType": "Profiling"
+            },
+            {
+                "preferenceStartDate": "2021-12-10T08:37:46.103Z",
+                "preferenceEndDate": "2021-12-10T08:37:46.117Z",
+                "preferenceName": "In App Messaging Permission",
+                "preferenceCode": "N",
+                "preferenceType": "InAppMessagingPermission"
+            },
+            {
+                "preferenceStartDate": "2021-12-13T09:37:40.543Z",
+                "preferenceEndDate": null,
+                "preferenceName": "EmailPermission",
+                "preferenceCode": "Y",
+                "preferenceType": "EmailPermission"
+            },
+            {
+                "preferenceStartDate": "2021-11-03T09:39:48.027Z",
+                "preferenceEndDate": null,
+                "preferenceName": "Phone Permission",
+                "preferenceCode": "Y",
+                "preferenceType": "PhonePermission"
+            }
+        ],
+        "postalCodeSuffix": null,
+        "mobilePhoneNumber": "7438302002",
+        "affiliation": [
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "sit-10066025",
+                "affiliationType": "Reservation"
+            },
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "sit-10067012",
+                "affiliationType": "Reservation"
+            },
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "sit-10067014",
+                "affiliationType": "Reservation"
+            },
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "sit-10068001",
+                "affiliationType": "Reservation"
+            },
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "sit-10069005",
+                "affiliationType": "Reservation"
+            },
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "sit-10068017",
+                "affiliationType": "Reservation"
+            },
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "sit-10071004",
+                "affiliationType": "Reservation"
+            },
+            {
+                "affiliationName": "CX727 Reservation",
+                "affiliationPlanName": "uat-10022023",
+                "affiliationType": "Reservation"
+            }
+        ],
+        "deviceLanguage": "en_GB",
+        "privacyAccepted": 0,
+        "privacyVersion": null,
+        "memberId": "1926331589"
+    }
+}

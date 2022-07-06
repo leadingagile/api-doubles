@@ -1,0 +1,1787 @@
+{
+    "code": "sit-10982174",
+    "type": "Order",
+    "groupBy": "WAEGB-CGW-2022-Mach-EGBR202225,11LP8,ACMRJ_VS-LE,BS-SA,DGAFG_DR--H_EN-EJ_TR-WA,PN4HQ-59380.0",
+    "newOrderFlow": true,
+    "user": {
+        "uid": "ec4778a4-1fa5-41f8-a75c-33a9965032eb"
+    },
+    "accessoryData": {
+        "totalPrice": 0,
+        "totalCashPrice": 0,
+        "totalFinancePrice": 0,
+        "accessories": [],
+        "currentConfig": "000P8,11L00,11LP8,A1PBD,A3RAB,A64AB,A7FAL,AAGA2,AB5AA,ABFAA,AC--G,ACMRJ,ACYAC,ADQAA,AEAAJ,AF1AJ,AHTAB,AIJAB,B2CAF,B2GAE,B2MAC,B2RAQ,B3MAB,B3NAB,B5VAB,B5WCD,BA7CD,BA8CD,BB7AB,BBGAH,BBHAB,BCAAE,BDEAB,BDIAK,BMDAB,BMFAD,BMLAE,BPFAP,BS-SA,BSBAF,BSHEU,BSLAB,BU6AB,BVRAC,BVSAD,BWBAF,BWCAK,BWEAB,BWFAE,BWJAB,BWRAC,BWSAC,BY1AL,BY5AN,BYPAK,BYQAP,C1MAA,C1QAB,C1UAB,CAEA2,CB5AB,CB7AC,CBAAD,CBGAL,CBSAE,CCAAC,CFEAC,CFFAN,CJDAA,CL7AB,CLFGD,CLMAJ,CLVAF,CN7AH,CP1AC,CPCAV,CPGAB,CPMAB,CPSAB,CPTAB,CPUAB,CPXAB,CPYAM,CRAAB,D17AA,D19AG,D1GAB,D2VA4,D3IFY,D5EAD,DEEAA,DGAFG,DR--H,DWAAF,DWMAA,DYKAB,EGAZZ,EN-EJ,FAJAC,FBAA4,FBBAF,FBFAC,FCCAB,FEABA,FS--B,G1FAE,G2AAE,G3FAD,GBVAR,GCEAE,GRAAF,GTAEF,GTBAB,GTCAV,GTDAW,HCAAV,HDHAB,HEBAD,HIBAK,HJFAB,HKCAB,HKLAG,HKSAD,HLFAB,HLLAD,HLNAC,HLQAB,HNAAG,HNDAF,HNLAB,HNSAC,HNYAB,HT2AD,HTHAD,HTSAD,ICDA3,ICEF9,ICFAG,ICHAB,IDBAT,IEPAN,IEVAQ,IEXAB,J3AAB,J3CAA,J3KAB,J3QAD,J4WAA,J5XAC,JBBAF,JBCAC,JCBAN,JCMAB,JDAAQ,JDDAB,JDJAB,JEAAB,JEDAG,JZCAE,PN4HQ,TR-WA,VS-LE,YF4AA,YZBCA,YZKAA,YZVZF"
+    },
+    "entries": [
+        {
+            "product": {
+                "code": "spec-100000652068",
+                "catalogId": "WAEGB-CGW-2022-Mach-EGBR202225",
+                "features": [
+                    {
+                        "family": {
+                            "code": "J3Q"
+                        },
+                        "values": [
+                            {
+                                "code": "J3QAD",
+                                "description": "360 Degree Camera",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "BS-"
+                        },
+                        "values": [
+                            {
+                                "code": "BS-SA",
+                                "description": "5 Door",
+                                "guxCategoryLabels": "bodystyle",
+                                "guxCategoryDescription": "Bodystyle",
+                                "state": "S",
+                                "guxCategories": [
+                                    "bodystyle"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "B2G"
+                        },
+                        "values": [
+                            {
+                                "code": "B2GAE",
+                                "description": "Privacy Glass",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OSA.SDF",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "BML"
+                        },
+                        "values": [
+                            {
+                                "code": "BMLAE",
+                                "description": "Side Cladding and Wheel Arches Piano Black",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OSS.SSF",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "J5X"
+                        },
+                        "values": [
+                            {
+                                "code": "J5XAC",
+                                "description": "Tech Pack +",
+                                "guxCategoryLabels": "features.OCC.COP",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OCC.COP"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "IEP"
+                        },
+                        "values": [
+                            {
+                                "code": "IEPAN",
+                                "description": "FordPass Connect (Embedded Modem)",
+                                "guxCategoryLabels": "ecomm.mdm",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OCC.CAC",
+                                    "combined",
+                                    "ecomm.mdm"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "JDA"
+                        },
+                        "values": [
+                            {
+                                "code": "JDAAQ",
+                                "description": "LED Mustang Signature Taillights",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DEL",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "BYP"
+                        },
+                        "values": [
+                            {
+                                "code": "BYPAK",
+                                "description": "8-Way Power Driver and Passenger Seats - Fore/Aft/Up/Down/Recline/Lumbar",
+                                "guxCategoryLabels": "features.OCC.CST",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined",
+                                    "features.OCC.CST"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "J3K"
+                        },
+                        "values": [
+                            {
+                                "code": "J3KAB",
+                                "description": "Rear View Camera",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "GBV"
+                        },
+                        "values": [
+                            {
+                                "code": "GBVAR",
+                                "description": "Electric",
+                                "guxCategoryLabels": "ecomm-ftype.elec",
+                                "state": "I",
+                                "guxCategories": [
+                                    "ecomm-ftype.elec"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "HCA"
+                        },
+                        "values": [
+                            {
+                                "code": "HCAAV",
+                                "description": "10.2\" Full Digital Cluster & 15.5\" Touch Screen",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OPE.PTL",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "IEV"
+                        },
+                        "values": [
+                            {
+                                "code": "IEVAQ",
+                                "description": "Next Generation SYNC with Connected Navigation and Natural Voice Search",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OCC.CAC",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "FBB"
+                        },
+                        "values": [
+                            {
+                                "code": "FBBAF",
+                                "description": "Red Brake Calipers",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OSS.SBK",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "FBF"
+                        },
+                        "values": [
+                            {
+                                "code": "FBFAC",
+                                "description": "Pre-Collision Assist; Includes Collision Mitigation, FCW (Forward Collision Warning), DBS (Dynamic Brake Support), AEB (Automated Emergency Braking), DA/DI (Distance Alert/Distance Indication), ESA (Evasive Steer Assist)",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OSS.SSF",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "GTB"
+                        },
+                        "values": [
+                            {
+                                "code": "GTBAB",
+                                "description": "Heated Steering Wheel",
+                                "guxCategoryLabels": "features.ODE.DIC",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined",
+                                    "features.ODE.DIC"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "#T#"
+                        },
+                        "values": [
+                            {
+                                "code": "11LP8",
+                                "description": "Black Perforated Sensico",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "S",
+                                "guxCategories": [
+                                    "trim",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "IDB"
+                        },
+                        "values": [
+                            {
+                                "code": "IDBAT",
+                                "description": "B&O Premium Sound System 10-Speaker inc. Dashboard Sound Bar",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OCC.CAC",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "JBB"
+                        },
+                        "values": [
+                            {
+                                "code": "JBBAF",
+                                "description": "Adaptive LED Mustang Signature Headllamps",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DEL",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "GTD"
+                        },
+                        "values": [
+                            {
+                                "code": "GTDAW",
+                                "description": "Intelligent Adaptive Cruise Control",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "MarketedSeries"
+                        },
+                        "values": [
+                            {
+                                "code": "ACMRJ_VS-LE",
+                                "description": "AWD",
+                                "guxCategoryLabels": "series",
+                                "guxCategoryDescription": "Series",
+                                "state": "S",
+                                "guxCategories": [
+                                    "series"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "B3M"
+                        },
+                        "values": [
+                            {
+                                "code": "B3MAB",
+                                "description": "Quickclear Heated Windscreen",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "PowerTrain"
+                        },
+                        "values": [
+                            {
+                                "code": "DGAFG_DR--H_EN-EJ_TR-WA",
+                                "description": "91kWh (98kWh) Extended Range",
+                                "guxCategoryLabels": "powertrain.HBD.HAT",
+                                "state": "S",
+                                "guxCategories": [
+                                    "powertrain.HBD.HAT"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "SW1"
+                        },
+                        "values": [
+                            {
+                                "code": "D2VA4",
+                                "description": "19\" Black Machined Alloy Wheel",
+                                "guxCategoryLabels": "features.OSA.SWS",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined",
+                                    "features.OSA.SWS"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "BY1"
+                        },
+                        "values": [
+                            {
+                                "code": "BY1AL",
+                                "description": "Heated Driver and Passenger Seats",
+                                "guxCategoryLabels": "features.OCC.CST",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined",
+                                    "features.OCC.CST"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "HLL"
+                        },
+                        "values": [
+                            {
+                                "code": "HLLAD",
+                                "description": "BLIS with Cross Traffic Alert",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "J3A"
+                        },
+                        "values": [
+                            {
+                                "code": "J3AAB",
+                                "description": "12V PowerPoint (Cargo Area)",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "PAA"
+                        },
+                        "values": [
+                            {
+                                "code": "PN4HQ",
+                                "description": "Rapid Red",
+                                "guxCategoryLabels": "paint.red",
+                                "state": "S",
+                                "guxCategories": [
+                                    "paint.red"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "BSL"
+                        },
+                        "values": [
+                            {
+                                "code": "BSLAB",
+                                "description": "Black Powerfold Mirrors with Puddle Light Mustang Logo Projection",
+                                "guxCategoryLabels": "features.OSA.SPT",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined",
+                                    "features.OSA.SPT"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "HNS"
+                        },
+                        "values": [
+                            {
+                                "code": "HNSAC",
+                                "description": "Advanced Active Park Assist",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "HTS"
+                        },
+                        "values": [
+                            {
+                                "code": "HTSAD",
+                                "description": "Switchable 110V/220V Charging Cord",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "A7F"
+                        },
+                        "values": [
+                            {
+                                "code": "A7FAL",
+                                "description": "Hand Free Tailgate",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OUT.UEF",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "AC-"
+                        },
+                        "values": [
+                            {
+                                "code": "AC--G",
+                                "description": "Dual-zone Electronic Air Temperature Control (DEATC)",
+                                "guxCategoryLabels": "features.OCC.CCC",
+                                "state": "I",
+                                "guxCategories": [
+                                    "combined",
+                                    "features.OCC.CCC"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "HLN"
+                        },
+                        "values": [
+                            {
+                                "code": "HLNAC",
+                                "description": "Lane Keeping Aid + Lane Departure Warning",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "CBS"
+                        },
+                        "values": [
+                            {
+                                "code": "CBSAE",
+                                "description": "E-Latch Keyless Entry System (Inc. B-Pillar Keypad Access)",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OSS.SSY",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "IEX"
+                        },
+                        "values": [
+                            {
+                                "code": "IEXAB",
+                                "description": "Wireless Device Charging Pad",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OCC.CIC",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "HNA"
+                        },
+                        "values": [
+                            {
+                                "code": "HNAAG",
+                                "description": "Thatcham Category 1 Alarm",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.OSS.SSY",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "HNL"
+                        },
+                        "values": [
+                            {
+                                "code": "HNLAB",
+                                "description": "Front and Rear Parking Sensors",
+                                "guxCategoryLabels": "combined",
+                                "guxCategoryDescription": "Combined",
+                                "state": "I",
+                                "guxCategories": [
+                                    "features.ODE.DDA",
+                                    "combined"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "family": {
+                            "code": "DR-"
+                        },
+                        "values": [
+                            {
+                                "code": "DR--H",
+                                "description": "AWD",
+                                "guxCategoryLabels": "drive",
+                                "guxCategoryDescription": "Drive",
+                                "state": "I",
+                                "guxCategories": [
+                                    "drive"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "imageUrl": "https://www.gpas-cache.ford.com/composite?catalogID=WAEGB-CGW-2022-Mach-EGBR202225&featureConditions=000P8%2C11L00%2C11LP8%2CA1PBD%2CA3RAB%2CA64AB%2CA7FAL%2CAAGA2%2CAB5AA%2CABFAA%2CAC--G%2CACMRJ%2CACYAC%2CADQAA%2CAEAAJ%2CAF1AJ%2CAHTAB%2CAIJAB%2CB2CAF%2CB2GAE%2CB2MAC%2CB2RAQ%2CB3MAB%2CB3NAB%2CB5VAB%2CB5WCD%2CBA7CD%2CBA8CD%2CBB7AB%2CBBGAH%2CBBHAB%2CBCAAE%2CBDEAB%2CBDIAK%2CBMDAB%2CBMFAD%2CBMLAE%2CBPFAP%2CBS-SA%2CBSBAF%2CBSHEU%2CBSLAB%2CBU6AB%2CBVRAC%2CBVSAD%2CBWBAF%2CBWCAK%2CBWEAB%2CBWFAE%2CBWJAB%2CBWRAC%2CBWSAC%2CBY1AL%2CBY5AN%2CBYPAK%2CBYQAP%2CC1MAA%2CC1QAB%2CC1UAB%2CCAEA2%2CCB5AB%2CCB7AC%2CCBAAD%2CCBGAL%2CCBSAE%2CCCAAC%2CCFEAC%2CCFFAN%2CCJDAA%2CCL7AB%2CCLFGD%2CCLMAJ%2CCLVAF%2CCN7AH%2CCP1AC%2CCPCAV%2CCPGAB%2CCPMAB%2CCPSAB%2CCPTAB%2CCPUAB%2CCPXAB%2CCPYAM%2CCRAAB%2CD17AA%2CD19AG%2CD1GAB%2CD2VA4%2CD3IFY%2CD5EAD%2CDEEAA%2CDGAFG%2CDR--H%2CDWAAF%2CDWMAA%2CDYKAB%2CEGAZZ%2CEN-EJ%2CFAJAC%2CFBAA4%2CFBBAF%2CFBFAC%2CFCCAB%2CFEABA%2CFS--B%2CG1FAE%2CG2AAE%2CG3FAD%2CGBVAR%2CGCEAE%2CGRAAF%2CGTAEF%2CGTBAB%2CGTCAV%2CGTDAW%2CHCAAV%2CHDHAB%2CHEBAD%2CHIBAK%2CHJFAB%2CHKCAB%2CHKLAG%2CHKSAD%2CHLFAB%2CHLLAD%2CHLNAC%2CHLQAB%2CHNAAG%2CHNDAF%2CHNLAB%2CHNSAC%2CHNYAB%2CHT2AD%2CHTHAD%2CHTSAD%2CICDA3%2CICEF9%2CICFAG%2CICHAB%2CIDBAT%2CIEPAN%2CIEVAQ%2CIEXAB%2CJ3AAB%2CJ3CAA%2CJ3KAB%2CJ3QAD%2CJ4WAA%2CJ5XAC%2CJBBAF%2CJBCAC%2CJCBAN%2CJCMAB%2CJDAAQ%2CJDDAB%2CJDJAB%2CJEAAB%2CJEDAG%2CJZCAE%2CPN4HQ%2CTR-WA%2CVS-LE%2CYA2AA%2CYAJAA%2CYAMAA%2CYANAA%2CYBPAA%2CYCNAA%2CYCQAA%2CYD2AA%2CYD3AA%2CYECAA%2CYEHAA%2CYF4AA%2CYK5AA%2CYKGAA%2CYKKAA%2CYP4AA%2CYZBCA%2CYZKAA%2CYZVZF%2CZJ1AA%2CZJ3AA%2CZJ4AA%2CZJ5AA%2CZJ6AA%2CZJ7AA%2CZJ8AA%2CZJ9AA%2CZJAAA%2CZJBAA%2CZJCAA%2CZJDAA%2CZJEAA&angleNo=21&viewType=exterior&width=0&height=0",
+                "marketingIdentity": {
+                    "brand": "ford",
+                    "nameplate": "Mustang Mach-E",
+                    "marketingIdentityNamePlate": "Mustang Mach-E",
+                    "segment": "Passenger",
+                    "modelYear": "2022.25",
+                    "salesMarket": "GBR"
+                },
+                "timingPoint": "S4PNDS",
+                "fullSpec": "WAEGB-CGW-2022-Mach-EGBR202225,000P8,11L00,11LP8,A1PBD,A3RAB,A64AB,A7FAL,AAGA2,AB5AA,ABFAA,AC--G,ACMRJ,ACYAC,ADQAA,AEAAJ,AF1AJ,AHTAB,AIJAB,B2CAF,B2GAE,B2MAC,B2RAQ,B3MAB,B3NAB,B5VAB,B5WCD,BA7CD,BA8CD,BB7AB,BBGAH,BBHAB,BCAAE,BDEAB,BDIAK,BMDAB,BMFAD,BMLAE,BPFAP,BS-SA,BSBAF,BSHEU,BSLAB,BU6AB,BVRAC,BVSAD,BWBAF,BWCAK,BWEAB,BWFAE,BWJAB,BWRAC,BWSAC,BY1AL,BY5AN,BYPAK,BYQAP,C1MAA,C1QAB,C1UAB,CAEA2,CB5AB,CB7AC,CBAAD,CBGAL,CBSAE,CCAAC,CFEAC,CFFAN,CJDAA,CL7AB,CLFGD,CLMAJ,CLVAF,CN7AH,CP1AC,CPCAV,CPGAB,CPMAB,CPSAB,CPTAB,CPUAB,CPXAB,CPYAM,CRAAB,D17AA,D19AG,D1GAB,D2VA4,D3IFY,D5EAD,DEEAA,DGAFG,DR--H,DWAAF,DWMAA,DYKAB,EGAZZ,EN-EJ,FAJAC,FBAA4,FBBAF,FBFAC,FCCAB,FEABA,FS--B,G1FAE,G2AAE,G3FAD,GBVAR,GCEAE,GRAAF,GTAEF,GTBAB,GTCAV,GTDAW,HCAAV,HDHAB,HEBAD,HIBAK,HJFAB,HKCAB,HKLAG,HKSAD,HLFAB,HLLAD,HLNAC,HLQAB,HNAAG,HNDAF,HNLAB,HNSAC,HNYAB,HT2AD,HTHAD,HTSAD,ICDA3,ICEF9,ICFAG,ICHAB,IDBAT,IEPAN,IEVAQ,IEXAB,J3AAB,J3CAA,J3KAB,J3QAD,J4WAA,J5XAC,JBBAF,JBCAC,JCBAN,JCMAB,JDAAQ,JDDAB,JDJAB,JEAAB,JEDAG,JZCAE,PN4HQ,TR-WA,VS-LE,YA2AA,YAJAA,YAMAA,YANAA,YBPAA,YCNAA,YCQAA,YD2AA,YD3AA,YECAA,YEHAA,YF4AA,YK5AA,YKGAA,YKKAA,YP4AA,YZBCA,YZKAA,YZVZF,ZJ1AA,ZJ3AA,ZJ4AA,ZJ5AA,ZJ6AA,ZJ7AA,ZJ8AA,ZJ9AA,ZJAAA,ZJBAA,ZJCAA,ZJDAA,ZJEAA",
+                "marketingProperties": [
+                    {
+                        "type": "fuelType",
+                        "code": "elec",
+                        "description": "Electric"
+                    },
+                    {
+                        "type": "Modem",
+                        "code": "features.OCC.CAC|combined|ecomm.mdm",
+                        "description": "FordPass Connect (Embedded Modem)"
+                    }
+                ],
+                "guxCategoryCodes": {
+                    "standard": "",
+                    "_LEA": "",
+                    "OPE": "Performance and Efficiency",
+                    "bodystyle": "Bodystyle",
+                    "UCT": "Carpet  and Trim",
+                    "paint": "Paint",
+                    "HBD": "Hybrid",
+                    "ULC": "Loadspace compartment",
+                    "seats": "Seats",
+                    "red": "Red",
+                    "VS-": "",
+                    "features": "Factory Fitted Options",
+                    "ODE": "Driving Experience",
+                    "OPT": "",
+                    "AUG": "",
+                    "trim": "Trims",
+                    "SDF": "Design features",
+                    "white": "White",
+                    "ecomm-ftype": "E Com Fuel",
+                    "SPT": "Paint",
+                    "PFL": "Fuel",
+                    "grandtouring": "",
+                    "CIC": "Instruments and Controls",
+                    "DSP": "Suspension",
+                    "CAC": "Audio and Communication Systems",
+                    "DOP": "Option packs",
+                    "EN-": "",
+                    "CIL": "Interior Lighting",
+                    "zb": "GUX",
+                    "CIN": "Interior Convenience",
+                    "elec": "Electric",
+                    "ptid": "",
+                    "SIC": "Instruments and Controls",
+                    "OUT": "Utility",
+                    "000": "",
+                    "eu": "GUX",
+                    "_PLS": "",
+                    "UEF": "Exterior Functional",
+                    "mdm": "mdm",
+                    "CRG": "Charging",
+                    "drive": "Drive",
+                    "UEL": "Electrical",
+                    "DTL": "Technology",
+                    "DDA": "Driver Assistance",
+                    "YZA": "",
+                    "_LST": "",
+                    "PTL": "Technology",
+                    "INP": "",
+                    "SW1": "",
+                    "powertrain": "PowerTrain",
+                    "ecomm": "ecomm",
+                    "capacity": "Capacity",
+                    "reserve": "",
+                    "SM": "",
+                    "YBC": "",
+                    "OSA": "Styling & Appearance",
+                    "SP": "",
+                    "SBK": "Brakes",
+                    "DR-": "",
+                    "DIC": "Instruments and Contols",
+                    "gvm": "GVM",
+                    "ST": "",
+                    "ACC": "Accessories",
+                    "CCC": "Climate Control",
+                    "COP": "Option Packs",
+                    "CST": "Seating",
+                    "SSF": "Safety",
+                    "accessories": "Dealer Fitted Accessories",
+                    "black": "Black",
+                    "length": "Length",
+                    "ICE": "",
+                    "DEL": "Exterior Lighting",
+                    "UBY": "Body",
+                    "TR-": "",
+                    "SWS": "Wheels",
+                    "OCC": "Comfort and Convenience",
+                    "OSS": "Safety and Security",
+                    "IOT": "",
+                    "grey": "Grey",
+                    "orange": "Orange",
+                    "PAA": "",
+                    "ST1": "",
+                    "blue": "Blue",
+                    "SOP": "Option packs",
+                    "series": "Series",
+                    "SSY": "Security",
+                    "HAT": "Automatic Transmission",
+                    "CTL": "Technology",
+                    "combined": "Combined",
+                    "EXP": "",
+                    "EXO": "",
+                    "entity": "Entity"
+                }
+            },
+            "dealer": {
+                "code": "GBR|42184|MA|F",
+                "name": "Gates of Woodford",
+                "address": {
+                    "line1": "357 CHIGWELL ROAD",
+                    "town": "WOODFORD",
+                    "region": {
+                        "name": "ESSEX"
+                    },
+                    "postalCode": "IG8 8PE",
+                    "phone": "020 3912 6054",
+                    "country": {
+                        "isocode": "GBR",
+                        "name": "United Kingdom"
+                    }
+                },
+                "aldFlag": true,
+                "isDealerResvEnrolled": false,
+                "isDealerOrderEnrolled": false,
+                "evEuCertificationFlag": true,
+                "dealerWallboxEnrolled": false,
+                "dealerVATNo": "GB246137272"
+            },
+            "detailedPriceSummary": {
+                "nonDealerizedPrice": {
+                    "governmentGrant": {
+                        "prices": [
+                            {
+                                "type": "vehiclePrice",
+                                "value": 58175
+                            },
+                            {
+                                "type": "guaranteed",
+                                "value": 0
+                            },
+                            {
+                                "type": "indicative",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "totalIncentives": {
+                        "prices": [
+                            {
+                                "type": "grossRetailWithAccessories",
+                                "value": 0
+                            },
+                            {
+                                "type": "netRetail",
+                                "value": 0
+                            },
+                            {
+                                "type": "netRetailWithAccessories",
+                                "value": 0
+                            },
+                            {
+                                "type": "vatAmountWithAccessories",
+                                "value": 0
+                            },
+                            {
+                                "type": "grossRetail",
+                                "value": 0
+                            },
+                            {
+                                "type": "vatAmount",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "userSelectedFeatures": [
+                        {
+                            "feature": {
+                                "id": "J3AAB"
+                            },
+                            "description": "12V PowerPoint (Cargo Area)",
+                            "prices": [
+                                {
+                                    "type": "netRetail",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "grossIOP",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "vatRate",
+                                    "value": 20
+                                },
+                                {
+                                    "type": "grossRetail",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "vatAmount",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "feature": {
+                                "id": "HTSAD"
+                            },
+                            "description": "Switchable 110V/220V Charging Cord",
+                            "prices": [
+                                {
+                                    "type": "netRetail",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "grossIOP",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "vatRate",
+                                    "value": 20
+                                },
+                                {
+                                    "type": "grossRetail",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "vatAmount",
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "feature": {
+                                "id": "PN4HQ"
+                            },
+                            "description": "Rapid Red",
+                            "prices": [
+                                {
+                                    "type": "netRetail",
+                                    "value": 958.33
+                                },
+                                {
+                                    "type": "grossIOP",
+                                    "value": 1150
+                                },
+                                {
+                                    "type": "vatRate",
+                                    "value": 20
+                                },
+                                {
+                                    "type": "grossRetail",
+                                    "value": 1150
+                                },
+                                {
+                                    "type": "vatAmount",
+                                    "value": 191.67
+                                }
+                            ]
+                        },
+                        {
+                            "feature": {
+                                "id": "11LP8"
+                            },
+                            "description": "Black Perforated Sensico",
+                            "prices": [
+                                {
+                                    "type": "netRetail",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "grossIOP",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "vatRate",
+                                    "value": 20
+                                },
+                                {
+                                    "type": "grossRetail",
+                                    "value": 0
+                                },
+                                {
+                                    "type": "vatAmount",
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "totalPriceWithIncentives": {
+                        "prices": [
+                            {
+                                "type": "netRetail",
+                                "value": 49416.66
+                            },
+                            {
+                                "type": "grossRetail",
+                                "value": 59300
+                            },
+                            {
+                                "type": "vatAmount",
+                                "value": 9883.34
+                            }
+                        ]
+                    },
+                    "selectedFeaturePrice": {
+                        "prices": [
+                            {
+                                "type": "vatAmountAccessories",
+                                "value": 0
+                            },
+                            {
+                                "type": "grossRetailWithAccessories",
+                                "value": 1150
+                            },
+                            {
+                                "type": "netRetail",
+                                "value": 958.33
+                            },
+                            {
+                                "type": "grossIOP",
+                                "value": 1150
+                            },
+                            {
+                                "type": "netRetailWithAccessories",
+                                "value": 958.33
+                            },
+                            {
+                                "type": "vatAmountWithAccessories",
+                                "value": 191.67
+                            },
+                            {
+                                "type": "netRetailAccessories",
+                                "value": 0
+                            },
+                            {
+                                "type": "grossRetailAccessories",
+                                "value": 0
+                            },
+                            {
+                                "type": "grossRetail",
+                                "value": 1150
+                            },
+                            {
+                                "type": "vatAmount",
+                                "value": 191.67
+                            }
+                        ]
+                    },
+                    "finalPrice": {
+                        "prices": [
+                            {
+                                "type": "netRetailWithOTR",
+                                "value": 49492.49
+                            },
+                            {
+                                "type": "netRetailWithOTRandIncentives"
+                            },
+                            {
+                                "type": "vatAmountWithOTR",
+                                "value": 9887.51
+                            },
+                            {
+                                "type": "grossRetailWithOTRandIncentives"
+                            },
+                            {
+                                "type": "grossRetailWithOTR",
+                                "value": 59380
+                            },
+                            {
+                                "type": "vatAmountWithOTRandIncentives"
+                            },
+                            {
+                                "type": "recommendedOTRTotalPrice",
+                                "value": 59380
+                            },
+                            {
+                                "type": "recommendedOTRPromotionalPrice",
+                                "value": 59380
+                            },
+                            {
+                                "type": "customerSaving",
+                                "value": 0
+                            },
+                            {
+                                "type": "netCustomerSaving"
+                            }
+                        ]
+                    },
+                    "includedFeaturePrice": [],
+                    "totalOTRCosts": {
+                        "prices": [
+                            {
+                                "type": "totalOTRCostVatAmt",
+                                "value": 4.17
+                            },
+                            {
+                                "type": "totalNetOTRCost",
+                                "value": 75.83
+                            },
+                            {
+                                "type": "totalGrossOTRCost",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "incentives": {
+                        "incentivizedFeatures": [],
+                        "prices": [
+                            {
+                                "type": "dealerContributionExcVat",
+                                "value": 0
+                            },
+                            {
+                                "type": "dealerContributionIncVat",
+                                "value": 0
+                            },
+                            {
+                                "type": "netRetail",
+                                "value": 0
+                            },
+                            {
+                                "type": "grossRetail",
+                                "value": 0
+                            },
+                            {
+                                "type": "vatAmount",
+                                "value": 0
+                            },
+                            {
+                                "type": "dealerContributionVatAmt",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "totalPriceWithoutIncentives": {
+                        "prices": [
+                            {
+                                "type": "netRetail",
+                                "value": 49416.66
+                            },
+                            {
+                                "type": "grossRetail",
+                                "value": 59300
+                            },
+                            {
+                                "type": "vatAmount",
+                                "value": 9883.34
+                            },
+                            {
+                                "type": "grossRetailWithVehicleRegistrationTax"
+                            }
+                        ]
+                    },
+                    "baseRate": {
+                        "prices": [
+                            {
+                                "type": "marginRate",
+                                "value": 0
+                            },
+                            {
+                                "type": "vatRate",
+                                "value": 20
+                            }
+                        ]
+                    },
+                    "registrationTax": {
+                        "prices": [
+                            {
+                                "type": "registrationTax",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "otrCosts": {
+                        "prices": [
+                            {
+                                "type": "deliveryFeeVatAmount",
+                                "value": 0
+                            },
+                            {
+                                "type": "additionalFee",
+                                "value": 0
+                            },
+                            {
+                                "type": "netDeliveryFee",
+                                "value": 0
+                            },
+                            {
+                                "type": "VED",
+                                "value": 0
+                            },
+                            {
+                                "type": "roadFundLicence",
+                                "value": 0
+                            },
+                            {
+                                "type": "registrationFee",
+                                "value": 55
+                            },
+                            {
+                                "type": "netNameplateFee",
+                                "value": 20.83
+                            },
+                            {
+                                "type": "grossNameplateFee",
+                                "value": 25
+                            },
+                            {
+                                "type": "totalNetOTR",
+                                "value": 75.83
+                            },
+                            {
+                                "type": "nameplateFeeVatAmount",
+                                "value": 4.17
+                            },
+                            {
+                                "type": "grossDeliveryFee",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "emissions": {
+                        "NEDC": [
+                            {
+                                "emission": []
+                            }
+                        ],
+                        "WLTP": [
+                            {
+                                "emission": [
+                                    {
+                                        "unit": "",
+                                        "value": "639.0",
+                                        "key": "rangePureElectric"
+                                    },
+                                    {
+                                        "unit": "-",
+                                        "value": "158.0",
+                                        "key": "ecElectric"
+                                    }
+                                ],
+                                "name": "MEDIUM"
+                            },
+                            {
+                                "emission": [
+                                    {
+                                        "unit": "",
+                                        "value": "540.0",
+                                        "key": "rangePureElectric"
+                                    },
+                                    {
+                                        "unit": "-",
+                                        "value": "187.0",
+                                        "key": "ecElectric"
+                                    }
+                                ],
+                                "name": "OVERALL"
+                            },
+                            {
+                                "emission": [
+                                    {
+                                        "unit": "",
+                                        "value": "408.0",
+                                        "key": "rangePureElectric"
+                                    },
+                                    {
+                                        "unit": "-",
+                                        "value": "247.0",
+                                        "key": "ecElectric"
+                                    }
+                                ],
+                                "name": "EXTRAHIGH"
+                            },
+                            {
+                                "emission": [
+                                    {
+                                        "unit": "",
+                                        "value": "649.0",
+                                        "key": "rangePureElectric"
+                                    },
+                                    {
+                                        "unit": "-",
+                                        "value": "156.0",
+                                        "key": "ecElectric"
+                                    }
+                                ],
+                                "name": "LOW"
+                            },
+                            {
+                                "emission": [
+                                    {
+                                        "unit": "",
+                                        "value": "569.0",
+                                        "key": "rangePureElectric"
+                                    },
+                                    {
+                                        "unit": "-",
+                                        "value": "177.0",
+                                        "key": "ecElectric"
+                                    }
+                                ],
+                                "name": "HIGH"
+                            },
+                            {
+                                "emission": [
+                                    {
+                                        "unit": "",
+                                        "value": "642.0",
+                                        "key": "rangePureElectric"
+                                    },
+                                    {
+                                        "unit": "-",
+                                        "value": "157.0",
+                                        "key": "ecElectric"
+                                    }
+                                ],
+                                "name": "CITY"
+                            }
+                        ],
+                        "attributes": [
+                            {
+                                "name": "GVM",
+                                "value": "2690"
+                            },
+                            {
+                                "name": "MIN KERB-FRONT",
+                                "value": "1074.0"
+                            },
+                            {
+                                "name": "MIN KERB-REAR",
+                                "value": "1108.0"
+                            },
+                            {
+                                "name": "BASE KERB-FRONT",
+                                "value": "1074.0"
+                            },
+                            {
+                                "name": "BASE KERB-REAR",
+                                "value": "1108.0"
+                            },
+                            {
+                                "name": "MIN KERB-TOTAL",
+                                "value": "2182.0"
+                            },
+                            {
+                                "name": "EPREL-FRONT",
+                                "value": "603407"
+                            },
+                            {
+                                "name": "EPREL-REAR",
+                                "value": "603407"
+                            },
+                            {
+                                "name": "EPREL-ARRAY-FRONT",
+                                "value": "603407"
+                            },
+                            {
+                                "name": "EPREL-ARRAY-REAR",
+                                "value": "603407"
+                            }
+                        ],
+                        "TechSpecData": [
+                            {
+                                "unit": "Years",
+                                "value": "3",
+                                "key": "fuel_and_performance.base_warranty_coverage"
+                            },
+                            {
+                                "unit": "Kw",
+                                "value": "98",
+                                "key": "fuel_and_performance.battery_capacity"
+                            },
+                            {
+                                "unit": "g/km",
+                                "value": "0",
+                                "key": "fuel_and_performance.co2_emission_extra_urban"
+                            },
+                            {
+                                "unit": "g/Km",
+                                "value": "0",
+                                "key": "fuel_and_performance.co2_emission_while_driving"
+                            },
+                            {
+                                "unit": "-",
+                                "value": "A+",
+                                "key": "fuel_and_performance.co2_rating"
+                            },
+                            {
+                                "unit": "Years",
+                                "value": "12",
+                                "key": "fuel_and_performance.corrosion_warranty_coverage"
+                            },
+                            {
+                                "unit": "-",
+                                "value": "AWD",
+                                "key": "fuel_and_performance.drive_type"
+                            },
+                            {
+                                "unit": "kWh/100Km",
+                                "value": "18.7",
+                                "key": "fuel_and_performance.energy_consumption"
+                            },
+                            {
+                                "unit": "kWh/100Miles",
+                                "value": "29.1",
+                                "key": "fuel_and_performance.energy_consumption"
+                            },
+                            {
+                                "unit": "-",
+                                "value": "Electric",
+                                "key": "fuel_and_performance.fuel_type"
+                            },
+                            {
+                                "unit": "KM",
+                                "value": "160000",
+                                "key": "fuel_and_performance.hv_battery_coverage"
+                            },
+                            {
+                                "unit": "Miles",
+                                "value": "100000",
+                                "key": "fuel_and_performance.hv_battery_coverage"
+                            },
+                            {
+                                "unit": "Years",
+                                "value": "8",
+                                "key": "fuel_and_performance.hv_battery_coverage"
+                            },
+                            {
+                                "unit": "KM",
+                                "value": "160000",
+                                "key": "fuel_and_performance.hv_components_coverage"
+                            },
+                            {
+                                "unit": "Miles",
+                                "value": "100000",
+                                "key": "fuel_and_performance.hv_components_coverage"
+                            },
+                            {
+                                "unit": "Years",
+                                "value": "8",
+                                "key": "fuel_and_performance.hv_components_coverage"
+                            },
+                            {
+                                "unit": "PS",
+                                "value": "351",
+                                "key": "fuel_and_performance.maximum_power"
+                            },
+                            {
+                                "unit": "kW",
+                                "value": "258",
+                                "key": "fuel_and_performance.maximum_power"
+                            },
+                            {
+                                "unit": "Km",
+                                "value": "540",
+                                "key": "fuel_and_performance.maximum_range"
+                            },
+                            {
+                                "unit": "Miles",
+                                "value": "335",
+                                "key": "fuel_and_performance.maximum_range"
+                            },
+                            {
+                                "unit": "Years",
+                                "value": "2",
+                                "key": "fuel_and_performance.paint_warranty_coverage"
+                            },
+                            {
+                                "unit": "kw",
+                                "value": "150",
+                                "key": "fuel_and_performance.peak_charge_power"
+                            },
+                            {
+                                "unit": "secs",
+                                "value": "5.8",
+                                "key": "fuel_and_performance.performance_0_to_100_km"
+                            },
+                            {
+                                "unit": "km/h",
+                                "value": "183",
+                                "key": "fuel_and_performance.performance_max_speed"
+                            },
+                            {
+                                "unit": "mp/h",
+                                "value": "113",
+                                "key": "fuel_and_performance.performance_max_speed"
+                            },
+                            {
+                                "unit": "kw/h /100 km (62 miles)",
+                                "value": "16",
+                                "key": "fuel_and_performance.power_usage_electric"
+                            },
+                            {
+                                "unit": "km",
+                                "value": "550",
+                                "key": "fuel_and_performance.range_electric_km"
+                            },
+                            {
+                                "unit": "miles",
+                                "value": "342",
+                                "key": "fuel_and_performance.range_electric_miles"
+                            },
+                            {
+                                "unit": "KM",
+                                "value": "30000",
+                                "key": "fuel_and_performance.service_interval"
+                            },
+                            {
+                                "unit": "Miles",
+                                "value": "18000",
+                                "key": "fuel_and_performance.service_interval"
+                            },
+                            {
+                                "unit": "Years",
+                                "value": "2",
+                                "key": "fuel_and_performance.service_interval"
+                            },
+                            {
+                                "unit": "mins",
+                                "value": "45",
+                                "key": "fuel_and_performance.speed_to_charge"
+                            },
+                            {
+                                "unit": "Nm",
+                                "value": "580",
+                                "key": "fuel_and_performance.torque"
+                            },
+                            {
+                                "unit": "-",
+                                "value": "1 SPD AUTO TRANS",
+                                "key": "fuel_and_performance.transmission"
+                            },
+                            {
+                                "unit": "kWh",
+                                "value": "91",
+                                "key": "fuel_and_performance.usable_battery_capacity"
+                            }
+                        ]
+                    },
+                    "basePrice": {
+                        "prices": [
+                            {
+                                "type": "netRetail",
+                                "value": 48458.33
+                            },
+                            {
+                                "type": "grossIOP",
+                                "value": 58230
+                            },
+                            {
+                                "type": "grossOTR",
+                                "value": 58230
+                            },
+                            {
+                                "type": "grossRetail",
+                                "value": 58150
+                            },
+                            {
+                                "type": "vatAmount",
+                                "value": 9691.67
+                            },
+                            {
+                                "type": "baseGrossOTR",
+                                "value": 58230
+                            },
+                            {
+                                "type": "grossRetailWithVehicleRegistrationTax"
+                            }
+                        ],
+                        "featureId": "ACMRJ_BS-SA_DGAFG_DR--H_EN-EJ_TR-WA_VS-LE"
+                    }
+                },
+                "dealerizedPrice": {
+                    "totalDealerPrice": 59380,
+                    "promotionalDealerPrice": 59380,
+                    "dealerSellingPriceVatAmt": 9887.5,
+                    "dealerAdjustmentPrice": 0,
+                    "dealerAdjustmentType": "RetailPriceAdjustment",
+                    "dealerOTRCosts": {
+                        "prices": [
+                            {
+                                "type": "nameplateVATAmount",
+                                "value": 20
+                            },
+                            {
+                                "type": "additionalFee",
+                                "value": 0
+                            },
+                            {
+                                "type": "VED",
+                                "value": 0
+                            },
+                            {
+                                "type": "registrationFee",
+                                "value": 55
+                            },
+                            {
+                                "type": "baseRegistrationTax",
+                                "value": 0
+                            },
+                            {
+                                "type": "netNameplateFee",
+                                "value": 20
+                            },
+                            {
+                                "type": "grossNameplateFee",
+                                "value": 25
+                            },
+                            {
+                                "type": "roadFundFee",
+                                "value": 0
+                            },
+                            {
+                                "type": "grossDeliveryFee",
+                                "value": 0
+                            },
+                            {
+                                "type": "cityFee",
+                                "value": 0
+                            },
+                            {
+                                "type": "handlingFee",
+                                "value": 0
+                            },
+                            {
+                                "type": "malusFee",
+                                "value": 0
+                            }
+                        ]
+                    },
+                    "dealerTotalOTRCosts": {
+                        "prices": [
+                            {
+                                "type": "totalOTRCostVatAmt",
+                                "value": 5
+                            },
+                            {
+                                "type": "totalNetOTRCost",
+                                "value": 75
+                            },
+                            {
+                                "type": "totalGrossOTRCost",
+                                "value": 80
+                            },
+                            {
+                                "type": "totalOTRCostNonVatAmt",
+                                "value": 55
+                            }
+                        ]
+                    },
+                    "totalIncentives": 0,
+                    "totalVehiclePriceWithSavings": 59300,
+                    "dealerTotalOTRCostsWithRegTax": 80
+                },
+                "orderDepositPrice": 0,
+                "estimatedCashPrice": 59380,
+                "accessoriesPrice": {
+                    "totalPrice": 0,
+                    "totalCashPrice": 0,
+                    "totalFinancePrice": 0,
+                    "accessories": []
+                },
+                "chargingPrice": {
+                    "totalPrice": 0,
+                    "totalCashPrice": 0,
+                    "totalFinancePrice": 0,
+                    "accessories": []
+                },
+                "deliveryPrice": {
+                    "type": "collection",
+                    "amount": 0,
+                    "applyFinance": false
+                },
+                "totalPriceWithAddOns": 59380,
+                "totalFinancePriceWithAddOns": 59380,
+                "offersAndIncentivesPrice": {
+                    "offersList": []
+                },
+                "protectionPlansPrice": {},
+                "totalAmountPayable": 0
+            },
+            "financeData": {
+                "financeType": "Ford Lease Online Application? (Sole Trader)",
+                "properties": {
+                    "defaultMileage": 10000,
+                    "activeElement": "",
+                    "mileageUnit": "Miles",
+                    "finalPrice": 48458.33,
+                    "promotionalDealerPrice": 59380,
+                    "language": "EN",
+                    "locale": "en_gb",
+                    "pricingId": "2bff8270-ff56-4996-ba0a-14b41301fc7a-43",
+                    "hashPayment": "29ae0118f5f046d2564be946a784cbc002011904c54a41d59aaac1cdeb2b9ca3",
+                    "customerType": "business",
+                    "monthlyPayment": 741.42,
+                    "provider": "ALD",
+                    "term": 48,
+                    "annualMileage": 10000,
+                    "numberOfPayments": 6,
+                    "defaultFlag": false,
+                    "defaultInitialRental": 6,
+                    "campaignId": "2bff8270-ff56-4996-ba0a-14b41301fc7a",
+                    "defaultPlanCode": "fsli",
+                    "financePlan": "fsli",
+                    "plans": [
+                        {
+                            "code": "fsli",
+                            "term": {
+                                "dropdownValues": [
+                                    24,
+                                    36,
+                                    48
+                                ],
+                                "defaultValue": 48
+                            },
+                            "milesOrKmPerAnnum": {
+                                "dropdownValues": [
+                                    5000,
+                                    8000,
+                                    10000,
+                                    15000,
+                                    20000
+                                ],
+                                "defaultValue": 10000
+                            },
+                            "deposit": {
+                                "dropdownValues": [],
+                                "defaultValue": ""
+                            },
+                            "numberOfPayments": {
+                                "dropdownValues": [
+                                    1,
+                                    3,
+                                    6
+                                ],
+                                "defaultValue": 6
+                            }
+                        }
+                    ],
+                    "success": true,
+                    "financeType": "Ford Lease Online Application? (Sole Trader)",
+                    "defaultTerm": 48,
+                    "vatIncluded": false,
+                    "currencyIndicator": "GBP"
+                },
+                "financeProductType": "fsli",
+                "financeProvider": "ALD"
+            },
+            "hasInventory": true
+        }
+    ],
+    "chargingData": {
+        "totalPrice": 0,
+        "totalCashPrice": 0,
+        "totalFinancePrice": 0,
+        "accessories": [],
+        "quoteFlags": {},
+        "currentConfig": "000P8,11L00,11LP8,A1PBD,A3RAB,A64AB,A7FAL,AAGA2,AB5AA,ABFAA,AC--G,ACMRJ,ACYAC,ADQAA,AEAAJ,AF1AJ,AHTAB,AIJAB,B2CAF,B2GAE,B2MAC,B2RAQ,B3MAB,B3NAB,B5VAB,B5WCD,BA7CD,BA8CD,BB7AB,BBGAH,BBHAB,BCAAE,BDEAB,BDIAK,BMDAB,BMFAD,BMLAE,BPFAP,BS-SA,BSBAF,BSHEU,BSLAB,BU6AB,BVRAC,BVSAD,BWBAF,BWCAK,BWEAB,BWFAE,BWJAB,BWRAC,BWSAC,BY1AL,BY5AN,BYPAK,BYQAP,C1MAA,C1QAB,C1UAB,CAEA2,CB5AB,CB7AC,CBAAD,CBGAL,CBSAE,CCAAC,CFEAC,CFFAN,CJDAA,CL7AB,CLFGD,CLMAJ,CLVAF,CN7AH,CP1AC,CPCAV,CPGAB,CPMAB,CPSAB,CPTAB,CPUAB,CPXAB,CPYAM,CRAAB,D17AA,D19AG,D1GAB,D2VA4,D3IFY,D5EAD,DEEAA,DGAFG,DR--H,DWAAF,DWMAA,DYKAB,EGAZZ,EN-EJ,FAJAC,FBAA4,FBBAF,FBFAC,FCCAB,FEABA,FS--B,G1FAE,G2AAE,G3FAD,GBVAR,GCEAE,GRAAF,GTAEF,GTBAB,GTCAV,GTDAW,HCAAV,HDHAB,HEBAD,HIBAK,HJFAB,HKCAB,HKLAG,HKSAD,HLFAB,HLLAD,HLNAC,HLQAB,HNAAG,HNDAF,HNLAB,HNSAC,HNYAB,HT2AD,HTHAD,HTSAD,ICDA3,ICEF9,ICFAG,ICHAB,IDBAT,IEPAN,IEVAQ,IEXAB,J3AAB,J3CAA,J3KAB,J3QAD,J4WAA,J5XAC,JBBAF,JBCAC,JCBAN,JCMAB,JDAAQ,JDDAB,JDJAB,JEAAB,JEDAG,JZCAE,PN4HQ,TR-WA,VS-LE,YF4AA,YZBCA,YZKAA,YZVZF"
+    },
+    "deliveryData": {
+        "deliveryZipcode": "SW1A 2BX",
+        "deliveryCountry": {
+            "isocode": "GBR"
+        },
+        "deliveryMethodSelected": {
+            "type": "collection",
+            "amount": 0,
+            "applyFinance": false
+        },
+        "isInternational": false,
+        "leadTimes": [
+            {
+                "minLeadTime": "20",
+                "maxLeadTime": "22",
+                "leadTimeRange": "20-22"
+            }
+        ],
+        "estimatedDateByLeadTime": "2022-08-16"
+    },
+    "offersAndIncentivesData": {},
+    "tradeinData": [],
+    "protectionPlansData": {
+        "includedWarranty": false
+    },
+    "taxesAndFeesData": {},
+    "isSavedCart": false
+}

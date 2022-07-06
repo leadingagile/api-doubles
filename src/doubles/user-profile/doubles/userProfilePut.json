@@ -1,0 +1,12 @@
+{
+  "data": {
+    "httpStatus": 200,
+    "status": 200,
+    "requestStatus": "CURRENT",
+    "error": null,
+    "lastRequested": "2022-02-24T14:07:03.369Z",
+    "version": "1.0.0"
+  },
+  "status": 200,
+  "statusText": ""
+}
