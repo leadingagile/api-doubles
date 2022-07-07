@@ -1,0 +1,36 @@
+# Auto Doubler
+
+Simple tool that automatically registers doubles over HTTP
+
+## BDD/TDD Development Process
+
+In order to drive the development of the application, we are using a BDD/TDD approach.
+
+### Tools
+- [Cucumber - cucumber-js](https://cucumber.io/docs/installation/javascript/)
+- [Mocha - Test Runner](https://mochajs.org/)
+- [Chai - Assertion Library](https://www.chaijs.com/)
+
+
+## Directory Structure
+- `behave` - Configuration and step definitions for behavior tests
+- `features` - BDD specification files
+- `test` - Unit tests
+- `src` - Source code
+
+> Other files are remnants of React install that may be moved or removed
+
+## Commands
+`npm run behave`
+: run all behavior tests
+
+`npm run test:unit`
+: run unit tests
+
+## Contributors
+
+- Butch Howard <butch.howard@leadingagile.com>
+- Aaron Pietryga <aaron.pietryga@leadingagile.com>
+- Keith Dingle <keith.dingle@leadingagile.com>
+- James Hester <james.hester@leadingagile.com>
+- Ron Quartel <ron.quartel@leadingagile.com>
