@@ -4,6 +4,10 @@ class Server {
     start() {
 
     }
+
+    request(method, url) {
+        return {status: 404 }
+    }
 }
 
 describe('Server', () => {
@@ -20,6 +24,21 @@ describe('Server', () => {
             server.start()
 
             expect(server).to.be.ok
+        })
+    })
+
+    describe('request()', () => {
+        it('returns 404 with non-existent url', () => {
+            const server = new Server
+
+            server.start()
+
+            const response = server.request('GET', 'http://localhost:8000/bad-url')
+            const status = response.status
+
+            expect(status).to.eq(404)
+
+            
         })
     })
 })
