@@ -16,6 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:unit": "mocha",
     "eject": "react-scripts eject",
     "start:doubles": "node src/doubles/server.js",
     "behave": "cucumber-js features --require behave/setup.js --require behave/steps.js"
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@cucumber/cucumber": "^8.4.0",
-    "chai": "^4.3.6"
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
   }
 }
