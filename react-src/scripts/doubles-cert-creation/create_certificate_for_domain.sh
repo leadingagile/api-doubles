@@ -14,7 +14,7 @@ COMMON_NAME="${2:-$1}"
 SUBJECT="/C=CA/ST=None/L=NB/O=None/CN=${COMMON_NAME}"
 NUM_OF_DAYS=365
 
-BASEPATH="${LOCATION}/../../src/doubles"
+BASEPATH="${LOCATION}/../../react-src/doubles"
 KEY_FILE="${BASEPATH}/device.key"
 CSR_FILE="${BASEPATH}/device.csr"
 CRT_FILE="${BASEPATH}/device.crt"
