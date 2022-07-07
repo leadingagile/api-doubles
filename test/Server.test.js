@@ -65,4 +65,31 @@ describe('Server', () => {
         })
     })
 
+    describe('registerUri()', () => {
+        it('registers a uri', () => {
+            const server = new Server
+            let uri = "http://localhost:8001/some-example";
+
+            server.registerUri(uri)
+
+            expect(server.allDoubles).contains(uri)
+        })
+    })
+    describe('isRegistered()', () => {
+        it('returns true if uri is registered', () => {
+            const server = new Server
+            let uri = "http://localhost:8001/some-example";
+            server.registerUri(uri)
+
+            expect(server.isRegistered(uri)).to.be.true
+        })
+
+        it('returns false if uri is not registered', () => {
+            const server = new Server
+            let uri = "http://localhost:8001/some-example";
+
+            expect(server.isRegistered(uri)).to.be.false
+        })
+    })
+
 })

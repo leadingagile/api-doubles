@@ -15,9 +15,8 @@ Scenario: Double not registered returns 404
 
 
 Scenario Outline: Receive a response with specific status code
-	Given a double with the url "http://localhost:8001/some-example"
+	Given a double with the registered url "http://localhost:8001/some-example"
 	And that double has a status of <status>
-	And it has been registered
 	When the client makes a "get" request to "http://localhost:8001/some-example"
 	Then the client should receive a response with <status> status code
 

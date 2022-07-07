@@ -18,6 +18,14 @@ class Server {
     removeAllDoublesWithUri() {
 
     }
+
+    isRegistered(uri) {
+        return this.allDoubles.includes(uri)
+    }
+
+    registerUri(uri) {
+        this.allDoubles.push(uri)
+    }
 }
 
 module.exports = Server
