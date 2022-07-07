@@ -1,11 +1,7 @@
+const Server = require('../src/Server')
 
 Before(function() {
-	this.server = {
-		start: () => {},
-		removeAllDoublesWithUri: () => {},
-		request: () => {},
-		response: { status: 404 }
-	}
+	this.server = new Server
 })
 
 Given('the double server has been started', function () {
@@ -26,7 +22,7 @@ When('the client makes a {string} request to {string}', function (method, uri) {
 })
 
 
-Then('the client should receive a response with {int} status code', function (status) {
+Then('the client should receive a response with ∑{int} status code', function (status) {
 
 	expect(this.server.response).to.have.property('status', status)
 })
