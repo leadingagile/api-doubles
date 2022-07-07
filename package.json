@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "test:unit": "mocha",
     "eject": "react-scripts eject",
-    "start:doubles": "node src/doubles/server.js",
+    "start:doubles": "node react-src/doubles/server.js",
     "behave": "cucumber-js features --require behave/setup.js --require behave/steps.js"
   },
   "eslintConfig": {
