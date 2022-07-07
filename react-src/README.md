@@ -6,7 +6,7 @@ The product extraction team is incrementally adding functionality to support the
 # Doubles
 
 ## 1. Generate Cert
-
+git 
 Run the script, answer the prompts.
 
 Some of the steps will require you to authenticate with you local admin credentials. They will update your keychain with the certs created.
