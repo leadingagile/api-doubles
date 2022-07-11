@@ -2,7 +2,18 @@
 class Server {
 
     constructor() {
-        this.allDoubles = []
+        this.allDoubles = [
+            // {
+            //     request: {
+            //         method: 'GET',
+            //         url: 'http://localhost:8001/some-example'
+            //     },
+            //     response: {
+            //         status: 200,
+            //         redirectURL: ""
+            //     }
+            // },
+        ]
 
         this.response = { status: 404 }
     }
@@ -12,7 +23,13 @@ class Server {
     }
 
     request(method, url) {
-        // return {status: 404 }
+        // return {status: 404, method: 'get', locat }
+        // if(true){
+        //     return double.response
+        // } else {
+        //     return generate404response()
+        // }
+
     }
 
     removeAllDoublesWithUri() {
@@ -21,10 +38,11 @@ class Server {
 
     isRegistered(uri) {
         return this.allDoubles.includes(uri)
+        // this.allDoubles.find()
     }
 
-    registerUri(uri) {
-        this.allDoubles.push(uri)
+    registerDouble(double) {
+        this.allDoubles.push(double)
     }
 }
 

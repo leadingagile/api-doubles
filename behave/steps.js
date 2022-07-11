@@ -1,5 +1,7 @@
 const Server = require('../src/Server')
 
+const chai = require('chai')
+
 Before(function() {
 	this.server = new Server
 })
@@ -29,19 +31,53 @@ Then('the client should receive a response with {int} status code', function (st
 })
 
 Given('a double with the registered url {string}', function (uri) {
-	this.server.registerUri(uri)
+	const double = {
+			request: {
+				method: 'GET',
+				url: uri
+			},
+			response: {
+				status: 200,
+				redirectURL: ""
+			}
+		}
+
+	this.server.registerDouble(double)
 
 });
 
 Given('a double with the url {string} has been registered', function (uri) {
-	this.server.registerUri(uri)
+	const double = {
+		request: {
+			method: 'GET',
+			url: uri
+		},
+		response: {
+			status: 200,
+			redirectURL: ""
+		}
+	}
+
+	this.server.registerDouble(double)
 
 });
 
-Given('that double has a status of {int}', function (int) {
-	// Given('that double has a status of {float}', function (float) {
-	// Write code here that turns the phrase above into concrete actions
-	return 'pending';
+Given('that double has a status of {int}', function (status) {
+	// const double = {
+	// 	uri: 'http://localhost:8001/redirect-example',
+	// 	method: 'get',
+	// 	status: status,
+	// 	location: 'redirect.com'
+	// }
+	//
+	// this.server.registerUri(double)
+	// const response = this.server.request('get','http://localhost:8001/redirect-example')
+	//
+	// chai.expect(response.status).equal(status)
+	// chai.expect(response.location).not.be(response.uri)
+
+	return 'pending'
+
 });
 
 

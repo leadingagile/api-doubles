@@ -70,16 +70,27 @@ describe('Server', () => {
             const server = new Server
             let uri = "http://localhost:8001/some-example";
 
-            server.registerUri(uri)
+            const double = {
+                request: {
+                    method: 'GET',
+                    url: uri
+                },
+                response: {
+                    status: 200,
+                    redirectURL: ""
+                }
+            }
 
-            expect(server.allDoubles).contains(uri)
+            server.registerDouble(double)
+
+            expect(server.allDoubles).contains(double)
         })
     })
     describe('isRegistered()', () => {
         it('returns true if uri is registered', () => {
             const server = new Server
             let uri = "http://localhost:8001/some-example";
-            server.registerUri(uri)
+            server.registerDouble(uri)
 
             expect(server.isRegistered(uri)).to.be.true
         })
