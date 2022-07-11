@@ -37,8 +37,7 @@ class Server {
     }
 
     isRegistered(uri) {
-        return this.allDoubles.includes(uri)
-        // this.allDoubles.find()
+        return  this.allDoubles.some(double => double.request.url === uri)
     }
 
     registerDouble(double) {
