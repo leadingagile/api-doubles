@@ -33,6 +33,45 @@ describe('Server', () => {
             expect(server.response.status).to.eq(404)
         })
 
+        it('returns a response', () => {
+            let double =  {
+                    request: {
+                        method: 'GET',
+                        url: 'http://localhost:8001/some-other-example'
+                    },
+                    response: {
+                        status: 200,
+                        redirectURL: ""
+                    }
+                }
+
+            server.registerDouble(double)
+
+            expect(server.request('GET', 'http://localhost:8001/some-other-example').response).to.deep.equal({status: 200, redirectURL: ""})
+        })
+
+        it('returns a response with content', () => {
+            let double =  {
+                request: {
+                    method: 'GET',
+                    url: 'http://localhost:8001/some-example'
+                },
+                response: {
+                    status: 200,
+                    redirectURL: "",
+                    content: {
+                        size: 42,
+                        hasStuff: true
+                    }
+                }
+            }
+
+            server.registerDouble(double)
+            let testDouble = server.request('GET', 'http://localhost:8001/some-example')
+            console.log(testDouble)
+
+            expect(testDouble.response.hasOwnProperty('content')).to.be.true
+        })
     })
 
     describe('removeAllDoublesWithUri()', () => {
@@ -66,7 +105,7 @@ describe('Server', () => {
             expect(server.allDoubles).contains(double)
         })
     })
-    
+
     describe('isRegistered()', () => {
         it('returns true if uri is registered', () => {
             const server = new Server
@@ -93,5 +132,6 @@ describe('Server', () => {
             expect(server.isRegistered(uri)).to.be.false
         })
     })
+
 
 })

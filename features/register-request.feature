@@ -26,8 +26,7 @@ Scenario Outline: Receive a response with specific status code
 	| 301 	 |
 
 
-Scenario: Receive a response with data
-	Given a double with the url "http://localhost:8001/some-example" has been registered
-	And that double has data with the property "itDoHaveData" that is true
+Scenario: Receive a response with expected data
+	Given a double with the url "http://localhost:8001/some-example" and a response has been registered
 	When the client makes a "get" request to "http://localhost:8001/some-example"
-	Then the client should receive a response with the provided data
+	Then the client should receive a response

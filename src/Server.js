@@ -10,7 +10,8 @@ class Server {
             //     },
             //     response: {
             //         status: 200,
-            //         redirectURL: ""
+            //         redirectURL: "",
+            //         content: {}
             //     }
             // },
         ]
@@ -29,8 +30,19 @@ class Server {
         // } else {
         //     return generate404response()
         // }
+        let double = this.allDoubles.find( double => double.request.url === url && double.request.method === method)
 
-    }
+        if (double === undefined) {
+            double = {
+                response: {
+                    status: 404
+                }
+            }
+        }
+
+
+        return double
+        }
 
     removeAllDoublesWithUri() {
 

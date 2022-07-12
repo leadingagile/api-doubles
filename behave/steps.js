@@ -4,6 +4,7 @@ const chai = require('chai')
 
 Before(function() {
 	this.server = new Server
+	this.expectedResponse = undefined
 })
 
 Given('the double server has been started', function () {
@@ -20,8 +21,14 @@ Given('there is no double registered with the url {string}', function (uri) {
 
 When('the client makes a {string} request to {string}', function (method, uri) {
 
-	this.server.request(method, uri)
+	this.expectedResponse = this.server.request(method, uri)
 })
+
+Then('the client should receive a response', function () {
+	expect(this.expectedResponse.hasOwnProperty('response')).to.be.true
+
+});
+
 
 
 Then('the client should receive a response with {int} status code', function (status) {
@@ -38,7 +45,8 @@ Given('a double with the registered url {string}', function (uri) {
 			},
 			response: {
 				status: 200,
-				redirectURL: ""
+				redirectURL: "",
+				content: 'test'
 			}
 		}
 
@@ -46,7 +54,7 @@ Given('a double with the registered url {string}', function (uri) {
 
 });
 
-Given('a double with the url {string} has been registered', function (uri) {
+Given('a double with the url {string} and a response has been registered', function (uri) {
 	const double = {
 		request: {
 			method: 'GET',
@@ -61,6 +69,7 @@ Given('a double with the url {string} has been registered', function (uri) {
 	this.server.registerDouble(double)
 
 });
+
 
 Given('that double has a status of {int}', function (status) {
 	// const double = {
