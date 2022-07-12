@@ -18,6 +18,14 @@ Some of the steps will require you to authenticate with you local admin credenti
 
 Current defaults are for `ford.com` and `localhost.ford.com` -- this will change real soon
 
+Some files created from this process need to be present in the `./doubles` folder:
+
+* `device.key`
+* `localhost.ford.com.crt`
+
+These are referenced by the `server.js` code for configuring the Express server to handle https URLs.
+
+
 
 ## 2. Update `hosts` file
 
