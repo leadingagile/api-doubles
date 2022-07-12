@@ -6,19 +6,24 @@ The product extraction team is incrementally adding functionality to support the
 # Doubles
 
 ## 1. Generate Cert
-git
+
+When using the Doubles Server to double `https://` URLs, you will need to have a certificate registered for the Doubles Server. This script creates and registrers a certificate for that.
+
+_Currently, these are required because the endpoints being doubled do use HTTPS._
+
 Run the script, answer the prompts.
-
-Some of the steps will require you to authenticate with you local admin credentials. They will update your keychain with the certs created.
-
 
 ```shell
 ./react-src/scripts/doubles-cert-creation/generate_cert_files.sh
 ```
 
-Current defaults are for `ford.com` and `localhost.ford.com` -- this will change real soon
+Current defaults are for `ford.com` and `localhost.ford.com` -- this will change real soon. There are command line options to the scripts to use other domains, should you choose to experiment with them.
 
-Some files created from this process need to be present in the `./doubles` folder:
+One step in the scripted process is to create a certificate. There will be prompts for values to put in the certificate. It does not matter what values you put in any of the fields.
+
+There will be a step to store the certificate in the keychain for MacOS. This will ask for you local admin password (i.e. the one you would use with `sudo`). If you are running the scripts for a second time, you will also be prompted with a dialog from keychain for the same admin credentials.
+
+Some files created from this process need to be present in the `./doubles` folder, and should be placed there by the scripts:
 
 * `device.key`
 * `localhost.ford.com.crt`
@@ -29,7 +34,7 @@ These are referenced by the `server.js` code for configuring the Express server 
 
 ## 2. Update `hosts` file
 
-The domain used (`localhost.ford.com`) must be in your `/etc/hosts` file. Add this line to the file
+The domain used (`localhost.ford.com` or whatever was set using the command line options) must be in your `/etc/hosts` file. Add this line to the file
 
 ```
 127.0.0.1	localhost.ford.com
