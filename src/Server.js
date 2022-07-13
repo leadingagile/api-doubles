@@ -1,37 +1,15 @@
-
 class Server {
 
     constructor() {
-        this.allDoubles = [
-            // {
-            //     request: {
-            //         method: 'GET',
-            //         url: 'http://localhost:8001/some-example'
-            //     },
-            //     response: {
-            //         status: 200,
-            //         redirectURL: "",
-            //         content: {}
-            //     }
-            // },
-        ]
-
-        this.response = { status: 404 }
+        this.allDoubles = []
+        this.response = {status: 404}
     }
 
     start() {
-
     }
 
     request(method, url) {
-        // return {status: 404, method: 'get', locat }
-        // if(true){
-        //     return double.response
-        // } else {
-        //     return generate404response()
-        // }
-        let double = this.allDoubles.find( double => double.request.url === url && double.request.method === method)
-
+        let double = this.allDoubles.find(double => double.request.url === url && double.request.method === method)
         if (double === undefined) {
             double = {
                 response: {
@@ -40,19 +18,42 @@ class Server {
             }
         }
 
-
-        return double
-        }
+        this.response = double.response
+        return double.response
+    }
 
     removeAllDoublesWithUri() {
 
     }
 
     isRegistered(uri) {
-        return  this.allDoubles.some(double => double.request.url === uri)
+        return this.allDoubles.some(double => double.request.url === uri)
     }
 
     registerDouble(double) {
+        if (this.isRegistered(double.request.url)) {
+
+            // console.log(this.allDoubles)
+
+            // const newDoubles = this.allDoubles.filter(currentDouble => currentDouble.request.url !== double.request.url)
+
+
+            this.allDoubles = this.allDoubles.filter(exclusion => {
+                let doubleNotMatch = true
+                let isUrlEqual = exclusion.request.url === double.request.url
+
+                let isMethodEqual = exclusion.request.method === double.request.method
+
+                if(isUrlEqual && isMethodEqual){
+                    doubleNotMatch = false
+                }
+                return doubleNotMatch
+            })
+
+
+            // this.allDoubles = newDoubles
+        }
+
         this.allDoubles.push(double)
     }
 }

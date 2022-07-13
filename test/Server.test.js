@@ -47,7 +47,7 @@ describe('Server', () => {
 
             server.registerDouble(double)
 
-            expect(server.request('GET', 'http://localhost:8001/some-other-example').response).to.deep.equal({status: 200, redirectURL: ""})
+            expect(server.request('GET', 'http://localhost:8001/some-other-example')).to.deep.equal({status: 200, redirectURL: ""})
         })
 
         it('returns a response with content', () => {
@@ -70,7 +70,7 @@ describe('Server', () => {
             let testDouble = server.request('GET', 'http://localhost:8001/some-example')
             console.log(testDouble)
 
-            expect(testDouble.response.hasOwnProperty('content')).to.be.true
+            expect(testDouble.hasOwnProperty('content')).to.be.true
         })
     })
 
@@ -86,8 +86,8 @@ describe('Server', () => {
         })
     })
 
-    describe('registerUri()', () => {
-        it('registers a uri', () => {
+    describe('registerDouble()', () => {
+        it('registers a double', () => {
             const server = new Server
             const double = {
                 request: {
@@ -103,6 +103,66 @@ describe('Server', () => {
             server.registerDouble(double)
 
             expect(server.allDoubles).contains(double)
+        })
+
+        it('replaces double in allDoubles if double exists', () => {
+            const server = new Server
+            const double = {
+                request: {
+                    method: 'GET',
+                    url: "http://localhost:8001/some-example"
+                },
+                response: {
+                    status: 200,
+                    redirectURL: ""
+                }
+            }
+            const replaceDouble = {
+                request: {
+                    method: 'GET',
+                    url: "http://localhost:8001/some-example"
+                },
+                response: {
+                    status: 301,
+                    redirectURL: ""
+                }
+            }
+
+            server.registerDouble(double)
+            server.registerDouble(replaceDouble)
+            let response =  server.request('GET', "http://localhost:8001/some-example")
+            expect(server.allDoubles.length).equal(1)
+            expect(response.status).equal(301)
+        })
+
+        it('does not replace double in allDoubles if method is different', () => {
+            const server = new Server
+            const double = {
+                request: {
+                    method: 'PUT',
+                    url: "http://localhost:8001/some-example"
+                },
+                response: {
+                    status: 200,
+                    redirectURL: ""
+                }
+            }
+            const newDouble = {
+                request: {
+                    method: 'GET',
+                    url: "http://localhost:8001/some-example"
+                },
+                response: {
+                    status: 301,
+                    redirectURL: ""
+                }
+            }
+
+            server.registerDouble(double)
+            server.registerDouble(newDouble)
+            let response =  server.request('GET', "http://localhost:8001/some-example")
+            expect(server.allDoubles.length).equal(2)
+            expect(response.status).equal(301)
         })
     })
 

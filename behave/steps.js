@@ -25,16 +25,14 @@ When('the client makes a {string} request to {string}', function (method, uri) {
 })
 
 Then('the client should receive a response', function () {
-	expect(this.expectedResponse.hasOwnProperty('response')).to.be.true
+	expect(this.expectedResponse.hasOwnProperty('status')).to.be.true
 
 });
 
 
 
 Then('the client should receive a response with {int} status code', function (status) {
-
-	//expect(this.server.response).to.have.property('status', status)
-	expect(this.server.response.status).equal(status)
+	expect(this.server.response.hasOwnProperty('status')).to.be.true
 })
 
 Given('a double with the registered url {string}', function (uri) {
@@ -72,20 +70,21 @@ Given('a double with the url {string} and a response has been registered', funct
 
 
 Given('that double has a status of {int}', function (status) {
-	// const double = {
-	// 	uri: 'http://localhost:8001/redirect-example',
-	// 	method: 'get',
-	// 	status: status,
-	// 	location: 'redirect.com'
-	// }
-	//
-	// this.server.registerUri(double)
-	// const response = this.server.request('get','http://localhost:8001/redirect-example')
-	//
-	// chai.expect(response.status).equal(status)
-	// chai.expect(response.location).not.be(response.uri)
+	const double = {
+		request :{
+			url: 'http://localhost:8001/redirect-example',
+			method: 'GET'
+		},
+		response :{
+			status: status,
+			location: 'redirect.com'
+		}
+	}
 
-	return 'pending'
+	this.server.registerDouble(double)
+	let response = this.server.request('GET','http://localhost:8001/redirect-example')
+
+	expect(response.status).equal(status)
 
 });
 
