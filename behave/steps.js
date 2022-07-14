@@ -88,6 +88,37 @@ Given('that double has a status of {int}', function (status) {
 
 });
 
+Given('Given a registered double with url {string}', function (uri) {
+	const double = {
+		request: {
+			method: 'GET',
+			url: uri
+		},
+		response: {
+			status: 200,
+			redirectURL: "",
+			content: 'test'
+		}
+	}
+
+	this.server.registerDouble(double)
+
+});
+
+When('the client requests removal with url {string}', function (uri) {
+
+	this.server. removeAllDoublesWithUri(uri)
+});
+
+Then('double with url {string} should not be registered', function (uri) {
+
+	expect(this.server.isRegistered(uri)).to.be.false
+});
+
+
+
+
+
 
 
 

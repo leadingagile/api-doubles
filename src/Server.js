@@ -22,8 +22,8 @@ class Server {
         return double.response
     }
 
-    removeAllDoublesWithUri() {
-
+    removeAllDoublesWithUri(uri) {
+        this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
     }
 
     isRegistered(uri) {
@@ -32,26 +32,12 @@ class Server {
 
     registerDouble(double) {
         if (this.isRegistered(double.request.url)) {
-
-            // console.log(this.allDoubles)
-
-            // const newDoubles = this.allDoubles.filter(currentDouble => currentDouble.request.url !== double.request.url)
-
-
             this.allDoubles = this.allDoubles.filter(exclusion => {
-                let doubleNotMatch = true
                 let isUrlEqual = exclusion.request.url === double.request.url
-
                 let isMethodEqual = exclusion.request.method === double.request.method
 
-                if(isUrlEqual && isMethodEqual){
-                    doubleNotMatch = false
-                }
-                return doubleNotMatch
+                return isUrlEqual && isMethodEqual ? false : true
             })
-
-
-            // this.allDoubles = newDoubles
         }
 
         this.allDoubles.push(double)

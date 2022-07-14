@@ -30,3 +30,8 @@ Scenario: Receive a response with expected data
 	Given a double with the url "http://localhost:8001/some-example" and a response has been registered
 	When the client makes a "get" request to "http://localhost:8001/some-example"
 	Then the client should receive a response
+
+Scenario: Receive a request to remove doubles with uri
+	Given Given a registered double with url "http://localhost:8001/redirect-example"
+	When the client requests removal with url "http://localhost:8001/redirect-example"
+	Then double with url "http://localhost:8001/redirect-example" should not be registered

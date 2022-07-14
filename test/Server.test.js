@@ -79,10 +79,25 @@ describe('Server', () => {
             const server = new Server
             server.start()
             const uri = 'http://localhost:8000/bad-url'
+            const double =  {
+                request: {
+                    method: 'GET',
+                    url: 'http://localhost:8000/bad-url'
+                },
+                response: {
+                    status: 200,
+                    redirectURL: "",
+                    content: {
+                        size: 42,
+                        hasStuff: true
+                    }
+                }
+            }
 
+            server.registerDouble(double)
             server.removeAllDoublesWithUri(uri)
 
-            expect(server.allDoubles.some(double => double.uri === uri)).to.be.false
+            expect(server.isRegistered(uri)).to.be.false
         })
     })
 
