@@ -115,7 +115,29 @@ Then('double with url {string} should not be registered', function (uri) {
 	expect(this.server.isRegistered(uri)).to.be.false
 });
 
+Given('a registered double with url {string}', function (uri) {
+	const double = {
+		request: {
+			method: 'GET',
+			url: uri
+		},
+		response: {
+			status: 200,
+			redirectURL: "",
+			content: 'test'
+		}
+	}
 
+	this.server.registerDouble(double)
+});
+When('the client requests removal with an invalid url {string}', function (uri) {
+
+	this.server.removeAllDoublesWithUri(uri)
+});
+
+Then('the message {string} should return', function (message) {
+	expect(this.server.getMessage()).equal(message)
+});
 
 
 

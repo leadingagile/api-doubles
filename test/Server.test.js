@@ -99,6 +99,31 @@ describe('Server', () => {
 
             expect(server.isRegistered(uri)).to.be.false
         })
+        it('should set message if no valid url is found', () => {
+            const server = new Server
+            server.start()
+            const uri = 'http://localhost:8000/bad-url'
+            const double =  {
+                request: {
+                    method: 'GET',
+                    url: 'http://localhost:8000/good-url'
+                },
+                response: {
+                    status: 200,
+                    redirectURL: "",
+                    content: {
+                        size: 42,
+                        hasStuff: true
+                    }
+                }
+            }
+
+            server.registerDouble(double)
+            server.removeAllDoublesWithUri(uri)
+
+            expect(server.allDoubles.length).to.equal(1)
+            expect(server.getMessage()).to.equal('Invalid uri: Not registered')
+        })
     })
 
     describe('registerDouble()', () => {

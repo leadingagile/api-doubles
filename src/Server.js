@@ -1,10 +1,13 @@
 class Server {
 
     constructor() {
+        this.message = ''
         this.allDoubles = []
         this.response = {status: 404}
     }
-
+    getMessage() {
+        return this.message
+    }
     start() {
     }
 
@@ -23,7 +26,12 @@ class Server {
     }
 
     removeAllDoublesWithUri(uri) {
-        this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
+        if (this.isRegistered(uri)){
+            this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
+        }else{
+            this.message = 'Invalid uri: Not registered'
+        }
+
     }
 
     isRegistered(uri) {
