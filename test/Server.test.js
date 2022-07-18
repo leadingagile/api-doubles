@@ -68,7 +68,6 @@ describe('Server', () => {
 
             server.registerDouble(double)
             let testDouble = server.request('GET', 'http://localhost:8001/some-example')
-            console.log(testDouble)
 
             expect(testDouble.hasOwnProperty('content')).to.be.true
         })
@@ -166,8 +165,48 @@ describe('Server', () => {
             expect(server.isRegistered(uri)).to.be.false
         })
 
-        it('', () => {
+        it('only removes double with provided url', () => {
+            const server = new Server
+            server.start()
+            const someExampleUrl = 'http://localhost:8001/some-example'
+            const randomUrl = 'http://localhost:8001/random'
+
+            const removingDouble =  {
+                request: {
+                    method: 'GET',
+                    url: someExampleUrl
+                },
+                response: {
+                    status: 200,
+                    redirectURL: "",
+                    content: {
+                        size: 42,
+                        hasStuff: true
+                    }
+                }
+            }
+
+            const keepingDouble =  {
+                request: {
+                    method: 'POST',
+                    url: randomUrl
+                },
+                response: {
+                    status: 301,
+                    redirectURL: "https://localhost:8081/some-random-redirect",
+                    content: {
+                        size: 420,
+                        hasStuff: true
+                    }
+                }
+            }
+
+            server.registerDouble(removingDouble)
+            server.registerDouble(keepingDouble)
+            server.removeAllDoublesWithUri(someExampleUrl)
             
+            expect(server.isRegistered(someExampleUrl)).to.be.false
+            expect(server.isRegistered(randomUrl)).to.be.true
         })
     })
 
