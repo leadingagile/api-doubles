@@ -121,8 +121,53 @@ describe('Server', () => {
             server.registerDouble(double)
             server.removeAllDoublesWithUri(uri)
 
-            expect(server.allDoubles.length).to.equal(1)
+            expect(server.isRegistered(double.request.url)).to.be.true
             expect(server.getMessage()).to.equal('Invalid uri: Not registered')
+        })
+        it('removes multiple doubles with the same uri', () => {
+            const server = new Server
+            server.start()
+            const uri = 'http://localhost:8001/some-example'
+
+            const double1 =  {
+                request: {
+                    method: 'GET',
+                    url: uri
+                },
+                response: {
+                    status: 200,
+                    redirectURL: "",
+                    content: {
+                        size: 42,
+                        hasStuff: true
+                    }
+                }
+            }
+
+            const double2 =  {
+                request: {
+                    method: 'POST',
+                    url: uri
+                },
+                response: {
+                    status: 301,
+                    redirectURL: "https://localhost:8081/some-random-redirect",
+                    content: {
+                        size: 420,
+                        hasStuff: true
+                    }
+                }
+            }
+
+            server.registerDouble(double1)
+            server.registerDouble(double2)
+            server.removeAllDoublesWithUri(uri)
+
+            expect(server.isRegistered(uri)).to.be.false
+        })
+
+        it('', () => {
+            
         })
     })
 
