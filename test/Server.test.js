@@ -204,7 +204,7 @@ describe('Server', () => {
             server.registerDouble(removingDouble)
             server.registerDouble(keepingDouble)
             server.removeAllDoublesWithUri(someExampleUrl)
-            
+
             expect(server.isRegistered(someExampleUrl)).to.be.false
             expect(server.isRegistered(randomUrl)).to.be.true
         })
