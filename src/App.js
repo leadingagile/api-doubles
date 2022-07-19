@@ -7,8 +7,9 @@ class App {
     }
 
     run(config){
-
+        this.server.allDoubles = config.doubles
     }
+
 
 
 }

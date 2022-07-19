@@ -6,10 +6,11 @@ Feature: Run server with JSON config file
 
 
   Scenario: No config file provided
-#      Given there is no defined config file ''
       Given the config file path provided is ""
       When the app is started
       Then the server will start with empty state
-#  Given a double server
-#  When provided a config file
-#  Then it will run with specified configuration
+
+  Scenario: Config file provided
+    Given the config file path is provided is "./test/BasicConfig.json"
+    When the app is started
+    Then the server will start with config variables
