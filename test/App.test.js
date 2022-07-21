@@ -4,7 +4,7 @@ const {missingDoubleConfig, doubleNotArrayConfig, oneDoubleConfig} = require('./
 
 describe('App', () => {
     const app = new App()
-    
+
     it('can exist', () => {
         expect(app).to.be.ok
     })
