@@ -1,9 +1,10 @@
 const expect = require('chai').expect
 const App = require('../src/App')
-const {missingDoubleConfig, doubleNotArrayConfig} = require('../test/badDoubler.config')
+const {missingDoubleConfig, doubleNotArrayConfig, oneDoubleConfig} = require('./doubler.config')
 
 describe('App', () => {
     const app = new App()
+    
     it('can exist', () => {
         expect(app).to.be.ok
     })
@@ -13,23 +14,8 @@ describe('App', () => {
     })
 
     describe('run()', () => {
-        it('receives path to config file with one double', () => {
-            const configFile = {
-                doubles: [
-                    {
-                        request: {
-                            method: 'GET',
-                            url: 'http://localhost:8001/some-other-example'
-                        },
-                        response: {
-                            status: 200,
-                            redirectURL: ""
-                        }
-                    }
-                ]
-            }
-
-            app.run(configFile)
+        it('receives config file with one double', () => {
+            app.run(oneDoubleConfig)
 
             expect(app.server.allDoubles.length).to.equal(1)
         })
