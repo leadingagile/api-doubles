@@ -3,6 +3,7 @@
 // import doublerConfig from '../doubler.config'
 
 const Doubler = require('../../src/App')
+//Should doubler config be import by default in app instead of importing here?
 const doublerConfig = require('../doubler.config')
 
 const expect = require('chai').expect

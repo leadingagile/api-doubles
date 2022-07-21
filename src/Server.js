@@ -39,6 +39,13 @@ class Server {
     }
 
     registerDouble(double) {
+        if(!double.hasOwnProperty('request')){
+            throw new Error('Double missing request property.')
+        }
+        if(!double.hasOwnProperty('response')){
+            throw new Error('Double missing response property.')
+        }
+
         if (this.isRegistered(double.request.url)) {
             this.allDoubles = this.allDoubles.filter(exclusion => {
                 let isUrlEqual = exclusion.request.url === double.request.url

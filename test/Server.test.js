@@ -288,6 +288,38 @@ describe('Server', () => {
             expect(server.allDoubles.length).equal(2)
             expect(response.status).equal(301)
         })
+
+        it('throws malformed double error if double is missing request', () =>{
+            const server = new Server()
+
+            const noRequestDouble =  {
+                method: 'POST',
+                response: {
+                    status: 301,
+                    redirectURL: "https://localhost:8081/some-random-redirect",
+                    content: {
+                        size: 420,
+                        hasStuff: true
+                    }
+                }
+            }
+
+            expect(() => server.registerDouble(noRequestDouble)).to.throw('Double missing request property.')
+        })
+
+        it('throws malformed double error if double missing response', () => {
+            const server = new Server()
+
+            const noResponseDouble = {
+                request: {
+                    url: 'some-stuff',
+                    method: 'yep'
+                },
+                hasStuff: 'false'
+            }
+
+            expect(() => server.registerDouble(noResponseDouble)).to.throw('Double missing response property.')
+        })
     })
 
     describe('isRegistered()', () => {
