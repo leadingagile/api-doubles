@@ -1,4 +1,7 @@
 const expect = require('chai').expect
+const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble,
+    noResponseDouble
+} = require('./testDoubles')
 
 const Server = require('../src/Server')
 
@@ -27,42 +30,20 @@ describe('Server', () => {
         })
 
         it('returns a response', () => {
-            let double = {
-                request: {
-                    method: 'GET',
-                    url: 'http://localhost:8001/some-other-example'
-                },
-                response: {
-                    status: 200,
-                    redirectURL: ""
-                }
-            }
+            server.registerDouble(baseDouble)
 
-            server.registerDouble(double)
-
-            expect(server.request('GET', 'http://localhost:8001/some-other-example')).to.deep.equal({
+            expect(server.request('GET', 'http://localhost:8001/some-example')).to.deep.equal({
                 status: 200,
-                redirectURL: ""
+                redirectURL: "",
+                content: {
+                    size: 42,
+                    hasStuff: true
+                }
             })
         })
 
         it('returns a response with content', () => {
-            let double = {
-                request: {
-                    method: 'GET',
-                    url: 'http://localhost:8001/some-example'
-                },
-                response: {
-                    status: 200,
-                    redirectURL: "",
-                    content: {
-                        size: 42,
-                        hasStuff: true
-                    }
-                }
-            }
-
-            server.registerDouble(double)
+            server.registerDouble(baseDouble)
             let testDouble = server.request('GET', 'http://localhost:8001/some-example')
 
             expect(testDouble.hasOwnProperty('content')).to.be.true
@@ -72,84 +53,26 @@ describe('Server', () => {
     describe('removeAllDoublesWithUri()', () => {
         it('removes all doubles that have the provided uri', () => {
             const uri = 'http://localhost:8000/bad-url'
-            const double = {
-                request: {
-                    method: 'GET',
-                    url: 'http://localhost:8000/bad-url'
-                },
-                response: {
-                    status: 200,
-                    redirectURL: "",
-                    content: {
-                        size: 42,
-                        hasStuff: true
-                    }
-                }
-            }
 
-            server.registerDouble(double)
+            server.registerDouble(badUrlDouble)
             server.removeAllDoublesWithUri(uri)
 
             expect(server.isRegistered(uri)).to.be.false
         })
         it('should set message if no valid url is found', () => {
             const uri = 'http://localhost:8000/bad-url'
-            const double = {
-                request: {
-                    method: 'GET',
-                    url: 'http://localhost:8000/good-url'
-                },
-                response: {
-                    status: 200,
-                    redirectURL: "",
-                    content: {
-                        size: 42,
-                        hasStuff: true
-                    }
-                }
-            }
 
-            server.registerDouble(double)
+            server.registerDouble(baseDouble)
             server.removeAllDoublesWithUri(uri)
 
-            expect(server.isRegistered(double.request.url)).to.be.true
+            expect(server.isRegistered(baseDouble.request.url)).to.be.true
             expect(server.getMessage()).to.equal('Invalid uri: Not registered')
         })
         it('removes multiple doubles with the same uri', () => {
             const uri = 'http://localhost:8001/some-example'
 
-            const double1 = {
-                request: {
-                    method: 'GET',
-                    url: uri
-                },
-                response: {
-                    status: 200,
-                    redirectURL: "",
-                    content: {
-                        size: 42,
-                        hasStuff: true
-                    }
-                }
-            }
-
-            const double2 = {
-                request: {
-                    method: 'POST',
-                    url: uri
-                },
-                response: {
-                    status: 301,
-                    redirectURL: "https://localhost:8081/some-random-redirect",
-                    content: {
-                        size: 420,
-                        hasStuff: true
-                    }
-                }
-            }
-
-            server.registerDouble(double1)
-            server.registerDouble(double2)
+            server.registerDouble(baseDouble)
+            server.registerDouble(postBaseDouble)
             server.removeAllDoublesWithUri(uri)
 
             expect(server.isRegistered(uri)).to.be.false
@@ -157,148 +80,47 @@ describe('Server', () => {
 
         it('only removes double with provided url', () => {
             const someExampleUrl = 'http://localhost:8001/some-example'
-            const randomUrl = 'http://localhost:8001/random'
+            const redirectUrl = 'http://localhost:8001/301-example'
 
-            const removingDouble = {
-                request: {
-                    method: 'GET',
-                    url: someExampleUrl
-                },
-                response: {
-                    status: 200,
-                    redirectURL: "",
-                    content: {
-                        size: 42,
-                        hasStuff: true
-                    }
-                }
-            }
-
-            const keepingDouble = {
-                request: {
-                    method: 'POST',
-                    url: randomUrl
-                },
-                response: {
-                    status: 301,
-                    redirectURL: "https://localhost:8081/some-random-redirect",
-                    content: {
-                        size: 420,
-                        hasStuff: true
-                    }
-                }
-            }
-
-            server.registerDouble(removingDouble)
-            server.registerDouble(keepingDouble)
+            server.registerDouble(baseDouble)
+            server.registerDouble(base301Double)
             server.removeAllDoublesWithUri(someExampleUrl)
 
             expect(server.isRegistered(someExampleUrl)).to.be.false
-            expect(server.isRegistered(randomUrl)).to.be.true
+            expect(server.isRegistered(redirectUrl)).to.be.true
         })
     })
 
     describe('registerDouble()', () => {
         it('registers a double', () => {
-            const double = {
-                request: {
-                    method: 'GET',
-                    url: "http://localhost:8001/some-example"
-                },
-                response: {
-                    status: 200,
-                    redirectURL: ""
-                }
-            }
+            server.registerDouble(baseDouble)
 
-            server.registerDouble(double)
-
-            expect(server.allDoubles).contains(double)
+            expect(server.allDoubles).contains(baseDouble)
         })
 
         it('replaces double in allDoubles if double exists', () => {
-            const double = {
-                request: {
-                    method: 'GET',
-                    url: "http://localhost:8001/some-example"
-                },
-                response: {
-                    status: 200,
-                    redirectURL: ""
-                }
-            }
-            const replaceDouble = {
-                request: {
-                    method: 'GET',
-                    url: "http://localhost:8001/some-example"
-                },
-                response: {
-                    status: 301,
-                    redirectURL: ""
-                }
-            }
-
-            server.registerDouble(double)
-            server.registerDouble(replaceDouble)
+            server.registerDouble(baseDouble)
+            server.registerDouble(sameUrl301BaseDouble)
             let response = server.request('GET', "http://localhost:8001/some-example")
+
             expect(server.allDoubles.length).equal(1)
             expect(response.status).equal(301)
         })
 
         it('does not replace double in allDoubles if method is different', () => {
-            const double = {
-                request: {
-                    method: 'PUT',
-                    url: "http://localhost:8001/some-example"
-                },
-                response: {
-                    status: 200,
-                    redirectURL: ""
-                }
-            }
-            const newDouble = {
-                request: {
-                    method: 'GET',
-                    url: "http://localhost:8001/some-example"
-                },
-                response: {
-                    status: 301,
-                    redirectURL: ""
-                }
-            }
-
-            server.registerDouble(double)
-            server.registerDouble(newDouble)
+            server.registerDouble(baseDouble)
+            server.registerDouble(postBaseDouble)
             let response = server.request('GET', "http://localhost:8001/some-example")
+
             expect(server.allDoubles.length).equal(2)
-            expect(response.status).equal(301)
+            expect(response.status).equal(200)
         })
 
         it('throws malformed double error if double is missing request', () => {
-            const noRequestDouble = {
-                method: 'POST',
-                response: {
-                    status: 301,
-                    redirectURL: "https://localhost:8081/some-random-redirect",
-                    content: {
-                        size: 420,
-                        hasStuff: true
-                    }
-                }
-            }
-
             expect(() => server.registerDouble(noRequestDouble)).to.throw('Double missing request property.')
         })
 
         it('throws malformed double error if double missing response', () => {
-            const noResponseDouble = {
-                request: {
-                    url: 'some-stuff',
-                    method: 'yep'
-                },
-                hasStuff: 'false'
-            }
-
             expect(() => server.registerDouble(noResponseDouble)).to.throw('Double missing response property.')
         })
     })
@@ -306,17 +128,8 @@ describe('Server', () => {
     describe('isRegistered()', () => {
         it('returns true if uri is registered', () => {
             const uri = "http://localhost:8001/some-example"
-            const double = {
-                request: {
-                    method: 'GET',
-                    url: uri
-                },
-                response: {
-                    status: 200,
-                    redirectURL: ""
-                }
-            }
-            server.registerDouble(double)
+            
+            server.registerDouble(baseDouble)
 
             expect(server.isRegistered(uri)).to.be.true
         })

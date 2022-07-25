@@ -23,4 +23,6 @@ const oneDoubleConfig = {
 }
 
 
+
+
 module.exports = {missingDoubleConfig, doubleNotArrayConfig, oneDoubleConfig}
