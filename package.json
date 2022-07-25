@@ -19,6 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:unit": "mocha",
+    "test:integration": "mocha ./test/integration-tests \n",
     "eject": "react-scripts eject",
     "start:doubles": "node react-src/doubles/server.js",
     "behave": "cucumber-js features --require behave/setup.js --require behave/steps.js --require behave/appSteps.js"

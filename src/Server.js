@@ -1,4 +1,5 @@
 const express = require('express')
+const {doubles} = require("../example-web-app/doubler.config");
 const app = express()
 const port = 8001
 
@@ -13,13 +14,33 @@ class Server {
         return this.message
     }
     start() {
-        app.get('/some-other-example', (req, res) => {
-            res.send("Hello")
+        // app.get('some-other-example', (req, res) => {
+        //     res.send("Hello")
+        // })
+
+        this.allDoubles.forEach(double => {
+            let url = new URL(double.request.url)
+
+            if(double.request.method === 'GET') {
+                app.get(url.pathname,(req, res) => {
+                    res.send("Hello")
+                })
+            }
         })
 
         app.listen(port, () => {
             console.log("Listening on port " + port)
         })
+
+
+
+        // process.on('SIGTERM', () => {
+        //     console.log('SIGTERM signal received: closing HTTP server')
+        //     server.close(() => {
+        //         console.log('HTTP server closed')
+        //     })
+        // })
+
     }
 
     request(method, url) {

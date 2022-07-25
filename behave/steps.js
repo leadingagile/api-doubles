@@ -9,7 +9,8 @@ Before(function() {
 
 Given('the double server has been started', function () {
 
-	this.server.start()
+	// this.server.start()
+
 })
 
 
@@ -137,6 +138,7 @@ When('the client requests removal with an invalid url {string}', function (uri) 
 
 Then('the message {string} should return', function (message) {
 	expect(this.server.getMessage()).equal(message)
+
 });
 
 

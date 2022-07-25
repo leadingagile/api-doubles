@@ -8,6 +8,11 @@ class App {
     }
 
     run(config){
+        this.load(config)
+        this.server.start()
+    }
+
+    load(config) {
         if (!config.hasOwnProperty('doubles')){
             throw Error('Config file missing doubles')
         }
@@ -18,9 +23,11 @@ class App {
 
         })
         this.server.allDoubles = config.doubles
-
-        this.server.start()
     }
+
+    get() {}
+
+    post() {}
 
 
 
