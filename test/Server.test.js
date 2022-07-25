@@ -128,7 +128,7 @@ describe('Server', () => {
     describe('isRegistered()', () => {
         it('returns true if uri is registered', () => {
             const uri = "http://localhost:8001/some-example"
-            
+
             server.registerDouble(baseDouble)
 
             expect(server.isRegistered(uri)).to.be.true

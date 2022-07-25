@@ -1,3 +1,7 @@
+const express = require('express')
+const app = express()
+const port = 8001
+
 class Server {
 
     constructor() {
@@ -9,6 +13,13 @@ class Server {
         return this.message
     }
     start() {
+        app.get('/some-other-example', (req, res) => {
+            res.send("Hello")
+        })
+
+        app.listen(port, () => {
+            console.log("Listening on port " + port)
+        })
     }
 
     request(method, url) {

@@ -18,6 +18,8 @@ class App {
 
         })
         this.server.allDoubles = config.doubles
+
+        this.server.start()
     }
 
 
