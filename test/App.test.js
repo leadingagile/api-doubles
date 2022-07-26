@@ -14,7 +14,7 @@ describe('App', () => {
         expect(app.server).to.be.ok
     })
 
-    describe('run()', () => {
+    describe('serve()', () => {
 
     })
 

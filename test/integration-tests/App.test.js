@@ -10,7 +10,7 @@ describe('App', () => {
     const app = new App;
     it('returns status 200 when hitting registered endpoint', () => {
         const url = 'http://localhost:8001/some-other-example'
-        app.run(oneDoubleConfig)
+        app.serve(oneDoubleConfig)
 
         return client.get(url)
             .then(response => expect(response).to.have.property('status',200))
@@ -19,7 +19,7 @@ describe('App', () => {
     })
     it('returns status 404 when hitting not registered endpoint', () => {
         const url = 'http://localhost:8001/not-registered'
-        app.run(oneDoubleConfig)
+        app.serve(oneDoubleConfig)
 
         return client.get(url)
             .catch(err => {

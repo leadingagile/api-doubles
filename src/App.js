@@ -7,7 +7,7 @@ class App {
         this.server = new Server()
     }
 
-    run(config){
+    serve(config){
         this.load(config)
         this.server.start()
     }

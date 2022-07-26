@@ -23,7 +23,7 @@ When('the app is started', function () {
 });
 
 Then('the server will start with config variables', function () {
-    this.app.run(this.config)
+    this.app.serve(this.config)
     expect(this.app.server.allDoubles.length).to.equal(1)
 })
 
