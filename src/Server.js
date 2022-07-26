@@ -4,6 +4,7 @@ const app = express()
 const port = 8001
 
 class Server {
+    server;
 
     constructor() {
         this.message = ''
@@ -26,21 +27,22 @@ class Server {
                     res.send("Hello")
                 })
             }
-        })
 
-        app.listen(port, () => {
+        })
+            app.use((req, res) => {
+                res.sendStatus(404)
+            })
+
+        this.server = app.listen(port, () => {
             console.log("Listening on port " + port)
         })
+    }
 
+    close() {
+        this.server.close(err => {
+            console.log('server closed')
 
-
-        // process.on('SIGTERM', () => {
-        //     console.log('SIGTERM signal received: closing HTTP server')
-        //     server.close(() => {
-        //         console.log('HTTP server closed')
-        //     })
-        // })
-
+        })
     }
 
     request(method, url) {

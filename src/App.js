@@ -29,6 +29,10 @@ class App {
 
     post() {}
 
+    stop() {
+        this.server.close()
+    }
+
 
 
 }
