@@ -10,7 +10,20 @@ describe('App', () => {
     const app = new App;
     it('returns status 200 when hitting registered endpoint', () => {
         const url = 'http://localhost:8001/some-other-example'
-        app.serve(oneDoubleConfig)
+        const config = {}
+        const simpleDouble = {
+            request: {
+                method: 'GET',
+                url: 'http://localhost:8001/some-other-example'
+            },
+            response: {
+                status: 200,
+                redirectURL: ""
+            }
+        }
+        config.doubles = [simpleDouble]
+
+        app.serve(config)
 
         return client.get(url)
             .then(response => expect(response).to.have.property('status',200))
@@ -23,7 +36,6 @@ describe('App', () => {
 
         return client.get(url)
             .catch(err => {
-
                return expect(err.response).to.have.property('status',404)
             })
     })
