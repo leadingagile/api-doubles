@@ -4,7 +4,7 @@ const app = express()
 const port = 8001
 
 class Server {
-    server;
+    #server;
 
     constructor() {
         this.message = ''
@@ -33,13 +33,13 @@ class Server {
                 res.sendStatus(404)
             })
 
-        this.server = app.listen(port, () => {
+        this.#server = app.listen(port, () => {
             console.log("Listening on port " + port)
         })
     }
 
     close() {
-        this.server.close(err => {
+        this.#server.close(err => {
             console.log('server closed')
 
         })
