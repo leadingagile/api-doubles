@@ -4,9 +4,6 @@ const expect = require('chai').expect
 
 const { oneDoubleConfig } = require('../doubler.config')
 describe('App', () => {
-    afterEach(() => {
-        app.stop()
-    })
     const app = new App;
     it('returns status 200 when hitting registered endpoint', () => {
         const url = 'http://localhost:8001/some-other-example'

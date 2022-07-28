@@ -1,10 +1,14 @@
 const expect = require('chai').expect
 
+
 const App = require('../src/App')
 const {missingDoubleConfig, doubleNotArrayConfig, oneDoubleConfig} = require('./doubler.config')
 
 describe('App', () => {
-    const app = new App()
+    let app
+    before(() => {
+        app = new App()
+    })
 
     it('can exist', () => {
         expect(app).to.be.ok
@@ -16,20 +20,47 @@ describe('App', () => {
 
     describe('serve()', () => {
 
+        it.skip('defaults to a port when none is provided', () => {
+
+
+
+            app.serve()
+
+
+            return client.get('http://localhost:8001').then(response => expect(response.status).to.eq(200))
+
+        })
     })
 
     describe('load()', () => {
-        it('receives config file with one double', () => {
-            app.load(oneDoubleConfig)
-
-            expect(app.server.allDoubles.length).to.equal(1)
+        it('throws error when no doubles are provided', () => {
+            expect(() => app.load()).to.throw('(load) requires [doubles]')
         })
-        it('throws malformed config error if config is missing doubles', () => {
-            expect(() => app.load(missingDoubleConfig)).to.throw('Config file missing doubles')
+        it('receives doubles array with one double', () => {
+            const doubles = []
+            const double = {
+                request: {
+                    method: 'GET',
+                    url: 'http://localhost:8001/some-example'
+                },
+                response: {
+                    status: 200,
+                    redirectURL: "",
+                    content: {
+                        size: 42,
+                        hasStuff: true
+                    }
+                }
+            }
+            doubles.push(double)
+
+            app.load(doubles)
+
+            expect(app.server.allDoubles[0]).to.deep.equal(double)
         })
 
-        it('throws config error if doubles not an array', () => {
-            expect(() => app.load(doubleNotArrayConfig)).to.throw('doubles is not an array')
+        it('throws error if doubles is not an array', () => {
+            expect(() => app.load('Not an array').to.throw('doubles is not an array'))
         })
     })
 })

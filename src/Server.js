@@ -3,8 +3,6 @@ const app = express()
 const port = 8001
 
 class Server {
-    #server;
-
     constructor() {
         this.message = ''
         this.allDoubles = []
@@ -28,15 +26,8 @@ class Server {
                 res.sendStatus(404)
             })
 
-        this.#server = app.listen(port, () => {
+        app.listen(port, () => {
             console.log("Listening on port " + port)
-        })
-    }
-
-    close() {
-        this.#server.close(err => {
-            console.log('server closed')
-
         })
     }
 

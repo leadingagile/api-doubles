@@ -7,22 +7,20 @@ class App {
         this.server = new Server()
     }
 
-    serve(config){
-        this.load(config)
+    serve(config) {
+        this.load(config || {})
         this.server.start()
     }
 
-    load(config) {
-        if (!config.hasOwnProperty('doubles')){
-            throw Error('Config file missing doubles')
-        }
-        if(!Array.isArray(config.doubles) ){
+    load(doubles) {
+        if (!doubles) throw Error('(load) requires [doubles]')
+
+        if(!Array.isArray(doubles) ){
             throw Error('doubles is not an array')
         }
-        config.doubles.forEach(double => {
-
+        doubles.forEach(double => {
+            this.server.registerDouble(double)
         })
-        this.server.allDoubles = config.doubles
     }
 
     get() {}
