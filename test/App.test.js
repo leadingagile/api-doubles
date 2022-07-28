@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-
+const client = require('axios')
 
 const App = require('../src/App')
 const {missingDoubleConfig, doubleNotArrayConfig, oneDoubleConfig} = require('./doubler.config')
@@ -20,15 +20,10 @@ describe('App', () => {
 
     describe('serve()', () => {
 
-        it.skip('defaults to a port when none is provided', () => {
-
-
-
+        it('defaults to a port when none is provided', () => {
             app.serve()
 
-
-            return client.get('http://localhost:8001').then(response => expect(response.status).to.eq(200))
-
+            return client.get('http://localhost:8001').catch(({response}) => expect(response.status).to.eq(404))
         })
     })
 

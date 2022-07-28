@@ -7,8 +7,8 @@ class App {
         this.server = new Server()
     }
 
-    serve(config) {
-        this.load(config || {})
+    serve(config = {}) {
+        this.load(config.doubles || [])
         this.server.start()
     }
 
