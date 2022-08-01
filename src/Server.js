@@ -21,6 +21,12 @@ class Server {
                 })
             }
 
+            if(double.request.method === 'POST') {
+                app.post(url.pathname,(req, res) => {
+                    res.send("Hello")
+                })
+            }
+
         })
 
         // app.use((req, res) => {

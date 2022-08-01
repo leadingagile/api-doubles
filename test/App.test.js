@@ -86,5 +86,23 @@ describe('App', () => {
 
         })
 
+        it('can respond to post requests', () => {
+            const double = {
+                request: {
+                    method: 'POST',
+                    url: 'http://localhost:8001/example'
+                },
+                response: {
+                    status: 200
+                }
+            }
+
+            app.load(double)
+
+            app.serve()
+
+            return client.post('http://localhost:8001/example', { data: "data"}).then(response => expect(response.status).to.eq(200))
+        })
+
     })
 })
