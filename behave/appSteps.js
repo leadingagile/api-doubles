@@ -1,6 +1,11 @@
 const chai = require('chai')
 const App = require('../src/App')
 
+const app = new App()
+AfterAll( function () {
+     app.stop()
+})
+
 Given('a config file', function () {
     this.config = {
         doubles: [
@@ -19,7 +24,9 @@ Given('a config file', function () {
 });
 
 When('the app is started', function () {
-    this.app = new App()
+    this.app = app;
+
+
 });
 
 Then('the server will start with config variables', function () {
@@ -35,6 +42,6 @@ Given('an incorrect config file', function () {
 
 Then('the app will throw an error', function () {
     expect(() => this.app.run(this.config)).to.throw(Error)
-});
 
+});
 

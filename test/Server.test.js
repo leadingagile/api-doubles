@@ -4,6 +4,7 @@ const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseD
 } = require('./testDoubles')
 
 const Server = require('../src/Server')
+const client = require("axios");
 
 describe('Server', () => {
     let server
@@ -11,16 +12,31 @@ describe('Server', () => {
         server = new Server
     })
 
+
     it('can exist', () => {
         expect(server).to.be.ok
     })
 
     describe('start()', () => {
+        afterEach(() => server.close())
+
         it('can be started', () => {
-            // server.start()
+            server.start()
 
             expect(server).to.be.ok
 
+        })
+
+        it('defaults to a port when none is provided', () => {
+            server.start()
+
+            return client.get('http://localhost:8001').catch(({response}) => expect(response.status).to.eq(404))
+        })
+
+        it('uses a port when provided', () => {
+            server.start(8002)
+
+            return client.get('http://localhost:8002').catch(({response}) => expect(response.status).to.eq(404))
         })
     })
 

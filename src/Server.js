@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 8001
 
 class Server {
     #server
@@ -12,7 +11,7 @@ class Server {
     getMessage() {
         return this.message
     }
-    start() {
+    start(port = 8001) {
         this.allDoubles.forEach(double => {
             let url = new URL(double.request.url)
 
@@ -23,9 +22,10 @@ class Server {
             }
 
         })
-            app.use((req, res) => {
-                res.sendStatus(404)
-            })
+
+        // app.use((req, res) => {
+        //     res.sendStatus(404)
+        // })
 
         this.#server = app.listen(port, () => {
             console.log("Listening on port " + port)
@@ -33,7 +33,9 @@ class Server {
     }
 
     close() {
-        this.#server.close()
+        this.#server.close((err) => {
+            console.log('server closed')
+        })
     }
 
     request(method, url) {
@@ -80,6 +82,7 @@ class Server {
             })
         }
 
+        console.log({registeredDouble:double})
         this.allDoubles.push(double)
     }
 }

@@ -2,7 +2,6 @@ const expect = require('chai').expect
 const client = require('axios')
 
 const App = require('../src/App')
-const {missingDoubleConfig, doubleNotArrayConfig, oneDoubleConfig} = require('./doubler.config')
 
 describe('App', () => {
     let app
@@ -19,18 +18,28 @@ describe('App', () => {
     })
 
     describe('serve()', () => {
+        afterEach(() => app.stop())
 
         it('defaults to a port when none is provided', () => {
             app.serve()
 
             return client.get('http://localhost:8001').catch(({response}) => expect(response.status).to.eq(404))
         })
+
+        it('uses a port when provided', () => {
+            app.serve({port: 8002})
+
+            return client.get('http://localhost:8002').catch(({response}) => expect(response.status).to.eq(404))
+        })
     })
 
     describe('load()', () => {
+        afterEach(() => app.stop())
+
         it('throws error when no doubles are provided', () => {
             expect(() => app.load()).to.throw('(load) requires [doubles]')
         })
+
         it('receives doubles array with one double', () => {
             const doubles = []
             const double = {
@@ -54,8 +63,28 @@ describe('App', () => {
             expect(app.server.allDoubles[0]).to.deep.equal(double)
         })
 
-        it('throws error if doubles is not an array', () => {
-            expect(() => app.load('Not an array').to.throw('doubles is not an array'))
+        it('throws error if doubles is not an array or object', () => {
+            expect(() => app.load('Not an array or object').to.throw('doubles is not an array or object'))
         })
+
+        it('double is available when it is added', () => {
+            const double = {
+                request: {
+                    method: 'GET',
+                    url: 'http://localhost:8003/example'
+                },
+                response: {
+                    status: 200
+                }
+            }
+
+            app.load(double)
+
+            app.serve({port: 8003})
+
+            return client.get('http://localhost:8003/example').then(response => expect(response.status).to.eq(200))
+
+        })
+
     })
 })
