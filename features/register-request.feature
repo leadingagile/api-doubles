@@ -26,10 +26,15 @@ Scenario Outline: Receive a response with specific status code
 	| 301 	 |
 
 
-Scenario: Receive a response with expected data
+Scenario Outline: Receive a response with expected data for get and post request
 	Given a double with the url "http://localhost:8001/some-example" and a response has been registered
-	When the client makes a "get" request to "http://localhost:8001/some-example"
+	When the client makes a <httpMethod> request to "http://localhost:8001/some-example"
 	Then the client should receive a response
+
+	Examples:
+		| httpMethod |
+		| "get" |
+		| "post" |
 
 Scenario: Receive a request to remove doubles with uri
 	Given Given a registered double with url "http://localhost:8001/redirect-example"

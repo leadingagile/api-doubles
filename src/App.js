@@ -25,7 +25,7 @@ class App {
 
             return
         }
-        console.log({mydoubles:doubles})
+
         this.server.registerDouble(doubles)
     }
 

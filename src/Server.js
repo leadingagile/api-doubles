@@ -82,7 +82,6 @@ class Server {
             })
         }
 
-        console.log({registeredDouble:double})
         this.allDoubles.push(double)
     }
 }
