@@ -10,7 +10,7 @@ describe('App', () => {
     })
 
     it('returns status 200 when hitting registered endpoint', () => {
-        const url = 'http://localhost:8001/some-other-example'
+        const url = 'http://localhost:8001/'
         const config = {}
         const simpleDouble = {
             request: {
@@ -30,8 +30,8 @@ describe('App', () => {
 
     })
 
-    it('returns expected payload', () => {
-        const url = 'http://localhost:8001/other-example'
+    it('returns expected payload for GET', () => {
+        const url = 'http://localhost:8001/getPayloadTest'
         const expectedPayload = 'expectedPayload'
         const config = {}
         const simpleDouble = {
@@ -41,13 +41,37 @@ describe('App', () => {
             },
             response: {
                 status: 200,
-                data: 'expectedPayload',
+                data: expectedPayload,
             }
         }
         config.doubles = [simpleDouble]
 
         app.serve(config)
         return client.get(url)
+            .then(response => {
+                expect(response).to.have.property('data',expectedPayload)
+            })
+
+    })
+
+    it('returns expected payload for POST', () => {
+        const url = 'http://localhost:8001/postPayloadTest'
+        const expectedPayload = 'expectedPayload'
+        const config = {}
+        const simpleDouble = {
+            request: {
+                method: 'POST',
+                url: url,
+            },
+            response: {
+                status: 200,
+                data: expectedPayload,
+            }
+        }
+        config.doubles = [simpleDouble]
+
+        app.serve(config)
+        return client.post(url)
             .then(response => {
                 expect(response).to.have.property('data',expectedPayload)
             })

@@ -27,7 +27,7 @@ class Server {
             if(double.request.method === 'POST') {
                 app.post(url.pathname,(req, res) => {
                     res.status(double.response.status)
-                    res.send("HelloPost")
+                    res.send(data)
                 })
             }
 
