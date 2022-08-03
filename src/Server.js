@@ -17,13 +17,15 @@ class Server {
 
             if(double.request.method === 'GET') {
                 app.get(url.pathname,(req, res) => {
-                    res.send("Hello")
+                    res.status(double.response.status)
+                    res.send("HelloGet")
                 })
             }
 
             if(double.request.method === 'POST') {
                 app.post(url.pathname,(req, res) => {
-                    res.send("Hello")
+                    res.status(double.response.status)
+                    res.send("HelloPost")
                 })
             }
 
