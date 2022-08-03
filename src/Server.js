@@ -14,11 +14,13 @@ class Server {
     start(port = 8001) {
         this.allDoubles.forEach(double => {
             let url = new URL(double.request.url)
+            let data = double.response.data
 
+            console.log(data)
             if(double.request.method === 'GET') {
                 app.get(url.pathname,(req, res) => {
                     res.status(double.response.status)
-                    res.send("HelloGet")
+                    res.send(data)
                 })
             }
 

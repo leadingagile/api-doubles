@@ -31,7 +31,8 @@ describe('App', () => {
     })
 
     it('returns expected payload', () => {
-        const url = 'http://localhost:8001/some-other-example'
+        const url = 'http://localhost:8001/other-example'
+        const expectedPayload = 'expectedPayload'
         const config = {}
         const simpleDouble = {
             request: {
@@ -40,16 +41,16 @@ describe('App', () => {
             },
             response: {
                 status: 200,
-                //TODO payload
-                //data: {"HelloGet"}
+                data: 'expectedPayload',
             }
         }
         config.doubles = [simpleDouble]
 
         app.serve(config)
-
         return client.get(url)
-            .then(response => expect(response).to.have.property('data',"HelloGet"))
+            .then(response => {
+                expect(response).to.have.property('data',expectedPayload)
+            })
 
     })
 
