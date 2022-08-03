@@ -87,4 +87,37 @@ describe('App', () => {
                return expect(err.response).to.have.property('status',404)
             })
     })
+
+    it('selects correct double', () => {
+        const config = {}
+        const simpleDoubleGet1 = {
+            request: {
+                method: 'GET',
+                url: 'http://localhost:8001/simpleDoubleGet1',
+            },
+            response: {
+                status: 200,
+                data: 'simpleDouble1Payload',
+            }
+        }
+        const simpleDoubleGet2 = {
+            request: {
+                method: 'GET',
+                url: 'http://localhost:8001/simpleDoubleGet2',
+            },
+            response: {
+                status: 200,
+                data: 'simpleDouble2Payload',
+            }
+        }
+        config.doubles = [simpleDoubleGet1, simpleDoubleGet2]
+
+        app.serve(config)
+
+        return client.get('http://localhost:8001/simpleDoubleGet2')
+            .then(response => {
+                expect(response).to.have.property('data','simpleDouble2Payload')
+            })
+
+    })
 })

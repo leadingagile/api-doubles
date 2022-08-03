@@ -33,10 +33,6 @@ class Server {
 
         })
 
-        // app.use((req, res) => {
-        //     res.sendStatus(404)
-        // })
-
         this.#server = app.listen(port, () => {
             console.log("Listening on port " + port)
         })
