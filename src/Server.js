@@ -16,11 +16,24 @@ class Server {
             let url = new URL(double.request.url)
             let data = double.response.data
 
-            console.log(data)
+            // if (double.response.status === 301){
+            //     console.log('status 301')
+            //     app.get(url.pathname,(req, res) => {
+            //         res.redirect( 301, double.response.redirectURL)
+            //         res.send(data)
+            //     })
+            // }
+
             if(double.request.method === 'GET') {
+                console.log('method  get')
                 app.get(url.pathname,(req, res) => {
-                    res.status(double.response.status)
-                    res.send(data)
+                    if (double.response.status === 301) {
+                        res.redirect(301, double.response.redirectURL)
+                    }
+                    else {
+                        res.status(double.response.status)
+                        res.send(data)
+                    }
                 })
             }
 
@@ -30,7 +43,6 @@ class Server {
                     res.send(data)
                 })
             }
-
         })
 
         this.#server = app.listen(port, () => {
@@ -53,6 +65,11 @@ class Server {
                 }
             }
         }
+
+        // if (double.response.status === 301){
+        //     console.log('status 301')
+        //     response.redirect( 301, double.response.redirectURL)
+        // }
 
         this.response = double.response
         return double.response

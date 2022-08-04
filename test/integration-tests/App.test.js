@@ -1,5 +1,6 @@
 const App = require('../../src/App')
 const client = require('axios')
+const {response} = require("express");
 const expect = require('chai').expect
 
 describe('App', () => {
@@ -119,5 +120,30 @@ describe('App', () => {
                 expect(response).to.have.property('data','simpleDouble2Payload')
             })
 
+    })
+
+    //need to also do for post
+    //look into using a second localhost as the redirect endpoint
+    it('can redirect', ()=>{
+        const endPointUrlThatRedirects = 'http://localhost:8001/redirect-example';
+        const double = {
+            request: {
+                method: 'GET',
+                url: endPointUrlThatRedirects
+            },
+            response: {
+                status: 301,
+                redirectURL : 'http://google.com'
+            }
+        }
+
+        app.load(double)
+        app.serve()
+
+        return client.get(endPointUrlThatRedirects)
+            .then(response => {
+                //console.log(response.request.socket._host)
+                expect(response.status).to.eq(200)
+                expect(response.request.socket).to.have.property('_host','www.google.com')})
     })
 })
