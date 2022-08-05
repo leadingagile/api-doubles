@@ -33,10 +33,10 @@ describe('App', () => {
 
         })
 
-        it('uses second port when provided', () => {
-            app.serve({httpPort: 8002, httpsPort: 8003})
+        it('uses second https port when provided', () => {
+            app.serve({httpsPort: 8003})
 
-            return client.get('http://localhost:8003')
+            return client.get('https://localhost:8003')
                 .then(response =>
                     expect(response.status).to.eq(200))
         })

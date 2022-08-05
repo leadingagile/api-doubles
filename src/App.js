@@ -9,6 +9,8 @@ class App {
 
     serve(config = {}) {
         this.load(config.doubles || [])
+        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+        //dirty hack we need a LeadingAgile certificate
         this.server.start(config.httpPort, config.httpsPort)
     }
 
