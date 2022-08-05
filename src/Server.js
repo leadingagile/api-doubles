@@ -15,7 +15,7 @@ class Server {
     getMessage() {
         return this.message
     }
-    start(port = 8001) {
+    start(httpPort = 8001) {
         // const options = {
         //     key: fs.readFileSync( './src/key.pem'),
         //     cert: fs.readFileSync( './src/cert.pem'),
@@ -45,11 +45,11 @@ class Server {
             }
         })
         // this.#httpServer = https.createServer(options, app)
-        // this.#httpServer.listen(port, () => {
-        //     console.log("Listening on port " + port)
+        // this.#httpServer.listen(httpPort, () => {
+        //     console.log("Listening on httpPort " + httpPort)
         // })
-        this.#httpServer = app.listen(port, () => {
-            console.log("Listening on port " + port)
+        this.#httpServer = app.listen(httpPort, () => {
+            console.log("Listening on httpPort " + httpPort)
         })
     }
 

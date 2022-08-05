@@ -27,7 +27,7 @@ describe('App', () => {
         })
 
         it('uses a port when provided', () => {
-            app.serve({port: 8002})
+            app.serve({httpPort: 8002})
 
             return client.get('http://localhost:8002').catch(({response}) => expect(response.status).to.eq(404))
         })
@@ -80,7 +80,7 @@ describe('App', () => {
 
             app.load(double)
 
-            app.serve({port: 8003})
+            app.serve({httpPort: 8003})
 
             return client.get('http://localhost:8003/example').then(response => expect(response.status).to.eq(200))
 

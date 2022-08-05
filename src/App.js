@@ -9,7 +9,7 @@ class App {
 
     serve(config = {}) {
         this.load(config.doubles || [])
-        this.server.start(config.port)
+        this.server.start(config.httpPort)
     }
 
     load(doubles) {
