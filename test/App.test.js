@@ -23,13 +23,19 @@ describe('App', () => {
         it('defaults to a port when none is provided', () => {
             app.serve()
 
-            return client.get('http://localhost:8001').catch(({response}) => expect(response.status).to.eq(404))
+            return client.get('http://localhost:8001/').then(response => expect(response.status).to.eq(200))
         })
 
         it('uses a port when provided', () => {
             app.serve({httpPort: 8002})
 
-            return client.get('http://localhost:8002').catch(({response}) => expect(response.status).to.eq(404))
+            return client.get('http://localhost:8002/').then(response => expect(response.status).to.eq(200))
+        })
+
+        it.skip('uses both ports when provided', () => {
+            app.serve({httpPort: 8002, httpsPort: 8003})
+
+            return client.get('https://localhost:8003').then(response => expect(response.status).to.eq(200))
         })
     })
 

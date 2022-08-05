@@ -15,12 +15,14 @@ class Server {
     getMessage() {
         return this.message
     }
-    start(httpPort = 8001) {
+    start(httpPort = 8001, httpsPort = 8002) {
         // const options = {
         //     key: fs.readFileSync( './src/key.pem'),
         //     cert: fs.readFileSync( './src/cert.pem'),
         // };
-
+        app.get('/',(req, res) => {
+            res.send('HomePage')
+        })
         this.allDoubles.forEach(double => {
             let url = new URL(double.request.url)
             let data = double.response.data
