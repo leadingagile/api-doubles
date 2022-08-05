@@ -1,8 +1,12 @@
 const express = require('express')
 const app = express()
+const https = require('https')
+const fs = require('fs')
+
 
 class Server {
-    #server
+    #httpServer
+    #httpsServer
     constructor() {
         this.message = ''
         this.allDoubles = []
@@ -12,20 +16,16 @@ class Server {
         return this.message
     }
     start(port = 8001) {
+        // const options = {
+        //     key: fs.readFileSync( './src/key.pem'),
+        //     cert: fs.readFileSync( './src/cert.pem'),
+        // };
+
         this.allDoubles.forEach(double => {
             let url = new URL(double.request.url)
             let data = double.response.data
 
-            // if (double.response.status === 301){
-            //     console.log('status 301')
-            //     app.get(url.pathname,(req, res) => {
-            //         res.redirect( 301, double.response.redirectURL)
-            //         res.send(data)
-            //     })
-            // }
-
             if(double.request.method === 'GET') {
-                console.log('method  get')
                 app.get(url.pathname,(req, res) => {
                     if (double.response.status === 301) {
                         res.redirect(301, double.response.redirectURL)
@@ -44,14 +44,17 @@ class Server {
                 })
             }
         })
-
-        this.#server = app.listen(port, () => {
+        // this.#httpServer = https.createServer(options, app)
+        // this.#httpServer.listen(port, () => {
+        //     console.log("Listening on port " + port)
+        // })
+        this.#httpServer = app.listen(port, () => {
             console.log("Listening on port " + port)
         })
     }
 
     close() {
-        this.#server.close((err) => {
+        this.#httpServer.close((err) => {
             console.log('server closed')
         })
     }
@@ -65,11 +68,6 @@ class Server {
                 }
             }
         }
-
-        // if (double.response.status === 301){
-        //     console.log('status 301')
-        //     response.redirect( 301, double.response.redirectURL)
-        // }
 
         this.response = double.response
         return double.response
