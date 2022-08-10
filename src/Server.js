@@ -30,22 +30,29 @@ class Server {
             let url = new URL(double.request.url)
             let data = double.response.data
 
-            if (double.request.method === 'GET') {
+            if (double.attachment !== undefined){
                 app.get(url.pathname, (req, res) => {
-                    if (double.response.status === 301) {
-                        res.redirect(301, double.response.redirectURL)
-                    } else {
-                        res.status(double.response.status)
-                        res.send(data)
-                    }
+                    res.download(double.attachment.pathToFile)
                 })
             }
+            else {
+                if (double.request.method === 'GET') {
+                    app.get(url.pathname, (req, res) => {
+                        if (double.response.status === 301) {
+                            res.redirect(301, double.response.redirectURL)
+                        } else {
+                            res.status(double.response.status)
+                            res.send(data)
+                        }
+                    })
+                }
 
-            if (double.request.method === 'POST') {
-                app.post(url.pathname, (req, res) => {
-                    res.status(double.response.status)
-                    res.send(data)
-                })
+                if (double.request.method === 'POST') {
+                    app.post(url.pathname, (req, res) => {
+                        res.status(double.response.status)
+                        res.send(data)
+                    })
+                }
             }
         })
         this.#httpServer = app.listen(httpPort, () => {

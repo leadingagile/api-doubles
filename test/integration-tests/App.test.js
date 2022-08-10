@@ -2,6 +2,7 @@ const App = require('../../src/App')
 const client = require('axios')
 const {response} = require("express");
 const expect = require('chai').expect
+const fs =require('fs')
 
 describe('App', () => {
     const app = new App;
@@ -145,5 +146,30 @@ describe('App', () => {
                 //console.log(response.request.socket._host)
                 expect(response.status).to.eq(200)
                 expect(response.request.socket).to.have.property('_host','www.google.com')})
+    })
+
+    it('can serve a resource file', ()=>{
+        const resourceUrl =  'http://localhost:8001/doubles/bundle.js'
+        const config = {
+            responseType: 'stream'
+        }
+        const double = {
+            request: {
+                method: 'GET',
+                url: resourceUrl
+            },
+            attachment : {pathToFile : '/Users/aaron.pietryga/Development/api-doubles/test/resourceFiles/bundle.js'},
+            response:{
+                status: 200
+            }
+        }
+        app.load(double)
+        app.serve()
+
+       return client.get(resourceUrl, config).then(function (response) {
+                // response.data.pipe(fs.createWriteStream('bundle.js'))
+                expect(response.headers['content-type']).to.eq('application/javascript; charset=UTF-8')
+                expect(response.status).to.eq(200)
+            });
     })
 })

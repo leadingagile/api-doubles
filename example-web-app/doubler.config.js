@@ -1551,11 +1551,22 @@ const postDouble = {
     }
 }
 
+const staticFileDouble = {
+    request: {
+        method: 'GET',
+        url: 'http://localhost:8001/doubles/bundle.js'
+    },
+    attachment : {pathToFile : '/Users/aaron.pietryga/Development/api-doubles/test/resourceFiles/bundle.js'},
+    response:{
+        status: 200
+    }
+}
 
 module.exports = {
     doubles: [
         getDouble,
         postDouble,
         getRedirectDouble,
+        staticFileDouble
     ]
 }
