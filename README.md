@@ -18,7 +18,6 @@ In order to drive the development of the application, we are using a BDD/TDD app
 - `test` - Unit tests
 - `src` - Source code
 
-> Other files are remnants of React install that may be moved or removed
 
 ## Commands
 `npm run behave`
@@ -26,6 +25,12 @@ In order to drive the development of the application, we are using a BDD/TDD app
 
 `npm run test:unit`
 : run unit tests
+
+`npm run test:integration`
+: run all integration tests
+
+`npm run start:doubles [pathToConfig]`
+: start the app. first argument is a path to a json config file
 
 ## Contributors
 
