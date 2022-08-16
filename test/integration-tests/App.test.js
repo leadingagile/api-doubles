@@ -80,6 +80,30 @@ describe('App', () => {
 
     })
 
+    it('returns expected json payload', () => {
+        const url = 'http://localhost:8001/Json'
+        const expectedPayload = {"success": true}
+        const config = {}
+        const simpleDouble = {
+            request: {
+                method: 'POST',
+                url: url,
+            },
+            response: {
+                status: 200,
+                data: expectedPayload,
+            }
+        }
+        config.doubles = [simpleDouble]
+
+        app.serve(config)
+        return client.post(url)
+            .then(response => {
+                //console.log(response.headers['content-type'])
+                expect(response.data).to.deep.eq(expectedPayload)
+            })
+    })
+
     it('returns status 404 when hitting not registered endpoint', () => {
 
         app.serve()
