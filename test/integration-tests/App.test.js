@@ -4,11 +4,17 @@ const {response} = require("express");
 const expect = require('chai').expect
 const fs =require('fs')
 
+const downloadPath = './deleteMeBundle.js'
+
 describe('App', () => {
     const app = new App;
 
     afterEach(() => {
         app.stop()
+        if(fs.existsSync(downloadPath)) {
+            fs.unlinkSync(downloadPath)
+        }
+
     })
 
     it('returns status 200 when hitting registered endpoint', () => {
@@ -147,7 +153,6 @@ describe('App', () => {
 
     })
 
-    //need to also do for post
     //look into using a second localhost as the redirect endpoint
     it('can redirect', ()=>{
         const endPointUrlThatRedirects = 'http://localhost:8001/redirect-example';
@@ -174,10 +179,8 @@ describe('App', () => {
     })
 
     it('can serve a resource file', ()=>{
-        const resourceUrl =  'http://localhost:8001/doubles/bundle.js'
-        const config = {
-            responseType: 'stream'
-        }
+        const resourceUrl =  'http://localhost:8001/doubles/GetMeBundle.js'
+
         const double = {
             request: {
                 method: 'GET',
@@ -191,10 +194,16 @@ describe('App', () => {
         app.load(double)
         app.serve()
 
-       return client.get(resourceUrl, config).then(function (response) {
-                // response.data.pipe(fs.createWriteStream('bundle.js'))
+        const axiosConfig = {
+            responseType: 'stream'
+        }
+
+       return client.get(resourceUrl, axiosConfig)
+           .then(response => {
+                response.data.pipe(fs.createWriteStream('deleteMeBundle.js'))
                 expect(response.headers['content-type']).to.eq('application/javascript; charset=UTF-8')
                 expect(response.status).to.eq(200)
-            });
+                //expect(fs.existsSync('./deleteMeBundle.js')).to.be.true
+            })
     })
 })
