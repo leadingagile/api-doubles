@@ -20,11 +20,11 @@ class Server {
 
     start(httpPort = 8001, httpsPort = 8010) {
         const options = {
-            key: fs.readFileSync('./src/key.pem'),
-            cert: fs.readFileSync('./src/cert.pem'),
+            key: fs.readFileSync('./rootCA.key'),
+            cert: fs.readFileSync('./rootCA.pem'),
         };
         app.get('/', (req, res) => {
-            res.send('HomePage')
+            res.send('Server started without any config')
         })
         this.allDoubles.forEach(double => {
             let url = new URL(double.request.url)

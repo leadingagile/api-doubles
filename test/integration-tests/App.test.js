@@ -144,6 +144,7 @@ describe('App', () => {
         return client.get(endPointUrlThatRedirects)
             .then(response => {
                 //console.log(response.request.socket._host)
+                //console.log(response)
                 expect(response.status).to.eq(200)
                 expect(response.request.socket).to.have.property('_host','www.google.com')})
     })
@@ -158,7 +159,7 @@ describe('App', () => {
                 method: 'GET',
                 url: resourceUrl
             },
-            attachment : {pathToFile : '/Users/aaron.pietryga/Development/api-doubles/test/resourceFiles/bundle.js'},
+            attachment : {pathToFile : './test/resourceFiles/bundle.js'},
             response:{
                 status: 200
             }

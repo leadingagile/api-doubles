@@ -24,7 +24,7 @@ describe('application', () => {
         expect(doubler.server.allDoubles).to.deep.equal(doublerConfig.doubles)
     })
 
-    it('returns status 200 when hitting registered endpoint', () => {
+    it('returns expected status when hitting registered endpoint', () => {
         const getUrl = 'http://localhost:8001/ntzlibs/etc.clientlibs/clientlibs/granite/utils.min.js'
 
         doubler.serve(doublerConfig)
