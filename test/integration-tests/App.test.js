@@ -151,7 +151,8 @@ describe('App', () => {
 
     //look into using a second localhost as the redirect endpoint
     it('can redirect', ()=>{
-        const endPointUrlThatRedirects = 'http://localhost:8001/redirect-example';
+        const endPointUrlThatRedirects = 'http://localhost:8001/redirect-from';
+        // const redirectDestination = 'http://localhost:8001/redirect-to';
         const double = {
             request: {
                 method: 'GET',
@@ -199,7 +200,7 @@ describe('App', () => {
         const axiosConfig = {
             responseType: 'stream'
         }
-        
+
         return client.get(resourceUrl, axiosConfig)
            .then(response => {
                const downloadFile = 'deleteMeBundle.js';
