@@ -19,7 +19,7 @@ In order to drive the development of the application, we are using a BDD/TDD app
 - `src` - Source code
 
 
-## Commands
+## Running Tests
 `npm run behave`
 : run all behavior tests
 
@@ -29,6 +29,7 @@ In order to drive the development of the application, we are using a BDD/TDD app
 `npm run test:integration`
 : run all integration tests
 
+## Starting a Doubles Server
 `npm run start:doubles [pathToConfig]`
 : start the app. first argument is a path to a json config file
 
