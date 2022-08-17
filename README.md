@@ -34,7 +34,7 @@ In order to drive the development of the application, we are using a BDD/TDD app
 : start the app. first argument is a path to a json config file
 
 ## Using a Doubles Server Programatically
-TODO talk about example-web-app here
+Look at `./example-web-app/README.md` for a code example of using api-doubles as a library.
 
 ## Contributors
 
