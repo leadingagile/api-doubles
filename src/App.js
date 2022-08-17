@@ -1,6 +1,5 @@
 const Server = require("./Server");
-// How can we use and test default config without passing parameter in run
-const defaultConfig = require("../example-web-app/doubler.config")
+
 class App {
 
     constructor() {
