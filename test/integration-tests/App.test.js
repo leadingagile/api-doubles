@@ -11,10 +11,6 @@ describe('App', () => {
 
     afterEach(() => {
         app.stop()
-        if(fs.existsSync(downloadPath)) {
-            fs.unlinkSync(downloadPath)
-        }
-
     })
 
     it('returns status 200 when hitting registered endpoint', () => {
@@ -179,6 +175,12 @@ describe('App', () => {
     })
 
     it('can serve a resource file', ()=>{
+        // Make sure it's not already there
+        if (fs.existsSync('./deleteMeBundle.js')) {
+            fs.unlinkSync('./deleteMeBundle.js')
+            console.log('DELETED FILE before')
+        }
+
         const resourceUrl =  'http://localhost:8001/doubles/GetMeBundle.js'
 
         const double = {
@@ -198,12 +200,22 @@ describe('App', () => {
             responseType: 'stream'
         }
 
-       return client.get(resourceUrl, axiosConfig)
+
+        return client.get(resourceUrl, axiosConfig)
            .then(response => {
-                response.data.pipe(fs.createWriteStream('deleteMeBundle.js'))
-                expect(response.headers['content-type']).to.eq('application/javascript; charset=UTF-8')
-                expect(response.status).to.eq(200)
-                //expect(fs.existsSync('./deleteMeBundle.js')).to.be.true
+               const fileForStream = 'deleteMeBundle.js';
+               let stream = fs.createWriteStream(fileForStream)
+               stream.once("finish", () => {
+                   expect(response.headers['content-type']).to.eq('application/javascript; charset=UTF-8')
+                   expect(response.status).to.eq(200)
+
+                   // We're not sure when the file is written, but it seems to be after this line
+                   expect(fs.existsSync(fileForStream)).to.be.true
+                   fs.unlinkSync(fileForStream)
+               })
+               response.data.pipe(stream)
+
             })
+
     })
 })
