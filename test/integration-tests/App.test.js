@@ -182,13 +182,13 @@ describe('App', () => {
         }
 
         const resourceUrl =  'http://localhost:8001/doubles/GetMeBundle.js'
-
+        const pathToResourceFile = './test/resourceFiles/bundle.js';
         const double = {
             request: {
                 method: 'GET',
                 url: resourceUrl
             },
-            attachment : {pathToFile : './test/resourceFiles/bundle.js'},
+            attachment : {pathToFile : pathToResourceFile},
             response:{
                 status: 200
             }
@@ -199,19 +199,23 @@ describe('App', () => {
         const axiosConfig = {
             responseType: 'stream'
         }
-
-
+        
         return client.get(resourceUrl, axiosConfig)
            .then(response => {
-               const fileForStream = 'deleteMeBundle.js';
-               let stream = fs.createWriteStream(fileForStream)
+               const downloadFile = 'deleteMeBundle.js';
+               let stream = fs.createWriteStream(downloadFile)
                stream.once("finish", () => {
                    expect(response.headers['content-type']).to.eq('application/javascript; charset=UTF-8')
                    expect(response.status).to.eq(200)
 
-                   // We're not sure when the file is written, but it seems to be after this line
-                   expect(fs.existsSync(fileForStream)).to.be.true
-                   fs.unlinkSync(fileForStream)
+                   expect(fs.existsSync(downloadFile)).to.be.true
+
+                   const bundleJs = fs.readFileSync(pathToResourceFile).toString()
+                   const deleteMeBundleJs = fs.readFileSync(downloadFile).toString()
+
+                   expect(bundleJs).to.eq(deleteMeBundleJs)
+
+                   fs.unlinkSync(downloadFile)
                })
                response.data.pipe(stream)
 
