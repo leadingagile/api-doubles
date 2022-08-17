@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test:unit": "mocha --exit",
-    "test:integration": "mocha ./test/integration-tests --exit",
+    "test:functional": "mocha ./test/functional-tests --exit",
     "start:doubles": "node src/runServer.js",
     "behave": "cucumber-js features --require behave/setup.js --require behave/steps.js --require behave/appSteps.js"
   },

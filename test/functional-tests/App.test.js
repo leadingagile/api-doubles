@@ -60,7 +60,7 @@ describe('App', () => {
 
     it('returns expected payload for POST', () => {
         const url = 'http://localhost:8001/postPayloadTest'
-        const expectedPayload = 'expectedPayload'
+        const expectedPayload = 'plainTextPayload'
         const config = {}
         const simpleDouble = {
             request: {
@@ -78,11 +78,12 @@ describe('App', () => {
         return client.post(url)
             .then(response => {
                 expect(response).to.have.property('data',expectedPayload)
+                expect(response.headers['content-type']).to.eq('text/html; charset=utf-8')
             })
 
     })
 
-    it('returns expected json payload', () => {
+    it('can return json in response data', () => {
         const url = 'http://localhost:8001/Json'
         const expectedPayload = {"success": true}
         const config = {}
@@ -101,8 +102,8 @@ describe('App', () => {
         app.serve(config)
         return client.post(url)
             .then(response => {
-                //console.log(response.headers['content-type'])
                 expect(response.data).to.deep.eq(expectedPayload)
+                expect(response.headers['content-type']).to.eq('application/json; charset=utf-8')
             })
     })
 
@@ -223,4 +224,63 @@ describe('App', () => {
             })
 
     })
+
+    it('defaults to a port when none is provided', () => {
+        app.serve()
+
+        return client.get('http://localhost:8001/').then(response => expect(response.status).to.eq(200))
+    })
+
+    it('uses a port when provided', () => {
+        app.serve({httpPort: 8002})
+
+        return client.get('http://localhost:8002/').then(response => expect(response.status).to.eq(200))
+
+    })
+
+    it('uses second https port when provided', () => {
+        app.serve({httpsPort: 8003})
+
+        return client.get('https://localhost:8003')
+            .then(response =>
+                expect(response.status).to.eq(200))
+    })
+
+    it('double is available when it is added', () => {
+        const double = {
+            request: {
+                method: 'GET',
+                url: 'http://localhost:8003/example'
+            },
+            response: {
+                status: 200
+            }
+        }
+
+        app.load(double)
+
+        app.serve({httpPort: 8003})
+
+        return client.get('http://localhost:8003/example').then(response => expect(response.status).to.eq(200))
+
+    })
+
+    it('can respond to post requests', () => {
+        const double = {
+            request: {
+                method: 'POST',
+                url: 'http://localhost:8001/example'
+            },
+            response: {
+                status: 200
+            }
+        }
+
+        app.load(double)
+
+        app.serve()
+
+        return client.post('http://localhost:8001/example', { data: "data"}).then(response => expect(response.status).to.eq(200))
+    })
+
 })
