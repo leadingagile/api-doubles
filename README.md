@@ -29,9 +29,12 @@ In order to drive the development of the application, we are using a BDD/TDD app
 `npm run test:integration`
 : run all integration tests
 
-## Starting a Doubles Server
+## Starting a Doubles Server from the Command Line
 `npm run start:doubles [pathToConfig]`
 : start the app. first argument is a path to a json config file
+
+## Using a Doubles Server Programatically
+TODO talk about example-web-app here
 
 ## Contributors
 
