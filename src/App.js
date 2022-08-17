@@ -18,7 +18,6 @@ class App {
 
         if (!Array.isArray(doubles) && typeof doubles !== 'object') throw Error('doubles is not an array or object')
 
-
         if(Array.isArray(doubles)) {
             doubles.forEach(double => {
                 this.server.registerDouble(double)
@@ -29,10 +28,6 @@ class App {
 
         this.server.registerDouble(doubles)
     }
-
-    get() {}
-
-    post() {}
 
     stop() {
         this.server.close()

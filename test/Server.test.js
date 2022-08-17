@@ -12,20 +12,8 @@ describe('Server', () => {
         server = new Server
     })
 
-
-    it('can exist', () => {
-        expect(server).to.be.ok
-    })
-
     describe('start()', () => {
         afterEach(() => server.close())
-
-        it('can be started', () => {
-            server.start()
-
-            expect(server).to.be.ok
-
-        })
 
         it('defaults to a port when none is provided', () => {
             server.start()

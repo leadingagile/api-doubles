@@ -231,14 +231,13 @@ describe('App', () => {
         return client.get('http://localhost:8001/').then(response => expect(response.status).to.eq(200))
     })
 
-    it('uses a port when provided', () => {
+    it('passes http port when provided in config object', () => {
         app.serve({httpPort: 8002})
 
         return client.get('http://localhost:8002/').then(response => expect(response.status).to.eq(200))
-
     })
 
-    it('uses second https port when provided', () => {
+    it('passes https port when provided in config object', () => {
         app.serve({httpsPort: 8003})
 
         return client.get('https://localhost:8003')
