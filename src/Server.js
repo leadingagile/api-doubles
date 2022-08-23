@@ -12,30 +12,34 @@ class Server {
         this.message = ''
         this.allDoubles = []
         this.response = {status: 404}
+        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
     }
 
     getMessage() {
         return this.message
     }
 
+    serve(config = {}) {
+        this.load(config.doubles || [])
+        //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+        //dirty hack we need a certificate
+        this.start(config.httpPort, config.httpsPort)
+    }
+
     start(httpPort = 8001, httpsPort = 8010) {
-        const options = {
-            key: fs.readFileSync('./rootCA.key'),
-            cert: fs.readFileSync('./rootCA.pem'),
-        };
         app.get('/', (req, res) => {
             res.send('Server started without any config')
         })
+
         this.allDoubles.forEach(double => {
             let url = new URL(double.request.url)
             let data = double.response.data
 
-            if (double.attachment !== undefined){
+            if (double.attachment !== undefined) {
                 app.get(url.pathname, (req, res) => {
                     res.download(double.attachment.pathToFile)
                 })
-            }
-            else {
+            } else {
                 if (double.request.method === 'GET') {
                     app.get(url.pathname, (req, res) => {
                         if (double.response.status === 301) {
@@ -55,19 +59,30 @@ class Server {
                 }
             }
         })
+
         this.#httpServer = app.listen(httpPort, () => {
             console.log("Listening on httpPort " + httpPort)
         })
+
+        const options = {
+            key: fs.readFileSync('./rootCA.key'),
+            cert: fs.readFileSync('./rootCA.pem'),
+        }
         this.#httpsServer = https.createServer(options, app)
         this.#httpsServer.listen(httpsPort, () => {
             console.log("Listening on httpsPort " + httpsPort)
         })
     }
 
+    stop() {
+        this.close()
+    }
+
     close() {
         this.#httpServer.close((err) => {
             console.log('server closed')
         })
+
         this.#httpsServer.close((err) => {
             console.log('server closed')
         })
@@ -93,11 +108,26 @@ class Server {
         } else {
             this.message = 'Invalid uri: Not registered'
         }
-
     }
 
     isRegistered(uri) {
         return this.allDoubles.some(double => double.request.url === uri)
+    }
+
+    load(doubles) {
+        if (!doubles) throw Error('(load) requires [doubles]')
+
+        if (!Array.isArray(doubles) && typeof doubles !== 'object') throw Error('doubles is not an array or object')
+
+        if (Array.isArray(doubles)) {
+            doubles.forEach(double => {
+                this.registerDouble(double)
+            })
+
+            return
+        }
+
+        this.registerDouble(doubles)
     }
 
     registerDouble(double) {

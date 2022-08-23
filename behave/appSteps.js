@@ -1,5 +1,5 @@
 const chai = require('chai')
-const App = require('../src/App')
+const App = require('../src/Server')
 
 const app = new App()
 AfterAll( function () {
@@ -31,7 +31,7 @@ When('the app is started', function () {
 
 Then('the server will start with config variables', function () {
     this.app.serve(this.config)
-    expect(this.app.server.allDoubles.length).to.equal(1)
+    expect(this.app.allDoubles.length).to.equal(1)
 })
 
 Given('an incorrect config file', function () {

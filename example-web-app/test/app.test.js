@@ -1,6 +1,6 @@
 // import Doubler from '@la-studios/doubler'
 
-const Doubler = require('../../src/App')
+const Doubler = require('../../src/Server')
 
 const doublerConfig = require('../doubler.config')
 const client = require("axios");

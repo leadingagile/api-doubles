@@ -1,4 +1,4 @@
-const App = require('../../src/App')
+const App = require('../../src/Server')
 const client = require('axios')
 const {response} = require("express");
 const expect = require('chai').expect

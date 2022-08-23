@@ -1,4 +1,4 @@
-const App = require('./App')
+const App = require('./Server')
 const app = new App()
 const fs = require('fs')
 
