@@ -5,8 +5,8 @@ const fs = require('fs')
 
 
 class Server {
-    #httpServer
-    #httpsServer
+    httpServer
+    httpsServer
 
     constructor() {
         this.message = ''
@@ -60,7 +60,7 @@ class Server {
             }
         })
 
-        this.#httpServer = app.listen(httpPort, () => {
+        this.httpServer = app.listen(httpPort, () => {
             console.log("Listening on httpPort " + httpPort)
         })
 
@@ -68,8 +68,8 @@ class Server {
             key: fs.readFileSync('./rootCA.key'),
             cert: fs.readFileSync('./rootCA.pem'),
         }
-        this.#httpsServer = https.createServer(options, app)
-        this.#httpsServer.listen(httpsPort, () => {
+        this.httpsServer = https.createServer(options, app)
+        this.httpsServer.listen(httpsPort, () => {
             console.log("Listening on httpsPort " + httpsPort)
         })
     }
@@ -79,11 +79,11 @@ class Server {
     }
 
     close() {
-        this.#httpServer.close((err) => {
+        this.httpServer.close((err) => {
             console.log('server closed')
         })
 
-        this.#httpsServer.close((err) => {
+        this.httpsServer.close((err) => {
             console.log('server closed')
         })
     }
