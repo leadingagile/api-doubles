@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const App = require('./Server')
+const App = require('../src/Server')
 const app = new App()
 const fs = require('fs')
 
