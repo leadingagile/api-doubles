@@ -5,8 +5,6 @@ const fs = require('fs')
 
 
 class Server {
-    httpServer
-    httpsServer
 
     constructor() {
         this.message = ''
