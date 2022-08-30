@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const https = require('https')
+// const https = require('https')
 const fs = require('fs')
 
 
@@ -21,10 +21,16 @@ class Server {
         this.load(config.doubles || [])
         //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
         //dirty hack we need a certificate
-        this.start(config.httpPort, config.httpsPort)
+        // this.start(config.httpPort, config.httpsPort)
+        this.start(config.httpPort)
     }
 
-    start(httpPort = 8001, httpsPort = 8010) {
+    // start(httpPort = 8001, httpsPort = 8010) {
+    //     app.get('/', (req, res) => {
+    //         res.send('Server started without any config')
+    //     })
+
+    start(httpPort = 8001) {
         app.get('/', (req, res) => {
             res.send('Server started without any config')
         })
@@ -62,14 +68,14 @@ class Server {
             console.log("Listening on httpPort " + httpPort)
         })
 
-        const options = {
-            key: fs.readFileSync('./rootCA.key'),
-            cert: fs.readFileSync('./rootCA.pem'),
-        }
-        this.httpsServer = https.createServer(options, app)
-        this.httpsServer.listen(httpsPort, () => {
-            console.log("Listening on httpsPort " + httpsPort)
-        })
+        // const options = {
+        //     key: fs.readFileSync('./rootCA.key'),
+        //     cert: fs.readFileSync('./rootCA.pem'),
+        // }
+        // this.httpsServer = https.createServer(options, app)
+        // this.httpsServer.listen(httpsPort, () => {
+        //     console.log("Listening on httpsPort " + httpsPort)
+        // })
     }
 
     stop() {
@@ -81,9 +87,9 @@ class Server {
             console.log('server closed')
         })
 
-        this.httpsServer.close((err) => {
-            console.log('server closed')
-        })
+        // this.httpsServer.close((err) => {
+        //     console.log('server closed')
+        // })
     }
 
     request(method, url) {

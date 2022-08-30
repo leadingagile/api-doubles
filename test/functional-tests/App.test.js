@@ -237,13 +237,13 @@ describe('App', () => {
         return client.get('http://localhost:8002/').then(response => expect(response.status).to.eq(200))
     })
 
-    it('passes https port when provided in config object', () => {
-        app.serve({httpsPort: 8003})
-
-        return client.get('https://localhost:8003')
-            .then(response =>
-                expect(response.status).to.eq(200))
-    })
+    // it('passes https port when provided in config object', () => {
+    //     app.serve({httpsPort: 8003})
+    //
+    //     return client.get('https://localhost:8003')
+    //         .then(response =>
+    //             expect(response.status).to.eq(200))
+    // })
 
     it('double is available when it is added', () => {
         const double = {

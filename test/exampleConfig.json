@@ -1,6 +1,5 @@
  {
     "httpPort": 8002,
-    "httpsPort": 8010,
     "doubles": [
         {
             "request": {
