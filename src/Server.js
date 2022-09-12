@@ -30,9 +30,6 @@ class Server {
     //     })
 
     start(httpPort = 8001) {
-        app.get('/', (req, res) => {
-            res.send('Server started without any config')
-        })
 
         function fnSendDataAndStatus(data, status) {
             //let data = (double.response.data === undefined) ? {} : double.response.data
@@ -41,6 +38,11 @@ class Server {
                 res.send(data)
             };
         }
+
+        //request to root
+        app.get('/', (req, res) =>
+            res.send('Doubles Server')
+        )
 
         //register doubles
         this.allDoubles.forEach(double => {
