@@ -15,6 +15,7 @@
     "test:unit": "mocha --exit",
     "test:functional": "mocha ./test/functional-tests --exit",
     "start:doubles": "node src/runServer.js",
+    "start:doublesWithExampleConfig": "node src/runServer.js ./exampleConfig.json",
     "behave": "cucumber-js features --require behave/setup.js --require behave/steps.js --require behave/appSteps.js"
   },
   "devDependencies": {

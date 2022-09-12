@@ -8,9 +8,7 @@ app.use(cors())
 class Server {
 
     constructor() {
-        this.message = ''
         this.allDoubles = []
-        this.response = {status: 404}
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
     }
 
@@ -36,33 +34,46 @@ class Server {
             res.send('Server started without any config')
         })
 
+        function fnSendDataAndStatus(data, status) {
+            //let data = (double.response.data === undefined) ? {} : double.response.data
+            return (req, res) => {
+                res.status(status)
+                res.send(data)
+            };
+        }
+
+        //register doubles
         this.allDoubles.forEach(double => {
-            let url = new URL(double.request.url)
-            let data = double.response.data
+            let url = new URL(double.request.url).pathname
+
+            if (double.response === undefined) double.response = {status: 200}
+            let responseStatus = double.response.status
+            let responseData = double.response.data
+
 
             if (double.attachment !== undefined) {
-                app.get(url.pathname, (req, res) => {
+                app.get(url, (req, res) => {
                     res.download(double.attachment.pathToFile)
                 })
-            } else {
-                if (double.request.method === 'GET') {
-                    app.get(url.pathname, (req, res) => {
-                        if (double.response.status === 301) {
-                            res.redirect(301, double.response.redirectURL)
-                        } else {
-                            res.status(double.response.status)
-                            res.send(data)
-                        }
-                    })
-                }
-
-                if (double.request.method === 'POST') {
-                    app.post(url.pathname, (req, res) => {
-                        res.status(double.response.status)
-                        res.send(data)
-                    })
-                }
+                return; //continue
             }
+
+            if (responseStatus === 301 || responseStatus === 302) { //only works with GET
+                app.get(url, (req, res) => {
+                    res.redirect(responseStatus , double.response.redirectURL)
+                })
+                return; //continue
+            }
+
+            if (double.request.method === 'GET') {
+                app.get(url, fnSendDataAndStatus(responseData, responseStatus))
+                return; //continue
+            }
+
+            if (double.request.method === 'POST') {
+                app.post(url, fnSendDataAndStatus(responseData, responseStatus))
+            }
+
         })
 
         this.httpServer = app.listen(httpPort, () => {
@@ -87,10 +98,6 @@ class Server {
         this.httpServer.close((err) => {
             console.log('server closed')
         })
-
-        // this.httpsServer.close((err) => {
-        //     console.log('server closed')
-        // })
     }
 
     request(method, url) {
@@ -139,9 +146,9 @@ class Server {
         if (!double.hasOwnProperty('request')) {
             throw new Error('Double missing request property.')
         }
-        if (!double.hasOwnProperty('response')) {
-            throw new Error('Double missing response property.')
-        }
+        // if (!double.hasOwnProperty('response')) {
+        //     throw new Error('Double missing response property.')
+        // }
 
         if (this.isRegistered(double.request.url)) {
             this.allDoubles = this.allDoubles.filter(exclusion => {
