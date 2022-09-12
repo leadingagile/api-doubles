@@ -31,6 +31,23 @@ describe('App', () => {
 
         return client.get(url)
             .then(response => expect(response).to.have.property('status',200))
+    })
+
+    it('returns status 200 when hitting registered endpoint and no status included in double', () => {
+        const url = 'http://localhost:8001/noStatusInConfig'
+        const config = {}
+        const simpleDouble = {
+            request: {
+                method: 'GET',
+                url: url,
+            }
+        }
+        config.doubles = [simpleDouble]
+
+        app.serve(config)
+
+        return client.get(url)
+            .then(response => expect(response).to.have.property('status',200))
 
     })
 
@@ -151,7 +168,7 @@ describe('App', () => {
     })
 
     //look into using a second localhost as the redirect endpoint
-    it('can redirect', ()=>{
+    it('can redirect 301', ()=>{
         const endPointUrlThatRedirects = 'http://localhost:8001/redirect-from';
         // const redirectDestination = 'http://localhost:8001/redirect-to';
         const double = {
@@ -161,6 +178,31 @@ describe('App', () => {
             },
             response: {
                 status: 301,
+                redirectURL : 'http://google.com'
+            }
+        }
+
+        app.load(double)
+        app.serve()
+
+        return client.get(endPointUrlThatRedirects)
+            .then(response => {
+                //console.log(response.request.socket._host)
+                //console.log(response)
+                expect(response.status).to.eq(200)
+                expect(response.request.socket).to.have.property('_host','www.google.com')})
+    })
+
+    it('can redirect 302', ()=>{
+        const endPointUrlThatRedirects = 'http://localhost:8001/redirect-from';
+        // const redirectDestination = 'http://localhost:8001/redirect-to';
+        const double = {
+            request: {
+                method: 'GET',
+                url: endPointUrlThatRedirects
+            },
+            response: {
+                status: 302,
                 redirectURL : 'http://google.com'
             }
         }

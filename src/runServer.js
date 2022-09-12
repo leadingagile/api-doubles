@@ -1,16 +1,13 @@
 #!/usr/bin/env node
 
-const App = require('./Server')
-const app = new App()
+const Server = require('./Server')
+const server = new Server()
 const fs = require('fs')
 
 if(!process.argv[2]) {
     console.log('Please provide a path to a config file (in JSON format) in the arguments')
-    app.serve()
+    process.abort()
 }
-else {
-    let fileData = fs.readFileSync(process.argv[2]);
 
-    let config = JSON.parse(fileData);
-    app.serve(config)
-}
+let fileData = fs.readFileSync(process.argv[2]);
+server.serve(JSON.parse(fileData))
