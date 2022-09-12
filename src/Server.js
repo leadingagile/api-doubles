@@ -44,12 +44,10 @@ class Server {
 
         //register doubles
         this.allDoubles.forEach(double => {
-            let url = new URL(double.request.url).pathname
-
             if (double.response === undefined) double.response = {status: 200}
             let responseStatus = double.response.status
             let responseData = double.response.data
-
+            let url = new URL(double.request.url).pathname
 
             if (double.attachment !== undefined) {
                 app.get(url, (req, res) => {
