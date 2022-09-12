@@ -50,16 +50,16 @@ class Server {
             let url = new URL(double.request.url).pathname
 
             if (double.attachment !== undefined) {
-                app.get(url, (req, res) => {
+                app.get(url, (req, res) =>
                     res.download(double.attachment.pathToFile)
-                })
+                )
                 return; //continue
             }
 
             if (responseStatus === 301 || responseStatus === 302) { //only works with GET
-                app.get(url, (req, res) => {
+                app.get(url, (req, res) =>
                     res.redirect(responseStatus , double.response.redirectURL)
-                })
+                )
                 return; //continue
             }
 
@@ -68,15 +68,14 @@ class Server {
                 return; //continue
             }
 
-            if (double.request.method === 'POST') {
+            if (double.request.method === 'POST')
                 app.post(url, fnSendDataAndStatus(responseData, responseStatus))
-            }
 
         })
 
-        this.httpServer = app.listen(httpPort, () => {
+        this.httpServer = app.listen(httpPort,() =>
             console.log("Listening on httpPort " + httpPort)
-        })
+        )
 
         // const options = {
         //     key: fs.readFileSync('./rootCA.key'),
@@ -93,9 +92,9 @@ class Server {
     }
 
     close() {
-        this.httpServer.close((err) => {
+        this.httpServer.close((err) =>
             console.log('server closed')
-        })
+        )
     }
 
     request(method, url) {
