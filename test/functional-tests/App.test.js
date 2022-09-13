@@ -71,6 +71,7 @@ describe('App', () => {
         return client.get(url)
             .then(response => {
                 expect(response).to.have.property('data',expectedPayload)
+                expect(response).to.have.property('status',200)
             })
 
     })
