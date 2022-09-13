@@ -308,21 +308,18 @@ describe('App', () => {
     })
 
     it('can respond to post requests', () => {
+        let urlToPostTo = 'http://localhost:8001/example';
         const double = {
             request: {
                 method: 'POST',
-                url: 'http://localhost:8001/example'
-            },
-            response: {
-                status: 200
+                url: urlToPostTo
             }
         }
-
         app.load(double)
 
         app.serve()
 
-        return client.post('http://localhost:8001/example', { data: "data"}).then(response => expect(response.status).to.eq(200))
+        return client.post(urlToPostTo, { data: "data"}).then(response => expect(response.status).to.eq(200))
     })
 
 })
