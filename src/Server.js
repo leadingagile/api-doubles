@@ -45,32 +45,31 @@ class Server {
         )
 
         //register doubles
-        this.allDoubles.forEach(double => {
-            if (double.response === undefined) double.response = {status: 200}
-            let responseStatus = double.response.status
-            let responseData = double.response.data
-            let url = new URL(double.request.url).pathname
+        this.allDoubles.forEach(({response = {status: 200}, request, attachment}) => {
+            let responseStatus = response.status
+            let responseData = response.data
+            let url = new URL(request.url).pathname
 
-            if (double.attachment !== undefined) {
+            if (attachment) {
                 app.get(url, (req, res) =>
-                    res.download(double.attachment.pathToFile)
+                    res.download(attachment.pathToFile)
                 )
                 return; //continue
             }
 
             if (responseStatus === 301 || responseStatus === 302) { //only works with GET
                 app.get(url, (req, res) =>
-                    res.redirect(responseStatus , double.response.redirectURL)
+                    res.redirect(responseStatus , response.redirectURL)
                 )
                 return; //continue
             }
 
-            if (double.request.method === 'GET') {
+            if (request.method === 'GET') {
                 app.get(url, fnSendDataAndStatus(responseData, responseStatus))
                 return; //continue
             }
 
-            if (double.request.method === 'POST')
+            if (request.method === 'POST')
                 app.post(url, fnSendDataAndStatus(responseData, responseStatus))
 
         })
