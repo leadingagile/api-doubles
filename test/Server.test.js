@@ -126,9 +126,9 @@ describe('Server', () => {
             expect(() => server.registerDouble(noRequestDouble)).to.throw('Double missing request property.')
         })
 
-        it('throws malformed double error if double missing response', () => {
-            expect(() => server.registerDouble(noResponseDouble)).to.throw('Double missing response property.')
-        })
+        // it('throws malformed double error if double missing response', () => {
+        //     expect(() => server.registerDouble(noResponseDouble)).to.throw('Double missing response property.')
+        // })
     })
 
     describe('isRegistered()', () => {

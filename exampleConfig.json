@@ -1,0 +1,16 @@
+ {
+    "httpPort": 8002,
+    "doubles": [
+        {
+            "request": {
+                "method": "GET",
+                "url": "http://localhost:8002/success"
+            },
+            "response": {
+                "status": 200,
+                "redirectURL": "",
+                "data": "Hello!"
+            }
+        }
+    ]
+}
