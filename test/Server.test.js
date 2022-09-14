@@ -13,7 +13,7 @@ describe('Server', () => {
     })
 
     describe('start()', () => {
-        afterEach(() => server.close())
+        afterEach(() => server.stop())
 
         it('defaults to a port when none is provided', () => {
             server.start()

@@ -95,12 +95,7 @@ class Server {
         })
     }
 
-    //remove me
     stop() {
-        this.close()
-    }
-
-    close() {
         this.httpServer.close((err) =>
             console.log('server closed')
         )

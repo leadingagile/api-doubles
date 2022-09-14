@@ -4,7 +4,7 @@
     "doubles": [
         {
             "request": {
-                "url": "http://localhost:8002/helloWorld"
+                "url": "/helloWorld"
             },
             "response": {
                 "data": "Hello World"
@@ -12,7 +12,7 @@
         },
         {
             "request": {
-                "url": "http://localhost:8002/postExample",
+                "url": "/postExample",
                 "method": "POST"
             },
             "response": {
@@ -22,7 +22,7 @@
         },
         {
             "request": {
-                "url": "http://localhost:8002/dataFromFixture"
+                "url": "/dataFromFixture"
             },
             "response": {
                 "fixture": "FileNameOfFixtureJSFileInFixtureFolder"
@@ -30,7 +30,7 @@
         },
         {
             "request": {
-                "url": "http://localhost:8001/endPointUrlThatRedirects"
+                "url": "/endPointUrlThatRedirects"
             },
             "response": {
                 "status": 301,
