@@ -13,10 +13,6 @@ class Server {
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
     }
 
-    getMessage() {
-        return this.message
-    }
-
     serve(config = {}) {
         this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
         this.load(config.doubles || [])
@@ -66,7 +62,7 @@ class Server {
 
         this.allDoubles.forEach(({response = {status: 200}, request, attachment}) => {
             let responseStatus = response.status ?? 200
-            let url = new URL(request.url).pathname
+            let url = request.url
             let responseData = response.data
 
             if (response.fixture) { //overide the data response with the contents of the named fixture
@@ -99,6 +95,7 @@ class Server {
         })
     }
 
+    //remove me
     stop() {
         this.close()
     }
@@ -124,11 +121,13 @@ class Server {
         return double.response
     }
 
+    //remove me
     removeAllDoublesWithUri(uri) {
         if (this.isRegistered(uri))
             this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
     }
 
+    //remove me
     isRegistered(uri) {
         return this.allDoubles.some(double => double.request.url === uri)
     }
@@ -147,9 +146,6 @@ class Server {
 
     registerDouble(double) {
         if (!double.hasOwnProperty('request')) throw new Error('Double missing request property.')
-        // if (!double.hasOwnProperty('response')) {
-        //     throw new Error('Double missing response property.')
-        // }
 
         if (this.isRegistered(double.request.url)) {
             this.allDoubles = this.allDoubles.filter(exclusion => {
