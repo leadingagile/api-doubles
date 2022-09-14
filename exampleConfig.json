@@ -1,25 +1,40 @@
- {
+{
     "httpPort": 8002,
+    "fixturesFolder": "path/From/Root/To/Folder/Holding/Fixtures",
     "doubles": [
         {
             "request": {
-                "method": "GET",
-                "url": "http://localhost:8002/success"
+                "url": "http://localhost:8002/helloWorld"
             },
             "response": {
-                "status": 200,
-                "redirectURL": "",
-                "data": "Hello!"
+                "data": "Hello World"
             }
         },
         {
             "request": {
-                "method": "GET",
-                "url": "http://localhost:8002/somethingFromAFixture"
+                "url": "http://localhost:8002/postExample",
+                "method": "POST"
             },
             "response": {
-                "status": 200,
-                "fixtureData": "./path/ToFixture.js"
+                "status": 242,
+                "data": "Post example with status code other than 200"
+            }
+        },
+        {
+            "request": {
+                "url": "http://localhost:8002/dataFromFixture"
+            },
+            "response": {
+                "fixture": "FileNameOfFixtureJSFileInFixtureFolder"
+            }
+        },
+        {
+            "request": {
+                "url": "http://localhost:8001/endPointUrlThatRedirects"
+            },
+            "response": {
+                "status": 301,
+                "redirectURL": "http://google.com"
             }
         }
     ]

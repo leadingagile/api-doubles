@@ -4,7 +4,6 @@
   "doubles": [
     {
       "request": {
-        "method": "GET",
         "url": "http://localhost:8002/helloWorld"
       },
       "response": {
@@ -13,11 +12,29 @@
     },
     {
       "request": {
-        "method": "GET",
+        "url": "http://localhost:8002/postExample",
+        "method": "POST"
+      },
+      "response": {
+        "status": 242,
+        "data": "Post example with status code other than 200"
+      }
+    },
+    {
+      "request": {
         "url": "http://localhost:8002/dataFromFixture"
       },
       "response": {
         "fixture": "FileNameOfFixtureJSFileInFixtureFolder"
+      }
+    },
+    {
+      "request": {
+        "url": "http://localhost:8001/endPointUrlThatRedirects"
+      },
+      "response": {
+        "status": 301,
+        "redirectURL": "http://google.com"
       }
     }
   ]

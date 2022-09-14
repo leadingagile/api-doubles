@@ -78,23 +78,23 @@ class Server {
                 app.get(url, (req, res) =>
                     res.download(attachment.pathToFile)
                 )
-                return; //continue
+                return //continue
             }
 
             if (responseStatus === 301 || responseStatus === 302) { //only works with GET
                 app.get(url, (req, res) =>
                     res.redirect(responseStatus, response.redirectURL)
                 )
-                return; //continue
+                return //continue
             }
 
-            if (request.method === 'GET') {
-                app.get(url, fnSendDataAndStatus(responseData, responseStatus))
-                return; //continue
-            }
-
-            if (request.method === 'POST')
+            if (request.method === 'POST') {
                 app.post(url, fnSendDataAndStatus(responseData, responseStatus))
+                return //continue
+            }
+
+            //request.method === GET
+            app.get(url, fnSendDataAndStatus(responseData, responseStatus))
 
         })
     }

@@ -20,11 +20,7 @@ describe('App',
             const config = {}
             const simpleDouble = {
                 request: {
-                    method: 'GET',
                     url: url,
-                },
-                response: {
-                    status: 200,
                 }
             }
             config.doubles = [simpleDouble]
@@ -40,7 +36,6 @@ describe('App',
             const config = {}
             const simpleDouble = {
                 request: {
-                    method: 'GET',
                     url: url,
                 }
             }
@@ -59,11 +54,9 @@ describe('App',
             const config = {}
             const simpleDouble = {
                 request: {
-                    method: 'GET',
                     url: url,
                 },
                 response: {
-                    status: 200,
                     data: expectedPayload,
                 }
             }
@@ -88,7 +81,6 @@ describe('App',
                     url: url,
                 },
                 response: {
-                    status: 200,
                     data: expectedPayload,
                 }
             }
@@ -109,11 +101,9 @@ describe('App',
             const config = {}
             const simpleDouble = {
                 request: {
-                    method: 'GET',
                     url: url,
                 },
                 response: {
-                    status: 200,
                     data: expectedPayload,
                 }
             }
@@ -141,11 +131,9 @@ describe('App',
             const config = {}
             const simpleDoubleGet1 = {
                 request: {
-                    method: 'GET',
                     url: 'http://localhost:8001/simpleDoubleGet1',
                 },
                 response: {
-                    status: 200,
                     data: 'simpleDouble1Payload',
                 }
             }
@@ -153,11 +141,9 @@ describe('App',
             //fixturesFolder
             const simpleDoubleGet2 = {
                 request: {
-                    method: 'GET',
                     url: 'http://localhost:8001/simpleDoubleGet2',
                 },
                 response: {
-                    status: 200,
                     data: 'simpleDouble2Payload',
                 }
             }
@@ -178,7 +164,6 @@ describe('App',
             // const redirectDestination = 'http://localhost:8001/redirect-to';
             const double = {
                 request: {
-                    method: 'GET',
                     url: endPointUrlThatRedirects
                 },
                 response: {
@@ -204,7 +189,6 @@ describe('App',
             // const redirectDestination = 'http://localhost:8001/redirect-to';
             const double = {
                 request: {
-                    method: 'GET',
                     url: endPointUrlThatRedirects
                 },
                 response: {
@@ -236,12 +220,10 @@ describe('App',
             const pathToResourceFile = './test/resourceFiles/bundle.js';
             const double = {
                 request: {
-                    method: 'GET',
                     url: resourceUrl
                 },
                 attachment: {pathToFile: pathToResourceFile},
                 response: {
-                    status: 200
                 }
             }
             app.load(double)
@@ -297,9 +279,6 @@ describe('App',
                 request: {
                     method: 'GET',
                     url: 'http://localhost:8003/example'
-                },
-                response: {
-                    status: 200
                 }
             }
             app.load(double)
@@ -339,7 +318,6 @@ describe('App',
                     doubles: [
                         {
                             request: {
-                                method: 'GET',
                                 url: urlToEndpointThatLoadsResponseFromFixture,
                             },
                             response: {
@@ -365,11 +343,9 @@ describe('App',
                 let expectedData = require(fullyResolvedPathToFixture)
 
                 const config = {
-                    httpPort: 8001,
                     doubles: [
                         {
                             request: {
-                                method: 'GET',
                                 url: urlToEndpointThatLoadsResponseFromFixture,
                             },
                             response: {
