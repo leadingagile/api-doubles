@@ -18,7 +18,7 @@ class Server {
     }
 
     serve(config = {}) {
-        this.fixturesFolder = config.fixturesFolder
+        this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
         this.load(config.doubles || [])
         //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
         //dirty hack we need a certificate
