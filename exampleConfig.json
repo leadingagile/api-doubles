@@ -11,6 +11,16 @@
                 "redirectURL": "",
                 "data": "Hello!"
             }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "url": "http://localhost:8002/somethingFromAFixture"
+            },
+            "response": {
+                "status": 200,
+                "fixtureData": "./path/ToFixture.js"
+            }
         }
     ]
 }

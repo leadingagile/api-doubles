@@ -131,15 +131,7 @@ Given('a registered double with url {string}', function (uri) {
 
 	this.server.registerDouble(double)
 });
-When('the client requests removal with an invalid url {string}', function (uri) {
 
-	this.server.removeAllDoublesWithUri(uri)
-});
-
-Then('the message {string} should return', function (message) {
-	expect(this.server.getMessage()).equal(message)
-
-});
 
 
 

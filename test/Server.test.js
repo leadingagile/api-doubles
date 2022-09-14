@@ -65,15 +65,7 @@ describe('Server', () => {
 
             expect(server.isRegistered(uri)).to.be.false
         })
-        it('should set message if no valid url is found', () => {
-            const uri = 'http://localhost:8000/bad-url'
 
-            server.registerDouble(baseDouble)
-            server.removeAllDoublesWithUri(uri)
-
-            expect(server.isRegistered(baseDouble.request.url)).to.be.true
-            expect(server.getMessage()).to.equal('Invalid uri: Not registered')
-        })
         it('removes multiple doubles with the same uri', () => {
             const uri = 'http://localhost:8001/some-example'
 

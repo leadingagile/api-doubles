@@ -40,8 +40,3 @@ Scenario: Receive a request to remove doubles with uri
 	Given Given a registered double with url "http://localhost:8001/redirect-example"
 	When the client requests removal with url "http://localhost:8001/redirect-example"
 	Then double with url "http://localhost:8001/redirect-example" should not be registered
-
-Scenario: Display message when attempting to remove double with non-existent url
-	Given a registered double with url "http://localhost:8001/some-example"
-	When the client requests removal with an invalid url "http://localhost:8001/non-existent-example"
-	Then the message "Invalid uri: Not registered" should return

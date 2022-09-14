@@ -3,6 +3,7 @@ const client = require('axios')
 const {response} = require("express");
 const expect = require('chai').expect
 const fs =require('fs')
+const path = require("path");
 
 const downloadPath = './deleteMeBundle.js'
 
@@ -103,11 +104,11 @@ describe('App', () => {
 
     it('can return json in response data', () => {
         const url = 'http://localhost:8001/Json'
-        const expectedPayload = {"success": true}
+        const expectedPayload = {"arbitraryPayload": true}
         const config = {}
         const simpleDouble = {
             request: {
-                method: 'POST',
+                method: 'GET',
                 url: url,
             },
             response: {
@@ -118,7 +119,7 @@ describe('App', () => {
         config.doubles = [simpleDouble]
 
         app.serve(config)
-        return client.post(url)
+        return client.get(url)
             .then(response => {
                 expect(response.data).to.deep.eq(expectedPayload)
                 expect(response.headers['content-type']).to.eq('application/json; charset=utf-8')
@@ -147,6 +148,8 @@ describe('App', () => {
                 data: 'simpleDouble1Payload',
             }
         }
+
+        //fixturesFolder
         const simpleDoubleGet2 = {
             request: {
                 method: 'GET',
@@ -263,20 +266,17 @@ describe('App', () => {
                    fs.unlinkSync(downloadFile)
                })
                response.data.pipe(stream)
-
             })
 
     })
 
     it('defaults to a port when none is provided', () => {
         app.serve()
-
         return client.get('http://localhost:8001/').then(response => expect(response.status).to.eq(200))
     })
 
     it('passes http port when provided in config object', () => {
         app.serve({httpPort: 8002})
-
         return client.get('http://localhost:8002/').then(response => expect(response.status).to.eq(200))
     })
 
@@ -288,6 +288,7 @@ describe('App', () => {
     //             expect(response.status).to.eq(200))
     // })
 
+    //TODO put the double into a config and pass to serve
     it('double is available when it is added', () => {
         const double = {
             request: {
@@ -298,7 +299,6 @@ describe('App', () => {
                 status: 200
             }
         }
-
         app.load(double)
 
         app.serve({httpPort: 8003})
@@ -308,7 +308,7 @@ describe('App', () => {
     })
 
     it('can respond to post requests', () => {
-        let urlToPostTo = 'http://localhost:8001/example';
+        let urlToPostTo = 'http://localhost:8001/example'
         const double = {
             request: {
                 method: 'POST',
@@ -320,6 +320,37 @@ describe('App', () => {
         app.serve()
 
         return client.post(urlToPostTo, { data: "data"}).then(response => expect(response.status).to.eq(200))
+    })
+
+    it('can load data from a fixture', () => {
+        const urlToEndpointThatLoadsResponseFromFixture = 'http://localhost:8001/FixtureThisBatman'
+        const fixtureFileName = 'arbitraryFixture.js'
+        let fullyResolvedPathToFixture = path.resolve('./test/fixtures', fixtureFileName)
+        let expectedData = require(fullyResolvedPathToFixture)
+
+        const config = {
+            httpPort: 8001,
+            fixturesFolder: 'test/fixtures',
+            doubles: [
+                {
+                    request: {
+                        method: 'GET',
+                        url: urlToEndpointThatLoadsResponseFromFixture,
+                    },
+                    response: {
+                        fixture: fixtureFileName,
+                    }
+                }
+            ]
+        }
+        app.serve(config)
+
+        return client.get(urlToEndpointThatLoadsResponseFromFixture)
+            .then(response => {
+                expect(response.status).to.eq(200)
+                expect(response.data).to.deep.eq(expectedData)
+                expect(response.headers['content-type']).to.eq('application/json; charset=utf-8')
+            })
     })
 
 })
