@@ -1,6 +1,6 @@
 const expect = require('chai').expect
 
-const App = require('../src/App')
+const App = require('../../src/Server')
 
 describe('App', () => {
     let app
@@ -12,29 +12,6 @@ describe('App', () => {
 
         it('throws error when no doubles are provided', () => {
             expect(() => app.load()).to.throw('(load) requires [doubles]')
-        })
-
-        it('receives doubles array with one double', () => {
-            const doubles = []
-            const double = {
-                request: {
-                    method: 'GET',
-                    url: 'http://localhost:8001/some-example'
-                },
-                response: {
-                    status: 200,
-                    redirectURL: "",
-                    content: {
-                        size: 42,
-                        hasStuff: true
-                    }
-                }
-            }
-            doubles.push(double)
-
-            app.load(doubles)
-
-            expect(app.server.allDoubles[0]).to.deep.equal(double)
         })
 
         it('throws error if doubles is not an array or object', () => {

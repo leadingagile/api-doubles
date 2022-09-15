@@ -228,7 +228,6 @@ describe('App',
         //             expect(response.status).to.eq(200))
         // })
 
-        //TODO put the double into a config and pass to serve
         it('double is available when it is added', () => {
             const double = {
                 request: { url: '/example' }

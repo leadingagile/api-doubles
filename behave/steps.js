@@ -7,19 +7,6 @@ Before(function() {
 	this.expectedResponse = undefined
 })
 
-Given('the double server has been started', function () {
-
-	// this.server.start()
-
-})
-
-
-Given('there is no double registered with the url {string}', function (uri) {
-
-	this.server.removeAllDoublesWithUri(uri)
-})
-
-
 When('the client makes a {string} request to {string}', function (method, uri) {
 
 	this.expectedResponse = this.server.request(method, uri)
@@ -31,11 +18,11 @@ Then('the client should receive a response', function () {
 });
 
 
-
 Then('the client should receive a response with {int} status code', function (status) {
 	expect(this.server.response.hasOwnProperty('status')).to.be.true
 })
 
+//line 9
 Given('a double with the registered url {string}', function (uri) {
 	const double = {
 			request: {
@@ -70,6 +57,7 @@ Given('a double with the url {string} and a response has been registered', funct
 });
 
 
+//line 10
 Given('that double has a status of {int}', function (status) {
 	const double = {
 		request :{
@@ -87,33 +75,6 @@ Given('that double has a status of {int}', function (status) {
 
 	expect(response.status).equal(status)
 
-});
-
-Given('Given a registered double with url {string}', function (uri) {
-	const double = {
-		request: {
-			method: 'GET',
-			url: uri
-		},
-		response: {
-			status: 200,
-			redirectURL: "",
-			content: 'test'
-		}
-	}
-
-	this.server.registerDouble(double)
-
-});
-
-When('the client requests removal with url {string}', function (uri) {
-
-	this.server. removeAllDoublesWithUri(uri)
-});
-
-Then('double with url {string} should not be registered', function (uri) {
-
-	expect(this.server.isRegistered(uri)).to.be.false
 });
 
 Given('a registered double with url {string}', function (uri) {

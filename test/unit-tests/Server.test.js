@@ -3,7 +3,7 @@ const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseD
     noResponseDouble
 } = require('./testDoubles')
 
-const Server = require('../src/Server')
+const Server = require('../../src/Server')
 const client = require("axios");
 
 describe('Server', () => {
@@ -38,14 +38,7 @@ describe('Server', () => {
         it('returns a response', () => {
             server.registerDouble(baseDouble)
 
-            expect(server.request('GET', 'http://localhost:8001/some-example')).to.deep.equal({
-                status: 200,
-                redirectURL: "",
-                content: {
-                    size: 42,
-                    hasStuff: true
-                }
-            })
+            expect(server.request('GET', 'http://localhost:8001/some-example')).to.deep.equal(baseDouble.response)
         })
 
         it('returns a response with content', () => {
@@ -118,9 +111,6 @@ describe('Server', () => {
             expect(() => server.registerDouble(noRequestDouble)).to.throw('Double missing request property.')
         })
 
-        // it('throws malformed double error if double missing response', () => {
-        //     expect(() => server.registerDouble(noResponseDouble)).to.throw('Double missing response property.')
-        // })
     })
 
     describe('isRegistered()', () => {
