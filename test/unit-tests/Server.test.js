@@ -3,7 +3,7 @@ const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseD
     noResponseDouble
 } = require('./testDoubles')
 
-const Server = require('../src/Server')
+const Server = require('../../src/Server')
 const client = require("axios");
 
 describe('Server', () => {
@@ -13,7 +13,7 @@ describe('Server', () => {
     })
 
     describe('start()', () => {
-        afterEach(() => server.close())
+        afterEach(() => server.stop())
 
         it('defaults to a port when none is provided', () => {
             server.start()
@@ -38,14 +38,7 @@ describe('Server', () => {
         it('returns a response', () => {
             server.registerDouble(baseDouble)
 
-            expect(server.request('GET', 'http://localhost:8001/some-example')).to.deep.equal({
-                status: 200,
-                redirectURL: "",
-                content: {
-                    size: 42,
-                    hasStuff: true
-                }
-            })
+            expect(server.request('GET', 'http://localhost:8001/some-example')).to.deep.equal(baseDouble.response)
         })
 
         it('returns a response with content', () => {
@@ -65,15 +58,7 @@ describe('Server', () => {
 
             expect(server.isRegistered(uri)).to.be.false
         })
-        it('should set message if no valid url is found', () => {
-            const uri = 'http://localhost:8000/bad-url'
 
-            server.registerDouble(baseDouble)
-            server.removeAllDoublesWithUri(uri)
-
-            expect(server.isRegistered(baseDouble.request.url)).to.be.true
-            expect(server.getMessage()).to.equal('Invalid uri: Not registered')
-        })
         it('removes multiple doubles with the same uri', () => {
             const uri = 'http://localhost:8001/some-example'
 
@@ -126,9 +111,6 @@ describe('Server', () => {
             expect(() => server.registerDouble(noRequestDouble)).to.throw('Double missing request property.')
         })
 
-        // it('throws malformed double error if double missing response', () => {
-        //     expect(() => server.registerDouble(noResponseDouble)).to.throw('Double missing response property.')
-        // })
     })
 
     describe('isRegistered()', () => {

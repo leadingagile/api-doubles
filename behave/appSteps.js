@@ -8,11 +8,12 @@ AfterAll( function () {
 
 Given('a config file', function () {
     this.config = {
+        "httpPort": 8002,
         doubles: [
             {
                 request: {
                     method: 'GET',
-                    url: 'http://localhost:8001/some-other-example'
+                    url: '/some-other-example'
                 },
                 response: {
                     status: 200,
@@ -23,15 +24,8 @@ Given('a config file', function () {
     }
 });
 
-When('the app is started', function () {
-    this.app = app;
-
-
-});
-
-Then('the server will start with config variables', function () {
-    this.app.serve(this.config)
-    expect(this.app.allDoubles.length).to.equal(1)
+Then('the server will start', function () {
+    app.serve(this.config)
 })
 
 Given('an incorrect config file', function () {

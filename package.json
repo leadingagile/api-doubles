@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test:all": "npm run behave && npm run test:unit && npm run test:functional",
-    "test:unit": "mocha --exit",
+    "test:unit": "mocha ./test/unit-tests --exit",
     "test:functional": "mocha ./test/functional-tests --exit",
     "start:doubles": "node src/runServer.js",
     "start:doublesWithExampleConfig": "node src/runServer.js ./exampleConfig.json",
