@@ -61,7 +61,7 @@ class Server {
         }
 
         this.allDoubles.forEach(({response = {status: 200}, request, attachment}) => {
-            let responseStatus = response.status ?? 200
+            let responseStatus = response.status || 200
             let url = request.url
             let responseData = response.data
 

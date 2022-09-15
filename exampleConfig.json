@@ -22,14 +22,6 @@
         },
         {
             "request": {
-                "url": "/dataFromFixture"
-            },
-            "response": {
-                "fixture": "FileNameOfFixtureJSFileInFixtureFolder"
-            }
-        },
-        {
-            "request": {
                 "url": "/endPointUrlThatRedirects"
             },
             "response": {
