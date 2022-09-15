@@ -80,9 +80,7 @@ describe('App',
                     method: 'POST',
                     url: url,
                 },
-                response: {
-                    data: expectedPayload,
-                }
+                response: { data: expectedPayload }
             }
             config.doubles = [simpleDouble]
 
@@ -96,21 +94,17 @@ describe('App',
         })
 
         it('can return json in response data', () => {
-            const url = '/Json'
+            const urlToJson = '/Json'
             const expectedPayload = {"arbitraryPayload": true}
             const config = {}
             const simpleDouble = {
-                request: {
-                    url: url,
-                },
-                response: {
-                    data: expectedPayload,
-                }
+                request: { url: urlToJson },
+                response: { data: expectedPayload }
             }
             config.doubles = [simpleDouble]
 
             app.serve(config)
-            return client.get(LOCALHOST + url)
+            return client.get(LOCALHOST + urlToJson)
                 .then(response => {
                     expect(response.data).to.deep.eq(expectedPayload)
                     expect(response.headers['content-type']).to.eq('application/json; charset=utf-8')
@@ -262,12 +256,13 @@ describe('App',
                 const httpPort = 8007
                 const urlToEndpointThatLoadsResponseFromFixture = '/FixtureThisBatman'
                 const fixtureFileName = 'arbitraryFixture.js'
-                let fullyResolvedPathToFixture = path.resolve('./test/fixtures', fixtureFileName)
+                const fixturesFolder = 'test/fixtures';
+                let fullyResolvedPathToFixture = path.resolve(fixturesFolder, fixtureFileName)
                 let expectedData = require(fullyResolvedPathToFixture)
 
                 const config = {
                     httpPort: httpPort,
-                    fixturesFolder: 'test/fixtures',
+                    fixturesFolder: fixturesFolder,
                     doubles: [
                         {
                             request: { url: urlToEndpointThatLoadsResponseFromFixture },

@@ -35,7 +35,7 @@ class Server {
             res.send('Doubles Server')
         )
 
-        this.registerDoublesWithAxios();
+        this.registerDoublesWithExpress();
 
         this.httpServer = app.listen(httpPort,() =>
             console.log("Listening on httpPort " + httpPort)
@@ -51,7 +51,7 @@ class Server {
         // })
     }
 
-    registerDoublesWithAxios() {
+    registerDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
             //let data = (double.response.data === undefined) ? {} : double.response.data
             return (req, res) => {
@@ -129,7 +129,6 @@ class Server {
 
     load(doubles) {
         if (!doubles) throw Error('(load) requires [doubles]')
-        //if (!(Array.isArray(doubles) || typeof doubles === 'object')) throw Error('doubles is not an array or object')
 
         if (Array.isArray(doubles)) {
             doubles.forEach(double => this.registerDouble(double))
