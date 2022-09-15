@@ -23,7 +23,7 @@ Scenario Outline: Receive a response with specific status code
 	Examples:
 	| status |
 	| 200 	 |
-	| 301 	 |
+	| 201 	 |
 
 
 Scenario Outline: Receive a response with expected data for get and post request
