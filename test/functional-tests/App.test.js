@@ -305,4 +305,28 @@ describe('App',
             })
         })
 
+        describe('preflight', () => {
+            it('should return correct headers for cors preflight', () => {
+                const urlToPreflightEndPoint = '/PreflightThis'
+
+                const config = {
+                    doubles: [
+                        {
+                            request: {
+                                method: 'OPTIONS',
+                                url: urlToPreflightEndPoint
+                            }
+                        }
+                    ]
+                }
+                app.serve(config)
+
+                return client.get(LOCALHOST + urlToPreflightEndPoint)
+                    .then(response => {
+                        expect(response.status).to.eq(200)
+                        expect(response.headers['access-control-allow-methods']).to.eq('OPTIONS, GET, HEAD, POST, PUT, DELETE, PATCH')
+                    })
+            })
+        })
+
     })
