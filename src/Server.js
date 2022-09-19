@@ -6,6 +6,22 @@ const path = require('path')
 
 app.use(cors())
 
+app.use((req, res, next) => {
+    const headers = (req) => {
+        return {
+            Allow: 'GET, OPTIONS, HEAD',
+            'Access-Control-Allow-Origin': req.headers.origin || '*',
+            'Access-Control-Allow-Headers':
+                'Accept, Application-Id, Auth-Token, Content-Type, Origin',
+            'Access-Control-Allow-Methods':
+                'OPTIONS, GET, HEAD, POST, PUT, DELETE, PATCH',
+            'Access-Control-Max-Age': '300',
+        };
+    };
+    res.set(headers(req));
+    next();
+});
+
 class Server {
 
     constructor() {
@@ -36,6 +52,9 @@ class Server {
         )
 
         this.registerDoublesWithExpress();
+
+
+
 
         this.httpServer = app.listen(httpPort,() =>
             console.log("Listening on httpPort " + httpPort)
@@ -88,6 +107,15 @@ class Server {
                 app.post(url, fnSendDataAndStatus(responseData, responseStatus))
                 return //continue
             }
+
+            // if (request.method === 'OPTIONS') {
+            //     console.log('OPTIONSSSS')
+            //     app.get(url, (req, res) =>
+            //         res.set('Keith', 'was here')
+            //     )
+            //     return //continue
+            //
+            // }
 
             //request.method === GET
             app.get(url, fnSendDataAndStatus(responseData, responseStatus))
