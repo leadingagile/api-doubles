@@ -26,6 +26,46 @@ describe('Server', () => {
 
             return client.get('http://localhost:8002').catch(({response}) => expect(response.status).to.eq(404))
         })
+
+    })
+
+    describe('serve()', () => {
+
+        afterEach(() => server.stop())
+
+        it('configures routes according given config parameter', async () => {
+
+            server.serve({ httpPort: 8001, doubles: [postBaseDouble] })
+
+            const response = await client.post('http://localhost:8001/some-example')
+
+            expect(response.data).to.deep.equal(postBaseDouble.response.data)
+
+        })
+
+
+        it('reconfigures routes last given config parameters', async () => {
+
+            server.serve({ httpPort: 8001, doubles: [postBaseDouble]})
+            server.stop()
+
+            const newDouble = {
+                ...postBaseDouble,
+                response: {
+                    ...postBaseDouble.response,
+                    data: { name: 'Osamah' }
+                }
+            }
+
+            server.serve({ httpPort: 8001, doubles: [ newDouble ]})
+
+            const response = await client.post('http://localhost:8001/some-example')
+
+            expect(response.data).to.deep.equal(newDouble.response.data)
+
+        })
+
+
     })
 
     describe('request()', () => {
