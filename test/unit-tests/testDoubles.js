@@ -31,7 +31,7 @@ const sameUrl301BaseDouble = {
 const postBaseDouble = {
     request: {
         method: 'POST',
-        url: 'http://localhost:8001/some-example'
+        url: '/some-example'
     },
     response: {
         status: 200,
@@ -39,6 +39,9 @@ const postBaseDouble = {
         content: {
             size: 42,
             hasStuff: true
+        },
+        data: {
+            foo: 'bar'
         }
     }
 }

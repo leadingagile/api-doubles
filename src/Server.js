@@ -3,6 +3,7 @@ const app = express()
 const fs = require('fs')
 const cors = require('cors')
 const path = require('path')
+let router
 
 app.use(cors())
 
@@ -18,18 +19,22 @@ app.use((req, res, next) => {
             'Access-Control-Max-Age': '300',
         };
     };
+
     res.set(headers(req));
-    next();
+    router(req, res, next)
+
 });
 
 class Server {
 
     constructor() {
+        router = express.Router()
         this.allDoubles = []
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
     }
 
     serve(config = {}) {
+        router = express.Router()
         this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
         this.load(config.doubles || [])
         //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
@@ -47,13 +52,11 @@ class Server {
     start(httpPort = 8001) {
 
         //request to root
-        app.get('/', (req, res) =>
+        router.get('/', (req, res) =>
             res.send('Doubles Server')
         )
 
         this.registerDoublesWithExpress();
-
-
 
 
         this.httpServer = app.listen(httpPort,() =>
@@ -90,27 +93,27 @@ class Server {
             }
 
             if (attachment) {
-                app.get(url, (req, res) =>
+                router.get(url, (req, res) =>
                     res.download(attachment.pathToFile)
                 )
                 return //continue
             }
 
             if (responseStatus === 301 || responseStatus === 302) { //only works with GET
-                app.get(url, (req, res) =>
+                router.get(url, (req, res) =>
                     res.redirect(responseStatus, response.redirectURL)
                 )
                 return //continue
             }
 
             if (request.method === 'POST') {
-                app.post(url, fnSendDataAndStatus(responseData, responseStatus))
+                router.post(url, fnSendDataAndStatus(responseData, responseStatus))
                 return //continue
             }
 
             // if (request.method === 'OPTIONS') {
             //     console.log('OPTIONSSSS')
-            //     app.get(url, (req, res) =>
+            //     router.get(url, (req, res) =>
             //         res.set('Keith', 'was here')
             //     )
             //     return //continue
@@ -118,7 +121,7 @@ class Server {
             // }
 
             //request.method === GET
-            app.get(url, fnSendDataAndStatus(responseData, responseStatus))
+            router.get(url, fnSendDataAndStatus(responseData, responseStatus))
 
         })
     }
