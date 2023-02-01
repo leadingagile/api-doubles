@@ -168,4 +168,53 @@ describe('Server', () => {
             expect(server.isRegistered(uri)).to.be.false
         })
     })
+
+    describe('isADouble()', () => {
+        it('returns true if parameter is a double', () => {
+            const double = {
+                request: {
+                    url: 'url'
+                },
+            }
+
+            expect(Server.isADouble(double)).to.be.true
+        })
+
+        it('returns false if parameter is not a double', () => {
+            const missingRequestProperty = {}
+            const missingUrlProperty = {
+                request: {}
+            }
+
+            expect(Server.isADouble()).to.be.false
+            expect(Server.isADouble(missingRequestProperty)).to.be.false
+            expect(Server.isADouble(missingUrlProperty)).to.be.false
+        })
+    })
+
+    describe('isArrayOfDoubles()', () => {
+        it('returns true if parameter is array of doubles', () => {
+            const doubles = [ {
+                request: {
+                    url: 'url'
+                }
+            }]
+
+            expect(Server.isArrayOfDoubles(doubles)).to.be.true
+        })
+
+        it('returns false if parameter is not array of doubles', () => {
+            const notAllDoubles = [ {
+                request: {
+                    url: 'url'
+                }
+            },
+            { }]
+            const notDoubles = {}
+
+            expect(Server.isArrayOfDoubles(notAllDoubles)).to.be.false
+            expect(Server.isArrayOfDoubles(notDoubles)).to.be.false
+        })
+    })
+
 })

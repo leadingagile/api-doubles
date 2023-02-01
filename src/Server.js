@@ -3,8 +3,10 @@ const app = express()
 const fs = require('fs')
 const cors = require('cors')
 const path = require('path')
+
 let router
 
+app.use(express.json())
 app.use(cors())
 
 app.use((req, res, next) => {
@@ -81,11 +83,31 @@ class Server {
                 res.send(data)
             };
         }
+        
+        const registerDouble = (status) => {
+            return (req, res) => {
+                if (!Server.isArrayOfDoubles(req.body) && !Server.isADouble(req.body)) {
+                    res.status(400)
+                    res.send('Request body must contain double or list of doubles')
+                    return 
+                }
+                router = express.Router()
+                this.load(req.body)
+                this.allDoubles.forEach(handleDouble)
+                res.status(status)
+                res.send(req.body)
+            }
+        }
 
-        this.allDoubles.forEach(({response = {status: 200}, request, attachment}) => {
+        const handleDouble = ({response = {status: 200}, request, attachment}) => {
             let responseStatus = response.status || 200
             let url = request.url
             let responseData = response.data
+
+            if (url === '/register/double') {
+                router.post(url, registerDouble(responseStatus))
+                return //continue
+            }
 
             if (response.fixture) { //overide the data response with the contents of the named fixture
                 let fullyResolvedPathToFixture = path.resolve(this.fixturesFolder, response.fixture)
@@ -121,9 +143,14 @@ class Server {
             // }
 
             //request.method === GET
+
             router.get(url, fnSendDataAndStatus(responseData, responseStatus))
 
-        })
+        }
+        
+        this.allDoubles.forEach(handleDouble)
+
+
     }
 
     stop() {
@@ -182,6 +209,16 @@ class Server {
         }
 
         this.allDoubles.push(double)
+    }
+
+    static isADouble(double) {
+        if (!double?.request?.url) return false
+        return true
+    }
+
+    static isArrayOfDoubles(doubles) {
+        if (!Array.isArray(doubles)) return false
+        return doubles.every(Server.isADouble)
     }
 }
 

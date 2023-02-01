@@ -250,6 +250,113 @@ describe('App',
             return client.post(LOCALHOST + urlToPostTo, {data: "data"}).then(response => expect(response.status).to.eq(200))
         })
 
+        it('can register double', async () => {
+            
+            const registerDoublesEndpoint = '/register/double'
+            const doubles = [{ 
+                request: {
+                    method: 'POST',
+                    url: '/v1/carts/:id',
+                },
+                response: {
+                    data: { vinNumber: '12345' }
+                }
+            }]
+            
+            const config = { doubles: [ { 
+                request: {
+                    method: 'POST',
+                    url: registerDoublesEndpoint,
+                },
+                response: {
+                    data: {}
+                }
+            }] }
+            
+            app.serve(config)
+
+            await client.post(LOCALHOST + registerDoublesEndpoint, doubles[0])
+
+            const response = await client.post(LOCALHOST + doubles[0].request.url)
+            expect(response.status).to.eq(200)
+            expect(response.data).to.deep.equal(doubles[0].response.data)
+        })
+
+        it('can register multiple doubles', async () => {
+            
+            const registerDoublesEndpoint = '/register/double'
+            const doubles = [{ 
+                request: {
+                    method: 'POST',
+                    url: '/v1/carts/:id',
+                },
+                response: {
+                    data: { vinNumber: '12345' }
+                }
+            },
+            { 
+                request: {
+                    method: 'GET',
+                    url: '/v1/carts/:id',
+                },
+                response: {
+                    data: { vinNumber: '12345' }
+                }
+            }]
+            
+            const config = { doubles: [ { 
+                request: {
+                    method: 'POST',
+                    url: registerDoublesEndpoint,
+                },
+                response: {
+                    data: {}
+                }
+            }] }
+            
+            app.serve(config)
+
+            const registerResponse = await client.post(LOCALHOST + registerDoublesEndpoint, doubles)
+            const doublesResponse = await client.get(LOCALHOST + doubles[1].request.url)
+
+            expect(registerResponse.status).to.eq(200)
+            expect(registerResponse.data).to.deep.equal(doubles)
+            expect(doublesResponse.status).to.eq(200)
+            expect(doublesResponse.data).to.deep.equal(doubles[1].response.data)
+        })
+
+        it('responds with client error when invalid request body is provided', async () => {
+            
+            const registerDoublesEndpoint = '/register/double'
+
+            const config = { doubles: [ { 
+                request: {
+                    method: 'POST',
+                    url: registerDoublesEndpoint,
+                },
+                response: {
+                    data: {}
+                }
+            }] }
+            
+            app.serve(config)
+
+            await client.post(LOCALHOST + registerDoublesEndpoint).catch(({response}) => {
+                expect(response.status).to.eq(400)
+                expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
+            })
+
+            await client.post(LOCALHOST + registerDoublesEndpoint, {}).catch(({response}) => {
+                expect(response.status).to.eq(400)
+                expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
+            })
+
+            await client.post(LOCALHOST + registerDoublesEndpoint, [{ badData: "test" }]).catch(({response}) => {
+                expect(response.status).to.eq(400)
+                expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
+            })
+        })
+
         describe('fixtures', () => {
 
             it('can load data from a fixture', () => {
