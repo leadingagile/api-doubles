@@ -250,7 +250,33 @@ describe('App',
             return client.post(LOCALHOST + urlToPostTo, {data: "data"}).then(response => expect(response.status).to.eq(200))
         })
 
-        it('can configure a double', async () => {
+        it('can configure a double using default configuration endpoint', async () => {
+
+          const defaultConfigEndpoint = '/'
+
+          const config = {
+            doubles: []
+          }
+
+          app.serve(config)
+
+          const doubles = [{
+            request: { method: 'POST', url: '/foo/bar' },
+            response: { data: 'product customization team wuz here!' }
+          }]
+
+          const configureResponse = await client.post(LOCALHOST + defaultConfigEndpoint, doubles)
+
+          const configureDoubleResponse = await client.post(LOCALHOST + doubles[0].request.url)
+
+          expect(configureResponse.status).to.eq(200)
+          expect(configureResponse.data).to.deep.equal(doubles)
+          expect(configureDoubleResponse.status).to.eq(200)
+          expect(configureDoubleResponse.data).to.eq(doubles[0].response.data)
+
+        })
+
+        it('can configure a double using user-supplied endpoint', async () => {
 
           const config = {
             configureDoublesPath: '/configure/doubles',
@@ -276,8 +302,8 @@ describe('App',
         })
 
         it('can configure multiple doubles', async () => {
-            
-            const doubles = [{ 
+
+            const doubles = [{
                 request: {
                     method: 'POST',
                     url: '/v1/carts/:id',
@@ -286,7 +312,7 @@ describe('App',
                     data: { vinNumber: '12345' }
                 }
             },
-            { 
+            {
                 request: {
                     method: 'GET',
                     url: '/v1/carts/:id',

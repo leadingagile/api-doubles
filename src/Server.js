@@ -38,7 +38,7 @@ class Server {
     serve(config = {}) {
         router = express.Router()
         this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
-        this.configureDoublesPath = config.configureDoublesPath
+        this.configureDoublesPath = config.configureDoublesPath || '/'
         this.load(config.doubles || [])
         //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
         //dirty hack we need a certificate
@@ -142,7 +142,7 @@ class Server {
             router.get(url, fnSendDataAndStatus(responseData, responseStatus))
 
         }
-        
+
         this.allDoubles.forEach(handleDouble)
 
     }
