@@ -12,10 +12,32 @@ describe('application with external doubler', () => {
 
     it('returns expected status when hitting registered endpoint', () => {
 
-        const getUrl = 'http://localhost:8010/ntzlibs/etc.clientlibs/clientlibs/granite/utils.min.js'
+        const getUrl = 'http://localhost:8010/clientlibs/utils.min.js'
 
         return client.get(getUrl)
-            .then(response => expect(response).to.have.property('status',200))
+                     .then(response => expect(response).to.have.property('status',200))
+
+    }),
+
+    it('returns expected data from endpoint', () => {
+      const postUrl = 'http://localhost:8010/api/day'
+
+      return client.post(postUrl, {data: 'something'})
+                   .then(response => {
+                      expect(response).to.have.property('status',200)
+                      expect(response.data).to.have.property('text', '{"success":true}')
+                    })
+
+    }),
+
+    it('returns a file attachment', () => {
+      const url = 'http://localhost:8010/files/bundle.js'
+      return client.get(url)
+                   .then(response => {
+                      console.log(response)
+                      expect(response).to.have.property('status',200)
+                      expect(response.data).to.equal("const foo = 'bar'")
+                    })
 
     })
 })
