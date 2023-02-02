@@ -34,7 +34,6 @@ describe('application with external doubler', () => {
       const url = 'http://localhost:8010/files/bundle.js'
       return client.get(url)
                    .then(response => {
-                      console.log(response)
                       expect(response).to.have.property('status',200)
                       expect(response.data).to.equal("const foo = 'bar'")
                     })
