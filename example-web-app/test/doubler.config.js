@@ -1,7 +1,7 @@
 const getDouble = {
     "request": {
         "method": "GET",
-        "url": "http://localhost:8001/ntzlibs/etc.clientlibs/clientlibs/granite/utils.min.js",
+        "url": "/ntzlibs/etc.clientlibs/clientlibs/granite/utils.min.js",
         "httpVersion": "HTTP/1.1",
         "headers": [
             {
@@ -659,7 +659,7 @@ const getDouble = {
 const getRedirectDouble = {
     "request": {
         "method": "GET",
-        "url": "http://localhost:8001/v1.0/endpoint/default/authorize?redirect_uri=https%3A%2F%2Fwwwqa.account.ford.com%2Fetc%2Ffd%2Ffma%2Fsso.html&client_id=d8b3c0c9-7560-4879-93fb-fee3a90882d6&response_type=code&state=&scope=openid&login_hint=%7B%22realm%22%20%3A%20%22cloudIdentityRealm%22%7D&prompt=none&code_challenge=YdO_dxo1JJTOFSVHug8xhQyWCSw2mzGoShZ5GLX1W7Y&code_challenge_method=S256",
+        "url": "/v1.0/endpoint/default/authorize?redirect_uri=https%3A%2F%2Fwwwqa.account.ford.com%2Fetc%2Ffd%2Ffma%2Fsso.html&client_id=d8b3c0c9-7560-4879-93fb-fee3a90882d6&response_type=code&state=&scope=openid&login_hint=%7B%22realm%22%20%3A%20%22cloudIdentityRealm%22%7D&prompt=none&code_challenge=YdO_dxo1JJTOFSVHug8xhQyWCSw2mzGoShZ5GLX1W7Y&code_challenge_method=S256",
         "httpVersion": "http/2.0",
         "headers": [
             {
@@ -1377,7 +1377,7 @@ const getRedirectDouble = {
 const postDouble = {
     "request": {
         "method": "POST",
-        "url": "http://localhost:8001/fps/api/insights/count/byurl/qascriptinprod/day",
+        "url": "/fps/api/insights/count/byurl/qascriptinprod/day",
         "httpVersion": "http/2.0",
         "headers": [
             {
@@ -1554,15 +1554,16 @@ const postDouble = {
 const staticFileDouble = {
     request: {
         method: 'GET',
-        url: 'http://localhost:8001/doubles/bundle.js'
+        url: '/doubles/bundle.js'
     },
-    attachment : {pathToFile : '/Users/aaron.pietryga/Development/api-doubles/test/resourceFiles/bundle.js'},
+    attachment : {pathToFile : './bundle.js'},
     response:{
         status: 200
     }
 }
 
 module.exports = {
+    httpPort: 8001,
     doubles: [
         getDouble,
         postDouble,

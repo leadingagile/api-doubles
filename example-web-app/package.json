@@ -8,10 +8,13 @@
   },
   "scripts": {
     "doubles": "npx double ./doubler-config.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:unit": "mocha"
+    "test": "npm run test:unit",
+    "test:unit": "mocha ./test --exit"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@leading-agile/api-doubles": "^0.0.1-alpha.12"
+  }
 }
