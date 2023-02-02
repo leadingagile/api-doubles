@@ -11,7 +11,7 @@
     "double": "./bin/cli.js"
   },
   "scripts": {
-    "test": "npm run behave && npm run test:unit && npm run test:functional",
+    "test": "npm run behave && npm run test:unit && npm run test:functional && npm run behave",
     "test:unit": "mocha ./test/unit-tests --exit",
     "test:functional": "mocha ./test/functional-tests --exit",
     "start:doubles": "node src/runServer.js",
