@@ -253,7 +253,7 @@ describe('App',
         it('can register double', async () => {
 
           const config = {
-            dynamicApiDoublesPath: '/register/doubles',
+            configureDoublesPath: '/register/doubles',
             doubles: []
           }
 
@@ -264,7 +264,7 @@ describe('App',
             response: { data: 'product customization team wuz here!' }
           }]
 
-          const registerResponse = await client.post(LOCALHOST + config.dynamicApiDoublesPath, doubles)
+          const registerResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
 
           const registeredDoubleResponse = await client.post(LOCALHOST + doubles[0].request.url)
 
@@ -297,13 +297,13 @@ describe('App',
             }]
 
           const config = {
-            dynamicApiDoublesPath: '/register/doubles',
+            configureDoublesPath: '/register/doubles',
             doubles: []
           }
 
             app.serve(config)
 
-            const registerResponse = await client.post(LOCALHOST + config.dynamicApiDoublesPath, doubles)
+            const registerResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
             const doublesResponse = await client.get(LOCALHOST + doubles[1].request.url)
 
             expect(registerResponse.status).to.eq(200)
@@ -315,23 +315,23 @@ describe('App',
         it('responds with client error when invalid request body is provided', async () => {
 
             const config = {
-              dynamicApiDoublesPath: '/register/doubles',
+              configureDoublesPath: '/register/doubles',
               doubles: []
             }
 
             app.serve(config)
 
-            await client.post(LOCALHOST + config.dynamicApiDoublesPath).catch(({response}) => {
+            await client.post(LOCALHOST + config.configureDoublesPath).catch(({response}) => {
                 expect(response.status).to.eq(400)
                 expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
             })
 
-            await client.post(LOCALHOST + config.dynamicApiDoublesPath, {}).catch(({response}) => {
+            await client.post(LOCALHOST + config.configureDoublesPath, {}).catch(({response}) => {
                 expect(response.status).to.eq(400)
                 expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
             })
 
-            await client.post(LOCALHOST + config.dynamicApiDoublesPath, [{ badData: "test" }]).catch(({response}) => {
+            await client.post(LOCALHOST + config.configureDoublesPath, [{ badData: "test" }]).catch(({response}) => {
                 expect(response.status).to.eq(400)
                 expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
             })

@@ -38,7 +38,7 @@ class Server {
     serve(config = {}) {
         router = express.Router()
         this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
-        this.dynamicApiDoublesPath = config.dynamicApiDoublesPath
+        this.configureDoublesPath = config.configureDoublesPath
         this.load(config.doubles || [])
         //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
         //dirty hack we need a certificate
@@ -61,10 +61,9 @@ class Server {
 
         this.registerDoublesWithExpress();
 
-        if(this.dynamicApiDoublesPath) {
+        if(this.configureDoublesPath) {
 
-          const registerDouble = () => {
-            return (req, res) => {
+            const configureDoubles = (req, res) => {
                 if (!Server.isArrayOfDoubles(req.body) && !Server.isADouble(req.body)) {
                     res.status(400)
                     res.send('Request body must contain double or list of doubles')
@@ -76,9 +75,8 @@ class Server {
                 res.status(200)
                 res.send(req.body)
             }
-          }
 
-          router.post(this.dynamicApiDoublesPath, registerDouble())
+          router.post(this.configureDoublesPath, configureDoubles)
         }
 
         this.httpServer = app.listen(httpPort,() =>
