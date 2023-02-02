@@ -7,9 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "doubles": "npx double ./doubler-config.json",
-    "test": "npm run test:unit",
-    "test:unit": "mocha ./test --exit"
+    "doubles": "npx double ./test-external/doubler-config.json",
+    "test": "npm run test:unit && npm run test:external",
+    "test:unit": "mocha ./test --exit",
+    "test:external": "mocha ./test-external --exit"
   },
   "keywords": [],
   "author": "",
