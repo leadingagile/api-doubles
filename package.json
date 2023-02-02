@@ -11,6 +11,9 @@
     "double": "./bin/cli.js"
   },
   "scripts": {
+    "do:publish": "./scripts/publish.sh",
+    "preversion": "./scripts/preversion.sh",
+    "postversion": "./scripts/postversion.sh",
     "test": "npm run behave && npm run test:unit && npm run test:functional && npm run behave",
     "test:unit": "mocha ./test/unit-tests --exit",
     "test:functional": "mocha ./test/functional-tests --exit",
