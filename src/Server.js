@@ -40,21 +40,11 @@ class Server {
         this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
         this.configureDoublesPath = config.configureDoublesPath || '/'
         this.load(config.doubles || [])
-        //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-        //dirty hack we need a certificate
-        // this.start(config.httpPort, config.httpsPort)
         this.start(config.httpPort)
-
     }
-
-    // start(httpPort = 8001, httpsPort = 8010) {
-    //     app.get('/', (req, res) => {
-    //         res.send('Server started without any config')
-    //     })
 
     start(httpPort = 8001) {
 
-        //request to root
         router.get('/', (_, res) => res.send('Doubles Server'))
 
         this.configureDoublesWithExpress();
@@ -80,20 +70,10 @@ class Server {
         this.httpServer = app.listen(httpPort,() =>
             console.log("Listening on httpPort " + httpPort)
         )
-
-        // const options = {
-        //     key: fs.readFileSync('./rootCA.key'),
-        //     cert: fs.readFileSync('./rootCA.pem'),
-        // }
-        // this.httpsServer = https.createServer(options, app)
-        // this.httpsServer.listen(httpsPort, () => {
-        //     console.log("Listening on httpsPort " + httpsPort)
-        // })
     }
 
     configureDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
-            //let data = (double.response.data === undefined) ? {} : double.response.data
             return (_, res) => {
                 res.status(status)
                 res.send(data)
@@ -105,7 +85,7 @@ class Server {
             let url = request.url
             let responseData = response.data
 
-            if (response.fixture) { //overide the data response with the contents of the named fixture
+            if (response.fixture) {
                 let fullyResolvedPathToFixture = path.resolve(this.fixturesFolder, response.fixture)
                 responseData = require(fullyResolvedPathToFixture)
             }
@@ -114,31 +94,20 @@ class Server {
                 router.get(url, (_, res) =>
                     res.download(attachment.pathToFile)
                 )
-                return //continue
+                return
             }
 
-            if (responseStatus === 301 || responseStatus === 302) { //only works with GET
+            if (responseStatus === 301 || responseStatus === 302) {
                 router.get(url, (_, res) =>
                     res.redirect(responseStatus, response.redirectURL)
                 )
-                return //continue
+                return
             }
 
             if (request.method === 'POST') {
                 router.post(url, fnSendDataAndStatus(responseData, responseStatus))
-                return //continue
+                return
             }
-
-            // if (request.method === 'OPTIONS') {
-            //     console.log('OPTIONSSSS')
-            //     router.get(url, (req, res) =>
-            //         res.set('Keith', 'was here')
-            //     )
-            //     return //continue
-            //
-            // }
-
-            //request.method === GET
 
             router.get(url, fnSendDataAndStatus(responseData, responseStatus))
 
@@ -152,7 +121,6 @@ class Server {
         this.httpServer.close(() => console.info('server closed'))
     }
 
-    //remove me
     request(method, url) {
         let double = this.allDoubles.find(double => double.request.url === url && double.request.method === method)
         if (double === undefined) {
@@ -167,13 +135,11 @@ class Server {
         return double.response
     }
 
-    //remove me
     removeAllDoublesWithUri(uri) {
         if (this.isRegistered(uri))
             this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
     }
 
-    //remove me
     isRegistered(uri) {
         return this.allDoubles.some(double => double.request.url === uri)
     }
