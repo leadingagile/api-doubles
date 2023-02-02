@@ -250,10 +250,10 @@ describe('App',
             return client.post(LOCALHOST + urlToPostTo, {data: "data"}).then(response => expect(response.status).to.eq(200))
         })
 
-        it('can register double', async () => {
+        it('can configure a double', async () => {
 
           const config = {
-            configureDoublesPath: '/register/doubles',
+            configureDoublesPath: '/configure/doubles',
             doubles: []
           }
 
@@ -264,18 +264,18 @@ describe('App',
             response: { data: 'product customization team wuz here!' }
           }]
 
-          const registerResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
+          const configureResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
 
-          const registeredDoubleResponse = await client.post(LOCALHOST + doubles[0].request.url)
+          const configureDoubleResponse = await client.post(LOCALHOST + doubles[0].request.url)
 
-          expect(registerResponse.status).to.eq(200)
-          expect(registerResponse.data).to.deep.equal(doubles)
-          expect(registeredDoubleResponse.status).to.eq(200)
-          expect(registeredDoubleResponse.data).to.eq(doubles[0].response.data)
+          expect(configureResponse.status).to.eq(200)
+          expect(configureResponse.data).to.deep.equal(doubles)
+          expect(configureDoubleResponse.status).to.eq(200)
+          expect(configureDoubleResponse.data).to.eq(doubles[0].response.data)
 
         })
 
-        it('can register multiple doubles', async () => {
+        it('can configure multiple doubles', async () => {
             
             const doubles = [{ 
                 request: {
@@ -297,17 +297,17 @@ describe('App',
             }]
 
           const config = {
-            configureDoublesPath: '/register/doubles',
+            configureDoublesPath: '/configure/doubles',
             doubles: []
           }
 
             app.serve(config)
 
-            const registerResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
+            const configureResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
             const doublesResponse = await client.get(LOCALHOST + doubles[1].request.url)
 
-            expect(registerResponse.status).to.eq(200)
-            expect(registerResponse.data).to.deep.equal(doubles)
+            expect(configureResponse.status).to.eq(200)
+            expect(configureResponse.data).to.deep.equal(doubles)
             expect(doublesResponse.status).to.eq(200)
             expect(doublesResponse.data).to.deep.equal(doubles[1].response.data)
         })
@@ -315,7 +315,7 @@ describe('App',
         it('responds with client error when invalid request body is provided', async () => {
 
             const config = {
-              configureDoublesPath: '/register/doubles',
+              configureDoublesPath: '/configure/doubles',
               doubles: []
             }
 

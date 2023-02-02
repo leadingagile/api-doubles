@@ -55,27 +55,24 @@ class Server {
     start(httpPort = 8001) {
 
         //request to root
-        router.get('/', (_, res) =>
-            res.send('Doubles Server')
-        )
+        router.get('/', (_, res) => res.send('Doubles Server'))
 
-        this.registerDoublesWithExpress();
+        this.configureDoublesWithExpress();
 
-        if(this.configureDoublesPath) {
-
-            const configureDoubles = (req, res) => {
-                if (!Server.isArrayOfDoubles(req.body) && !Server.isADouble(req.body)) {
-                    res.status(400)
-                    res.send('Request body must contain double or list of doubles')
-                    return
-                }
-                router = express.Router()
-                this.load(req.body)
-                this.registerDoublesWithExpress();
-                res.status(200)
-                res.send(req.body)
+        const configureDoubles = (req, res) => {
+            if (!Server.isArrayOfDoubles(req.body) && !Server.isADouble(req.body)) {
+                res.status(400)
+                res.send('Request body must contain double or list of doubles')
+                return
             }
+            router = express.Router()
+            this.load(req.body)
+            this.configureDoublesWithExpress();
+            res.status(200)
+            res.send(req.body)
+        }
 
+        if (this.configureDoublesPath) {
           router.post(this.configureDoublesPath, configureDoubles)
         }
 
@@ -93,7 +90,7 @@ class Server {
         // })
     }
 
-    registerDoublesWithExpress() {
+    configureDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
             //let data = (double.response.data === undefined) ? {} : double.response.data
             return (_, res) => {
@@ -101,7 +98,7 @@ class Server {
                 res.send(data)
             };
         }
-        
+
         const handleDouble = ({response = {status: 200}, request, attachment}) => {
             let responseStatus = response.status || 200
             let url = request.url
@@ -147,7 +144,6 @@ class Server {
         }
         
         this.allDoubles.forEach(handleDouble)
-
 
     }
 
