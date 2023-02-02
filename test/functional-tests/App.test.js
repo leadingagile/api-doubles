@@ -322,10 +322,10 @@ describe('App',
                 }
             }]
 
-          const config = {
-            configureDoublesPath: '/configure/doubles',
-            doubles: []
-          }
+            const config = {
+                configureDoublesPath: '/configure/doubles',
+                doubles: []
+            }
 
             app.serve(config)
 
@@ -336,6 +336,49 @@ describe('App',
             expect(configureResponse.data).to.deep.equal(doubles)
             expect(doublesResponse.status).to.eq(200)
             expect(doublesResponse.data).to.deep.equal(doubles[1].response.data)
+
+        })
+
+        it('can update double with new data', async () => {
+
+            const double = {
+                request: {
+                    method: 'POST',
+                    url: '/v1/carts/:id',
+                },
+                response: {
+                    data: { vinNumber: '12345' }
+                }
+            }
+
+            const config = {
+                configureDoublesPath: '/api/doubles',
+            }
+
+            app.serve(config)
+
+            await client.post(LOCALHOST + config.configureDoublesPath, double)
+            const doubleResponse = await client.post(LOCALHOST + double.request.url)
+
+            expect(doubleResponse.status).to.eq(200)
+            expect(doubleResponse.data).to.deep.equal(double.response.data)
+
+            const newDouble = {
+                request: {
+                    ...double.request
+                },
+                response: {
+                    data: { name: 'David' }
+                }
+            }
+
+            await client.post(LOCALHOST + config.configureDoublesPath, newDouble)
+            const updatedDoubleResponse = await client.post(LOCALHOST + double.request.url)
+
+            expect(updatedDoubleResponse.status).to.eq(200)
+            expect(updatedDoubleResponse.data).to.deep.equal(newDouble.response.data)
+            expect(updatedDoubleResponse.data).to.not.deep.equal(double.response.data)
+
         })
 
         it('responds with client error when invalid request body is provided', async () => {

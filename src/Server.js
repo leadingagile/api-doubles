@@ -66,6 +66,7 @@ class Server {
                 return
             }
             router = express.Router()
+            router.post(this.configureDoublesPath, configureDoubles)
             this.load(req.body)
             this.configureDoublesWithExpress();
             res.status(200)
