@@ -1,6 +1,6 @@
 {
   "name": "@leading-agile/api-doubles",
-  "version": "0.0.1-alpha.10",
+  "version": "0.0.1-alpha.11",
   "main": "src/Server.js",
   "dependencies": {
     "axios": "^0.27.2",
