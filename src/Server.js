@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
-const fs = require('fs')
+// const fs = require('fs')
 const cors = require('cors')
 const path = require('path')
+
 let router
 
+app.use(express.json())
 app.use(cors())
 
 app.use((req, res, next) => {
@@ -36,6 +38,7 @@ class Server {
     serve(config = {}) {
         router = express.Router()
         this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
+        this.configureDoublesPath = config.configureDoublesPath
         this.load(config.doubles || [])
         //process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
         //dirty hack we need a certificate
@@ -52,12 +55,26 @@ class Server {
     start(httpPort = 8001) {
 
         //request to root
-        router.get('/', (req, res) =>
-            res.send('Doubles Server')
-        )
+        router.get('/', (_, res) => res.send('Doubles Server'))
 
-        this.registerDoublesWithExpress();
+        this.configureDoublesWithExpress();
 
+        const configureDoubles = (req, res) => {
+            if (!Server.isArrayOfDoubles(req.body) && !Server.isADouble(req.body)) {
+                res.status(400)
+                res.send('Request body must contain double or list of doubles')
+                return
+            }
+            router = express.Router()
+            this.load(req.body)
+            this.configureDoublesWithExpress();
+            res.status(200)
+            res.send(req.body)
+        }
+
+        if (this.configureDoublesPath) {
+          router.post(this.configureDoublesPath, configureDoubles)
+        }
 
         this.httpServer = app.listen(httpPort,() =>
             console.log("Listening on httpPort " + httpPort)
@@ -73,16 +90,16 @@ class Server {
         // })
     }
 
-    registerDoublesWithExpress() {
+    configureDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
             //let data = (double.response.data === undefined) ? {} : double.response.data
-            return (req, res) => {
+            return (_, res) => {
                 res.status(status)
                 res.send(data)
             };
         }
 
-        this.allDoubles.forEach(({response = {status: 200}, request, attachment}) => {
+        const handleDouble = ({response = {status: 200}, request, attachment}) => {
             let responseStatus = response.status || 200
             let url = request.url
             let responseData = response.data
@@ -93,14 +110,14 @@ class Server {
             }
 
             if (attachment) {
-                router.get(url, (req, res) =>
+                router.get(url, (_, res) =>
                     res.download(attachment.pathToFile)
                 )
                 return //continue
             }
 
             if (responseStatus === 301 || responseStatus === 302) { //only works with GET
-                router.get(url, (req, res) =>
+                router.get(url, (_, res) =>
                     res.redirect(responseStatus, response.redirectURL)
                 )
                 return //continue
@@ -121,15 +138,17 @@ class Server {
             // }
 
             //request.method === GET
+
             router.get(url, fnSendDataAndStatus(responseData, responseStatus))
 
-        })
+        }
+        
+        this.allDoubles.forEach(handleDouble)
+
     }
 
     stop() {
-        this.httpServer.close((err) =>
-            console.log('server closed')
-        )
+        this.httpServer.close(() => console.info('server closed'))
     }
 
     //remove me
@@ -182,6 +201,16 @@ class Server {
         }
 
         this.allDoubles.push(double)
+    }
+
+    static isADouble(double) {
+        if (!double?.request?.url) return false
+        return true
+    }
+
+    static isArrayOfDoubles(doubles) {
+        if (!Array.isArray(doubles)) return false
+        return doubles.every(Server.isADouble)
     }
 }
 

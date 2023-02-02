@@ -250,6 +250,93 @@ describe('App',
             return client.post(LOCALHOST + urlToPostTo, {data: "data"}).then(response => expect(response.status).to.eq(200))
         })
 
+        it('can configure a double', async () => {
+
+          const config = {
+            configureDoublesPath: '/configure/doubles',
+            doubles: []
+          }
+
+          app.serve(config)
+
+          const doubles = [{
+            request: { method: 'POST', url: '/foo/bar' },
+            response: { data: 'product customization team wuz here!' }
+          }]
+
+          const configureResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
+
+          const configureDoubleResponse = await client.post(LOCALHOST + doubles[0].request.url)
+
+          expect(configureResponse.status).to.eq(200)
+          expect(configureResponse.data).to.deep.equal(doubles)
+          expect(configureDoubleResponse.status).to.eq(200)
+          expect(configureDoubleResponse.data).to.eq(doubles[0].response.data)
+
+        })
+
+        it('can configure multiple doubles', async () => {
+            
+            const doubles = [{ 
+                request: {
+                    method: 'POST',
+                    url: '/v1/carts/:id',
+                },
+                response: {
+                    data: { vinNumber: '12345' }
+                }
+            },
+            { 
+                request: {
+                    method: 'GET',
+                    url: '/v1/carts/:id',
+                },
+                response: {
+                    data: { vinNumber: '12345' }
+                }
+            }]
+
+          const config = {
+            configureDoublesPath: '/configure/doubles',
+            doubles: []
+          }
+
+            app.serve(config)
+
+            const configureResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
+            const doublesResponse = await client.get(LOCALHOST + doubles[1].request.url)
+
+            expect(configureResponse.status).to.eq(200)
+            expect(configureResponse.data).to.deep.equal(doubles)
+            expect(doublesResponse.status).to.eq(200)
+            expect(doublesResponse.data).to.deep.equal(doubles[1].response.data)
+        })
+
+        it('responds with client error when invalid request body is provided', async () => {
+
+            const config = {
+              configureDoublesPath: '/configure/doubles',
+              doubles: []
+            }
+
+            app.serve(config)
+
+            await client.post(LOCALHOST + config.configureDoublesPath).catch(({response}) => {
+                expect(response.status).to.eq(400)
+                expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
+            })
+
+            await client.post(LOCALHOST + config.configureDoublesPath, {}).catch(({response}) => {
+                expect(response.status).to.eq(400)
+                expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
+            })
+
+            await client.post(LOCALHOST + config.configureDoublesPath, [{ badData: "test" }]).catch(({response}) => {
+                expect(response.status).to.eq(400)
+                expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
+            })
+        })
+
         describe('fixtures', () => {
 
             it('can load data from a fixture', () => {
