@@ -1,6 +1,6 @@
 {
   "name": "@leading-agile/api-doubles",
-  "version": "0.0.1-alpha.10",
+  "version": "0.0.1-alpha.11",
   "main": "src/Server.js",
   "dependencies": {
     "axios": "^0.27.2",
@@ -11,7 +11,7 @@
     "double": "./bin/cli.js"
   },
   "scripts": {
-    "test:all": "npm run behave && npm run test:unit && npm run test:functional",
+    "test": "npm run behave && npm run test:unit && npm run test:functional",
     "test:unit": "mocha ./test/unit-tests --exit",
     "test:functional": "mocha ./test/functional-tests --exit",
     "start:doubles": "node src/runServer.js",

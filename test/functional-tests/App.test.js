@@ -250,7 +250,33 @@ describe('App',
             return client.post(LOCALHOST + urlToPostTo, {data: "data"}).then(response => expect(response.status).to.eq(200))
         })
 
-        it('can configure a double', async () => {
+        it('can configure a double using default configuration endpoint', async () => {
+
+          const defaultConfigEndpoint = '/'
+
+          const config = {
+            doubles: []
+          }
+
+          app.serve(config)
+
+          const doubles = [{
+            request: { method: 'POST', url: '/foo/bar' },
+            response: { data: 'product customization team wuz here!' }
+          }]
+
+          const configureResponse = await client.post(LOCALHOST + defaultConfigEndpoint, doubles)
+
+          const configureDoubleResponse = await client.post(LOCALHOST + doubles[0].request.url)
+
+          expect(configureResponse.status).to.eq(200)
+          expect(configureResponse.data).to.deep.equal(doubles)
+          expect(configureDoubleResponse.status).to.eq(200)
+          expect(configureDoubleResponse.data).to.eq(doubles[0].response.data)
+
+        })
+
+        it('can configure a double using user-supplied endpoint', async () => {
 
           const config = {
             configureDoublesPath: '/configure/doubles',
@@ -276,7 +302,7 @@ describe('App',
         })
 
         it('can configure multiple doubles', async () => {
-            
+
             const doubles = [{ 
                 request: {
                     method: 'POST',
@@ -296,10 +322,10 @@ describe('App',
                 }
             }]
 
-          const config = {
-            configureDoublesPath: '/configure/doubles',
-            doubles: []
-          }
+            const config = {
+                configureDoublesPath: '/configure/doubles',
+                doubles: []
+            }
 
             app.serve(config)
 
@@ -310,9 +336,11 @@ describe('App',
             expect(configureResponse.data).to.deep.equal(doubles)
             expect(doublesResponse.status).to.eq(200)
             expect(doublesResponse.data).to.deep.equal(doubles[1].response.data)
+
         })
 
         it('can update double with new data', async () => {
+
             const double = {
                 request: {
                     method: 'POST',
@@ -350,6 +378,7 @@ describe('App',
             expect(updatedDoubleResponse.status).to.eq(200)
             expect(updatedDoubleResponse.data).to.deep.equal(newDouble.response.data)
             expect(updatedDoubleResponse.data).to.not.deep.equal(double.response.data)
+
         })
 
         it('responds with client error when invalid request body is provided', async () => {
