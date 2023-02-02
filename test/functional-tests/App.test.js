@@ -303,7 +303,7 @@ describe('App',
 
         it('can configure multiple doubles', async () => {
 
-            const doubles = [{ 
+            const doubles = [{
                 request: {
                     method: 'POST',
                     url: '/v1/carts/:id',
@@ -312,7 +312,7 @@ describe('App',
                     data: { vinNumber: '12345' }
                 }
             },
-            { 
+            {
                 request: {
                     method: 'GET',
                     url: '/v1/carts/:id',
