@@ -213,14 +213,6 @@ describe('App', () => {
     return client.get('http://localhost:8002/').then(response => expect(response.status).to.eq(200))
   })
 
-  // it('passes https port when provided in config object', () => {
-  //     app.serve({httpsPort: 8003})
-  //
-  //     return client.get('https://localhost:8003')
-  //         .then(response =>
-  //             expect(response.status).to.eq(200))
-  // })
-
   it('double is available when it is added', () => {
     const double = {
       request: { url: '/example' }
@@ -278,7 +270,7 @@ describe('App', () => {
   it('can configure a double using user-supplied endpoint', async () => {
 
     const config = {
-      configureDoublesPath: '/configure/doubles',
+      configureDoublesEndpoint: '/configure/doubles',
       doubles: []
     }
 
@@ -289,7 +281,7 @@ describe('App', () => {
       response: { data: 'product customization team wuz here!' }
     }]
 
-    const configureResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
+    const configureResponse = await client.post(LOCALHOST + config.configureDoublesEndpoint, doubles)
 
     const configureDoubleResponse = await client.post(LOCALHOST + doubles[0].request.url)
 
@@ -322,13 +314,13 @@ describe('App', () => {
     }]
 
     const config = {
-      configureDoublesPath: '/configure/doubles',
+      configureDoublesEndpoint: '/configure/doubles',
       doubles: []
     }
 
     app.serve(config)
 
-    const configureResponse = await client.post(LOCALHOST + config.configureDoublesPath, doubles)
+    const configureResponse = await client.post(LOCALHOST + config.configureDoublesEndpoint, doubles)
     const doublesResponse = await client.get(LOCALHOST + doubles[1].request.url)
 
     expect(configureResponse.status).to.eq(200)
@@ -351,12 +343,12 @@ describe('App', () => {
     }
 
     const config = {
-      configureDoublesPath: '/api/doubles',
+      configureDoublesEndpoint: '/api/doubles',
     }
 
     app.serve(config)
 
-    await client.post(LOCALHOST + config.configureDoublesPath, double)
+    await client.post(LOCALHOST + config.configureDoublesEndpoint, double)
     const doubleResponse = await client.post(LOCALHOST + double.request.url)
 
     expect(doubleResponse.status).to.eq(200)
@@ -371,7 +363,7 @@ describe('App', () => {
       }
     }
 
-    await client.post(LOCALHOST + config.configureDoublesPath, newDouble)
+    await client.post(LOCALHOST + config.configureDoublesEndpoint, newDouble)
     const updatedDoubleResponse = await client.post(LOCALHOST + double.request.url)
 
     expect(updatedDoubleResponse.status).to.eq(200)
@@ -383,23 +375,23 @@ describe('App', () => {
   it('responds with client error when invalid request body is provided', async () => {
 
     const config = {
-      configureDoublesPath: '/configure/doubles',
+      configureDoublesEndpoint: '/configure/doubles',
       doubles: []
     }
 
     app.serve(config)
 
-    await client.post(LOCALHOST + config.configureDoublesPath).catch(({ response }) => {
+    await client.post(LOCALHOST + config.configureDoublesEndpoint).catch(({ response }) => {
       expect(response.status).to.eq(400)
       expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
     })
 
-    await client.post(LOCALHOST + config.configureDoublesPath, {}).catch(({ response }) => {
+    await client.post(LOCALHOST + config.configureDoublesEndpoint, {}).catch(({ response }) => {
       expect(response.status).to.eq(400)
       expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
     })
 
-    await client.post(LOCALHOST + config.configureDoublesPath, [{ badData: "test" }]).catch(({ response }) => {
+    await client.post(LOCALHOST + config.configureDoublesEndpoint, [{ badData: "test" }]).catch(({ response }) => {
       expect(response.status).to.eq(400)
       expect(response.data).to.deep.equal('Request body must contain double or list of doubles')
     })

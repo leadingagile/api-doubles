@@ -89,7 +89,7 @@ The path to the file to be sent as part of the response. Required if `attachment
 {
     httpPort: 8001,
     fixturesFolder: './some/path',
-    configureDoublesPath: './some/path',
+    configureDoublesEndpoint: './some/path',
     doubles: [
         {
             request: {

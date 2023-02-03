@@ -38,7 +38,9 @@ class Server {
     serve(config = {}) {
         router = express.Router()
         this.fixturesFolder = config.fixturesFolder || './test/fixtures'
-        this.configureDoublesEndpoint = config.configureDoublesEndpoint || config.configureDoublesPath || '/' //accomodating deprecated member: configureDoublesPath
+        this.configureDoublesEndpoint = config.configureDoublesEndpoint ||
+                                        config.configureDoublesPath || //accomodating deprecated member: configureDoublesPath
+                                        '/'
         this.load(config.doubles || [])
         this.start(config.httpPort)
     }
