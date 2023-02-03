@@ -37,8 +37,8 @@ class Server {
 
     serve(config = {}) {
         router = express.Router()
-        this.fixturesFolder = config.fixturesFolder || 'test/fixtures'
-        this.configureDoublesPath = config.configureDoublesPath || '/'
+        this.fixturesFolder = config.fixturesFolder || './test/fixtures'
+        this.configureDoublesEndpoint = config.configureDoublesEndpoint || config.configureDoublesPath || '/' //accomodating deprecated member: configureDoublesPath
         this.load(config.doubles || [])
         this.start(config.httpPort)
     }
@@ -56,15 +56,15 @@ class Server {
                 return
             }
             router = express.Router()
-            router.post(this.configureDoublesPath, configureDoubles)
+            router.post(this.configureDoublesEndpoint, configureDoubles)
             this.load(req.body)
             this.configureDoublesWithExpress();
             res.status(200)
             res.send(req.body)
         }
 
-        if (this.configureDoublesPath) {
-          router.post(this.configureDoublesPath, configureDoubles)
+        if (this.configureDoublesEndpoint) {
+          router.post(this.configureDoublesEndpoint, configureDoubles)
         }
 
         this.httpServer = app.listen(httpPort,() =>
@@ -81,35 +81,52 @@ class Server {
         }
 
         const handleDouble = ({response = {status: 200}, request, attachment}) => {
-            let responseStatus = response.status || 200
             let url = request.url
+            let responseStatus = response.status || 200
             let responseData = response.data
 
             if (response.fixture) {
-                let fullyResolvedPathToFixture = path.resolve(this.fixturesFolder, response.fixture)
-                responseData = require(fullyResolvedPathToFixture)
+              let fullyResolvedPathToFixture = path.resolve(this.fixturesFolder, response.fixture)
+              responseData = require(fullyResolvedPathToFixture)
             }
 
-            if (attachment) {
-                router.get(url, (_, res) =>
-                    res.download(attachment.pathToFile)
-                )
-                return
-            }
 
-            if (responseStatus === 301 || responseStatus === 302) {
-                router.get(url, (_, res) =>
-                    res.redirect(responseStatus, response.redirectURL)
-                )
-                return
-            }
+            const handleGet = () => {
+                if (attachment) {
+                  router.get(url, (_, res) =>
+                      res.download(attachment.pathToFile)
+                  )
+                  return
+                }
 
-            if (request.method === 'POST') {
+                if (responseStatus === 301 || responseStatus === 302) {
+                    router.get(url, (_, res) =>
+                        res.redirect(responseStatus, response.redirectURL)
+                    )
+                    return
+                }
+
+                router.get(url, fnSendDataAndStatus(responseData, responseStatus))
+              }
+
+            const handlePost = () => {
                 router.post(url, fnSendDataAndStatus(responseData, responseStatus))
-                return
+              }
+
+            const handleDelete = () => {
+                router.delete(url, fnSendDataAndStatus(responseData, responseStatus))
+              }
+
+            // HEAD, PUT, PATCH
+
+            const dispath = {
+              "GET": handleGet,
+              "POST": handlePost,
+              "DELETE": handleDelete,
             }
 
-            router.get(url, fnSendDataAndStatus(responseData, responseStatus))
+            const handler = dispath[request.method] || handleGet
+            handler()
 
         }
 
