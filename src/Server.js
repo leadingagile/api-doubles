@@ -74,7 +74,8 @@ class Server {
 
     configureDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
-            return (_, res) => {
+            return (req, res) => {
+                console.log(`DOUBLER: ${req.url}`)
                 res.status(status)
                 res.send(data)
             };
@@ -93,15 +94,19 @@ class Server {
 
             const handleGet = () => {
                 if (attachment) {
-                  router.get(url, (_, res) =>
+                  router.get(url, (req, res) => {
+                      console.log(`DOUBLER: ${req.url}`)
                       res.download(attachment.pathToFile)
+                    }
                   )
                   return
                 }
 
                 if (responseStatus === 301 || responseStatus === 302) {
-                    router.get(url, (_, res) =>
+                    router.get(url, (req, res) => {
+                        console.log(`DOUBLER: ${req.url}`)
                         res.redirect(responseStatus, response.redirectURL)
+                      }
                     )
                     return
                 }
@@ -117,7 +122,7 @@ class Server {
                 router.delete(url, fnSendDataAndStatus(responseData, responseStatus))
               }
 
-            // HEAD, PUT, PATCH
+            // TODO: HEAD, PUT, PATCH
 
             const dispath = {
               "GET": handleGet,
