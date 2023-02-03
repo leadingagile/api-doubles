@@ -44,6 +44,18 @@ Thanks for helping extend and improve the tool!
 * Be sure your changes have tests at the necessary levels (unit, functional, etc.)
 * Be sure all tests pass
 
+## Publishing Notes
+
+This will be automated RSN
+
+```shell
+npm test
+npm version prerelease
+git push
+git push --tags
+npm publish
+```
+
 ## Contributors
 
 - Butch Howard <butch.howard@leadingagile.com>
