@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+NPM_ORG="xxleading-agile"
+
 has_command()
 {
     type "$@" > /dev/null 2>&1
@@ -26,6 +28,8 @@ check_dependencies || exit 86
 
 CURRENT_NPM_USER="$(npm whoami)"  || { echo "not logged in"; exit 1; }
 
-npm org ls leading-agile --json | jq '. | has("'"${CURRENT_NPM_USER}"'")' || { echo "not in organization"; exit 1; }
+npm --loglevel silent org ls  "${NPM_ORG}" --json 2>/dev/null | jq --exit-status '. | has("'"${CURRENT_NPM_USER}"'")' > /dev/null 2>&1 || { echo "not in organization"; exit 1; }
+
+npm test || exit 2
 
 exit 0
