@@ -172,11 +172,14 @@ class Server {
         if (!doubles) throw Error('(load) requires [doubles]')
 
         if (Array.isArray(doubles)) {
-            doubles.forEach(double => this.registerDouble(double))
-            return
+          doubles.forEach(double => this.registerDouble(double))
+        }
+        else {
+          this.registerDouble(doubles)
         }
 
-        this.registerDouble(doubles)
+        console.log('=======Configuration Changed======')
+        console.log(doubles)
     }
 
     registerDouble(double) {
