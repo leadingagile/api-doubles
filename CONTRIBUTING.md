@@ -46,15 +46,19 @@ Thanks for helping extend and improve the tool!
 
 ## Publishing Notes
 
-This will be automated RSN
+Bump the (prerelease) version and publish.
 
 ```shell
-npm test
-npm version prerelease
-git push
-git push --tags
-npm publish
+npm run do:publish
 ```
+* Runs the tests
+* Commits the version change and tag
+* Pushes the changes
+* Publishes the package to NPM
+
+**What's Happening**
+
+Actions are initiated by `./scripts/publish.sh`. They also include behavior from the `preversion.sh` and `postversion.sh` scripts which are registered in `package.json` to run before and after `npm version`.
 
 ## Contributors
 
