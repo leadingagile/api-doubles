@@ -42,7 +42,7 @@ class Server {
                                         config.configureDoublesPath || //accomodating deprecated member: configureDoublesPath
                                         '/'
         this.load(config.doubles || [])
-        this.start(config.httpPort)
+        this.start(process.env['DOUBLES_PORT'] || config.httpPort)
     }
 
     start(httpPort = 8001) {
