@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-// const fs = require('fs')
 const cors = require('cors')
 const path = require('path')
 
@@ -77,7 +76,7 @@ class Server {
     configureDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
             return (req, res) => {
-                console.log(`DOUBLER: ${req.url}`)
+                //console.log(`DOUBLER: ${req.url}`)
                 res.status(status)
                 res.send(data)
             };
@@ -92,7 +91,6 @@ class Server {
               let fullyResolvedPathToFixture = path.resolve(this.fixturesFolder, response.fixture)
               responseData = require(fullyResolvedPathToFixture)
             }
-
 
             const handleGet = () => {
                 if (attachment) {
@@ -145,20 +143,6 @@ class Server {
         this.httpServer.close(() => console.info('server closed'))
     }
 
-    request(method, url) {
-        let double = this.allDoubles.find(double => double.request.url === url && double.request.method === method)
-        if (double === undefined) {
-            double = {
-                response: {
-                    status: 404
-                }
-            }
-        }
-
-        this.response = double.response
-        return double.response
-    }
-
     removeAllDoublesWithUri(uri) {
         if (this.isRegistered(uri))
             this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
@@ -197,6 +181,7 @@ class Server {
         this.allDoubles.push(double)
     }
 
+    //Optional Chaining operator introduced in node 14.0.0
     static isADouble(double) {
         if (!double?.request?.url) return false
         return true

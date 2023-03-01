@@ -88,12 +88,4 @@ const noRequestDouble = {
     }
 }
 
-const noResponseDouble = {
-    request: {
-        url: 'some-stuff',
-        method: 'yep'
-    },
-    hasStuff: 'false'
-}
-
-module.exports = { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble, noResponseDouble };
+module.exports = { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble };
