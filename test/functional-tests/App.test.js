@@ -397,6 +397,66 @@ describe('App', () => {
     })
   })
 
+  it('responds with 200 status and body for configured PUT', async () => {
+
+    const responseData = {
+      name: 'David'
+    }
+
+    const config = {
+      doubles: [
+        {
+          request: {
+            url: '/put/end-point',
+            method: 'PUT'
+          }, 
+          response: {
+            data: { ...responseData }
+          }
+        }
+      ]
+    }
+
+    app.serve(config)
+
+    const { status, data } = await client.put(LOCALHOST + config.doubles[0].request.url)
+
+    expect(status).to.equal(200)
+    expect(data).to.deep.equal(responseData)
+
+  })
+
+  it('responds with 200 status and body for dynamically configured PUT request', async () => {
+
+    const responseData = {
+      name: 'David'
+    }
+
+    const putDouble = {
+      request: {
+        url: '/put/end-point/dynamic',
+        method: 'PUT'
+      }, 
+      response: {
+        data: { ...responseData }
+      }
+    }
+
+    const config = {
+      configureDoublesEndpoint: '/api/doubles',
+      doubles: []
+    }
+
+    app.serve(config)
+
+    await client.post(LOCALHOST + config.configureDoublesEndpoint, [putDouble])
+    const { status, data } = await client.put(LOCALHOST + putDouble.request.url)
+
+    expect(status).to.equal(200)
+    expect(data).to.deep.equal(responseData)
+
+  })
+
   describe('fixtures', () => {
 
     it('can load data from a fixture', () => {
