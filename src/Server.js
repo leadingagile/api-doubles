@@ -124,12 +124,15 @@ class Server {
                 router.delete(url, fnSendDataAndStatus(responseData, responseStatus))
               }
 
-            // TODO: HEAD, PUT, PATCH
+            const handlePut = () => router.put(url, fnSendDataAndStatus(responseData, responseStatus))
+
+            // TODO: HEAD, PATCH
 
             const dispath = {
               "GET": handleGet,
               "POST": handlePost,
               "DELETE": handleDelete,
+              "PUT": handlePut,
             }
 
             const handler = dispath[request.method] || handleGet
