@@ -76,7 +76,7 @@ class Server {
     configureDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
             return (req, res) => {
-                //console.log(`DOUBLER: ${req.url}`)
+                console.log(`DOUBLER: ${req.url}`)
                 res.status(status)
                 res.send(data)
             };
