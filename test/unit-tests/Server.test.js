@@ -64,7 +64,20 @@ describe('Server', () => {
 
         })
 
+
+        it('PORT set in ENV overrides config parameter', async () => {
+
+          process.env['DOUBLES_PORT'] = '3001'
+          server.serve({ httpPort: 8001, doubles: [postBaseDouble] })
+
+          const response = await client.post('http://localhost:3001/some-example')
+
+          expect(response.data).to.deep.equal(postBaseDouble.response.data)
+
+      })
+
     })
+
 
     describe('removeAllDoublesWithUri()', () => {
         it('removes all doubles that have the provided uri', () => {

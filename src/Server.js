@@ -41,7 +41,7 @@ class Server {
                                         config.configureDoublesPath || //accomodating deprecated member: configureDoublesPath
                                         '/'
         this.load(config.doubles || [])
-        this.start(config.httpPort)
+        this.start(process.env['DOUBLES_PORT'] || config.httpPort)
     }
 
     start(httpPort = 8001) {
@@ -92,6 +92,7 @@ class Server {
               responseData = require(fullyResolvedPathToFixture)
             }
 
+
             const handleGet = () => {
                 if (attachment) {
                   router.get(url, (req, res) => {
@@ -122,12 +123,15 @@ class Server {
                 router.delete(url, fnSendDataAndStatus(responseData, responseStatus))
               }
 
-            // TODO: HEAD, PUT, PATCH
+            const handlePut = () => router.put(url, fnSendDataAndStatus(responseData, responseStatus))
+
+            // TODO: HEAD, PATCH
 
             const dispath = {
               "GET": handleGet,
               "POST": handlePost,
               "DELETE": handleDelete,
+              "PUT": handlePut,
             }
 
             const handler = dispath[request.method] || handleGet
