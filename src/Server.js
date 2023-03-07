@@ -77,7 +77,7 @@ class Server {
     configureDoublesWithExpress() {
         function fnSendDataAndStatus(data, status) {
             return (req, res) => {
-                console.log(`DOUBLER: ${req.url}`)
+                console.log(`DOUBLER: ${req.method} ${req.url}`)
                 res.status(status)
                 res.send(data)
             };
@@ -97,8 +97,8 @@ class Server {
             const handleGet = () => {
                 if (attachment) {
                   router.get(url, (req, res) => {
-                      console.log(`DOUBLER: ${req.url}`)
-                      res.download(attachment.pathToFile)
+                    console.log(`DOUBLER: ${req.method} ${req.url}`)
+                    res.download(attachment.pathToFile)
                     }
                   )
                   return
@@ -106,8 +106,8 @@ class Server {
 
                 if (responseStatus === 301 || responseStatus === 302) {
                     router.get(url, (req, res) => {
-                        console.log(`DOUBLER: ${req.url}`)
-                        res.redirect(responseStatus, response.redirectURL)
+                      console.log(`DOUBLER: ${req.method} ${req.url}`)
+                      res.redirect(responseStatus, response.redirectURL)
                       }
                     )
                     return
@@ -127,15 +127,14 @@ class Server {
             const handlePut = () => router.put(url, fnSendDataAndStatus(responseData, responseStatus))
 
             // TODO: HEAD, PATCH
-
-            const dispath = {
+            const dispatch = {
               "GET": handleGet,
               "POST": handlePost,
               "DELETE": handleDelete,
               "PUT": handlePut,
             }
 
-            const handler = dispath[request.method] || handleGet
+            const handler = dispatch[request.method] || handleGet
             handler()
 
         }
