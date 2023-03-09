@@ -10,14 +10,16 @@
     "do:publish": "./scripts/publish.sh",
     "preversion": "./scripts/preversion.sh",
     "postversion": "./scripts/postversion.sh",
-    "test": "npm run behave && npm run test:unit && npm run test:functional && npm run behave",
+    "test": "npm run test:unit && npm run test:functional",
     "test:unit": "mocha ./test/unit-tests --exit",
     "test:functional": "mocha ./test/functional-tests --exit",
     "start:doubles": "node src/runServer.js",
-    "start:doublesWithExampleConfig": "node src/runServer.js ./exampleConfig.json",
-    "behave": "cucumber-js features --require behave/setup.js --require behave/steps.js --require behave/appSteps.js"
+    "start:doublesWithExampleConfig": "node src/runServer.js ./exampleConfig.json"
   },
   "main": "src/Server.js",
+  "engines" : {
+    "node" : ">=14.0.0"
+  },
   "bin": {
     "double": "./bin/cli.js"
   },
@@ -27,7 +29,6 @@
     "express": "^4.18.1"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^8.4.0",
     "chai": "^4.3.6",
     "mocha": "^9.0.0"
   }

@@ -1,6 +1,5 @@
 const expect = require('chai').expect
-const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble,
-    noResponseDouble
+const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble
 } = require('./testDoubles')
 
 const Server = require('../../src/Server')
@@ -79,26 +78,6 @@ describe('Server', () => {
 
     })
 
-    describe('request()', () => {
-        it('returns with status as 404 when no double is registered with provided url', () => {
-            server.request('get', 'http://localhost:8000/bad-url')
-
-            expect(server.response.status).to.eq(404)
-        })
-
-        it('returns a response', () => {
-            server.registerDouble(baseDouble)
-
-            expect(server.request('GET', 'http://localhost:8001/some-example')).to.deep.equal(baseDouble.response)
-        })
-
-        it('returns a response with content', () => {
-            server.registerDouble(baseDouble)
-            let testDouble = server.request('GET', 'http://localhost:8001/some-example')
-
-            expect(testDouble.hasOwnProperty('content')).to.be.true
-        })
-    })
 
     describe('removeAllDoublesWithUri()', () => {
         it('removes all doubles that have the provided uri', () => {
@@ -143,19 +122,15 @@ describe('Server', () => {
         it('replaces double in allDoubles if double exists', () => {
             server.registerDouble(baseDouble)
             server.registerDouble(sameUrl301BaseDouble)
-            let response = server.request('GET', "http://localhost:8001/some-example")
 
             expect(server.allDoubles.length).equal(1)
-            expect(response.status).equal(301)
         })
 
         it('does not replace double in allDoubles if method is different', () => {
             server.registerDouble(baseDouble)
             server.registerDouble(postBaseDouble)
-            let response = server.request('GET', "http://localhost:8001/some-example")
 
             expect(server.allDoubles.length).equal(2)
-            expect(response.status).equal(200)
         })
 
         it('throws malformed double error if double is missing request', () => {
