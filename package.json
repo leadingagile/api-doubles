@@ -1,6 +1,6 @@
 {
   "name": "@leading-agile/api-doubles",
-  "version": "0.0.1-alpha.19",
+  "version": "0.0.1-alpha.20",
   "homepage": "https://github.com/leadingagile/api-doubles",
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
     "start:doublesWithExampleConfig": "node src/runServer.js ./exampleConfig.json"
   },
   "main": "src/Server.js",
-  "engines" : {
-    "node" : ">=14.0.0"
+  "engines": {
+    "node": ">=14.0.0"
   },
   "bin": {
     "double": "./bin/cli.js"
