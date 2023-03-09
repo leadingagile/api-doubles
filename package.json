@@ -5,17 +5,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/leadingagile/api-doubles.git"
-  "main": "src/Server.js",
-  "dependencies": {
-    "axios": "^0.27.2",
-    "cors": "^2.8.5",
-    "express": "^4.18.1"
-  },
-  "engines" : {
-    "node" : ">=14.0.0"
-  },
-  "bin": {
-    "double": "./bin/cli.js"
   },
   "scripts": {
     "do:publish": "./scripts/publish.sh",
@@ -28,6 +17,9 @@
     "start:doublesWithExampleConfig": "node src/runServer.js ./exampleConfig.json"
   },
   "main": "src/Server.js",
+  "engines" : {
+    "node" : ">=14.0.0"
+  },
   "bin": {
     "double": "./bin/cli.js"
   },
@@ -37,7 +29,6 @@
     "express": "^4.18.1"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^8.4.0",
     "chai": "^4.3.6",
     "mocha": "^9.0.0"
   }
