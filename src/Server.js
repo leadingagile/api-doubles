@@ -74,7 +74,7 @@ class Server {
     }
 
     configureDoublesWithExpress() {
-        function fnSendDataAndStatus(data, status) {
+        const fnSendDataAndStatus = (data, status) => {
             return (req, res) => {
                 console.log(`DOUBLER: ${req.method} ${req.url}`)
                 res.status(status)
@@ -83,7 +83,7 @@ class Server {
         }
 
         const handleDouble = ({response = {status: 200}, request, attachment}) => {
-            let url = request.url
+            let {url} = request
             let responseStatus = response.status || 200
             let responseData = response.data
 
@@ -147,8 +147,9 @@ class Server {
     }
 
     removeAllDoublesWithUri(uri) {
-        if (this.isRegistered(uri))
-            this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
+        if (this.isRegistered(uri)) {
+          this.allDoubles = this.allDoubles.filter(double => double.request.url !== uri)
+        }
     }
 
     isRegistered(uri) {
@@ -156,7 +157,9 @@ class Server {
     }
 
     load(doubles) {
-        if (!doubles) throw Error('(load) requires [doubles]')
+        if (!doubles) {
+          throw Error('(load) requires [doubles]')
+        }
 
         if (Array.isArray(doubles)) {
           doubles.forEach(double => this.registerDouble(double))
@@ -170,7 +173,9 @@ class Server {
     }
 
     registerDouble(double) {
-        if (!double.hasOwnProperty('request')) throw new Error('Double missing request property.')
+        if (!double.hasOwnProperty('request')) {
+          throw new Error('Double missing request property.')
+        }
 
         if (this.isRegistered(double.request.url)) {
             this.allDoubles = this.allDoubles.filter(exclusion => {
@@ -186,12 +191,16 @@ class Server {
 
     //Optional Chaining operator introduced in node 14.0.0
     static isADouble(double) {
-        if (!double?.request?.url) return false
+        if (!double?.request?.url) {
+          return false
+        }
         return true
     }
 
     static isArrayOfDoubles(doubles) {
-        if (!Array.isArray(doubles)) return false
+        if (!Array.isArray(doubles)) {
+          return false
+        }
         return doubles.every(Server.isADouble)
     }
 }
