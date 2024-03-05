@@ -176,6 +176,9 @@ class Server {
         if (!double.hasOwnProperty('request')) {
           throw new Error('Double missing request property.')
         }
+        if (!double.request.url) {
+          throw new Error('Double request.url is required.')
+        }
 
         if (this.isRegistered(double.request.url)) {
             this.allDoubles = this.allDoubles.filter(exclusion => {
