@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble
+const { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble, noRequestUrlDouble
 } = require('./testDoubles')
 
 const Server = require('../../src/Server')
@@ -135,6 +135,10 @@ describe('Server', () => {
 
         it('throws malformed double error if double is missing request', () => {
             expect(() => server.registerDouble(noRequestDouble)).to.throw('Double missing request property.')
+        })
+
+        it('throws malformed double error if double is missing request.url', () => {
+            expect(() => server.registerDouble(noRequestUrlDouble)).to.throw('Double request.url is required.')
         })
 
     })

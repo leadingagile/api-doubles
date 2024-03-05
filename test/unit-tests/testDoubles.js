@@ -88,4 +88,14 @@ const noRequestDouble = {
     }
 }
 
-module.exports = { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble };
+const noRequestUrlDouble = {
+    request: {
+        method: 'GET',
+    },
+    response: {
+        status: 200,
+        content: 'Will never return'
+    }
+}
+
+module.exports = { baseDouble, postBaseDouble, badUrlDouble, base301Double, sameUrl301BaseDouble, noRequestDouble, noRequestUrlDouble };
